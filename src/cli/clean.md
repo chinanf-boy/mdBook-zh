@@ -7,7 +7,7 @@ artifacts.
 mdbook clean
 ```
 
-#### Specify a directory
+#### 指定目录
 
 The `clean` command can take a directory as an argument to use as the book's
 root instead of the current working directory.

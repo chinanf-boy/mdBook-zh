@@ -1,12 +1,12 @@
-# The test command
+# test 命令
 
-写书时,有时需要自动化一些测试.例如,[The Rust Programming Book](https://doc.rust-lang.org/stable/book/)使用了许多可能过时的代码示例.因此,能够自动测试这些代码示例对他们来说非常重要.
+写书时,有时需要一些自动化测试.例如,[The Rust Programming Book](https://doc.rust-lang.org/stable/book/)使用了许多可能过时的代码示例。因此,能够自动测试这些代码示例对他们来说非常重要.
 
-mdBook支持`test`将运行书中所有可用测试的命令.目前,只支持rustdoc测试,但未来可能会扩展.
+mdBook 支持`test`将运行，书中所有可用测试的命令。目前,只支持 rustdoc 测试,但未来可能会扩展.
 
-#### Disable tests on a code block
+#### 在一个代码块，禁用测试
 
-rustdoc不测试包含的代码块`ignore`属性:
+rustdoc 不会测试，包含`ignore`属性的代码块:
 
 ````
 ```rust,ignore
@@ -14,7 +14,7 @@ fn main() {}
 ```
 ````
 
-rustdoc也不测试指定除Rust之外的语言的代码块:
+rustdoc 也不会测试，指定了除 Rust 之外的语言的代码块:
 
 ````
 ```markdown
@@ -22,7 +22,7 @@ rustdoc也不测试指定除Rust之外的语言的代码块:
 ```
 ````
 
-rustdoc*不*测试没有指定语言的代码块:
+rustdoc*不会*测试，没有指定语言的代码块:
 
 ````
 ```
@@ -30,9 +30,9 @@ This is going to cause an error!
 ```
 ````
 
-#### Specify a directory
+#### 指定目录
 
-该`test`命令可以将目录作为参数用作本书的根目录而不是当前工作目录.
+`test`命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.
 
 ```bash
 mdbook test path/to/book
@@ -40,8 +40,8 @@ mdbook test path/to/book
 
 #### --library-path
 
-该`--library-path`(`-L`)选项允许您将目录添加到使用的库搜索路径`rustdoc`当它构建和测试示例时.可以使用多个选项指定多个目录(`-L foo -L bar`)或用逗号分隔的列表(`-L foo,bar`).
+`--library-path`(`-L`)选项允许您，当`rustdoc`构建和测试示例时，将目录添加到搜索路径。可以指定多个目录(`-L foo -L bar`)，或用逗号分隔的列表(`-L foo,bar`).
 
 #### --dest-dir
 
-该`--dest-dir`(`-d`)选项允许您更改书籍的输出目录.相对路径相对于书籍的根目录进行解释.如果未指定,则默认为该值`build.build-dir`键入`book.toml`, 或者`./book`.
+`--dest-dir`(`-d`)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为`book.toml`配置的`build.build-dir`字段, 或者`./book`目录.

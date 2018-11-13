@@ -23,13 +23,13 @@ rustdoc also doesn't test code blocks which specify a language other than Rust:
     **Foo**: _bar_
     ```
 
-rustdoc *does* test code blocks which have no language specified:
+rustdoc _does_ test code blocks which have no language specified:
 
     ```
     This is going to cause an error!
     ```
 
-#### Specify a directory
+#### 指定目录
 
 The `test` command can take a directory as an argument to use as the book's root
 instead of the current working directory.

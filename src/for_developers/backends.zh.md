@@ -37,7 +37,7 @@ fn main() {
 }
 ```
 
-> **注意:**该`RenderContext`包含一个`version`领域.这使得后端可以确定它们是否与版本兼容`mdbook`它被称为.这个`version`直接来自相应的字段`mdbook`的`Cargo.toml`.
+> **注意:**`RenderContext`包含一个`version`领域.这使得后端可以确定它们是否与版本兼容`mdbook`它被称为.这个`version`直接来自相应的字段`mdbook`的`Cargo.toml`.
 
 建议后端使用[`semver`]如果可能存在兼容性问题,请检查此字段并发出警告.
 
@@ -134,7 +134,7 @@ Contributors: 85
 
 现在假设您不想计算特定章节上的单词数(可能是生成的文本/代码等).这样做的规范方法是通过常规方式`book.toml`配置文件通过添加项目到您的`[output.foo]`表.
 
-该`Config`可以粗略地将其视为嵌套的hashmap,它允许您调用类似的方法`get()`使用a访问配置的内容`get_deserialized()`方便的方法,用于检索值并自动反序列化为某种任意类型`T`.
+`Config`可以粗略地将其视为嵌套的hashmap,它允许您调用类似的方法`get()`使用a访问配置的内容`get_deserialized()`方便的方法,用于检索值并自动反序列化为某种任意类型`T`.
 
 为实现这一点,我们将创建自己的可序列化`WordcountConfig`struct将封装此后端的所有配置.
 

@@ -5,10 +5,10 @@ The serve command is used to preview a book by serving it over HTTP at
 changes, rebuilding the book and refreshing clients for each change. A websocket
 connection is used to trigger the client-side refresh.
 
-***Note:*** *The `serve` command is for testing a book's HTML output, and is not
-intended to be a complete HTTP server for a website.*
+**_Note:_** _The `serve` command is for testing a book's HTML output, and is not
+intended to be a complete HTTP server for a website._
 
-#### Specify a directory
+#### 指定目录
 
 The `serve` command can take a directory as an argument to use as the book's
 root instead of the current working directory.

@@ -5,7 +5,7 @@ file change. You could repeatedly issue `mdbook build` every time a file is
 changed. But using `mdbook watch` once will watch your files and will trigger a
 build automatically whenever you modify a file.
 
-#### Specify a directory
+#### 指定目录
 
 The `watch` command can take a directory as an argument to use as the book's
 root instead of the current working directory.

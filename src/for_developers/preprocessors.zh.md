@@ -47,7 +47,7 @@ renderer = ["html", "epub"]
 
 章节可以直接访问(通过递归迭代章节)或通过`Book::for_each_mut()`便利方法.
 
-该`chapter.content`只是一个恰好是降价的字符串.虽然完全可以使用正则表达式或进行手动查找和替换,但您可能希望将输入处理为更加计算机友好的内容.该[`pulldown-cmark`][pc]crate实现了一个基于生产质量事件的Markdown解析器[`pulldown-cmark-to-cmark`][pctc]允许您将事件转换回markdown文本.
+`chapter.content`只是一个恰好是markdown的字符串.虽然完全可以使用正则表达式或进行手动查找和替换,但您可能希望将输入处理为更加计算机友好的内容.该[`pulldown-cmark`][pc]crate实现了一个基于生产质量事件的Markdown解析器[`pulldown-cmark-to-cmark`][pctc]允许您将事件转换回markdown文本.
 
 以下代码块显示了如何从markdown中删除所有强调,而不会意外地破坏文档.
 

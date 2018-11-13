@@ -12,7 +12,7 @@ book and fetch the corresponding files.
 The rendered output will maintain the same directory structure as the source for
 convenience. Large books will therefore remain structured when rendered.
 
-#### Specify a directory
+#### 指定目录
 
 The `build` command can take a directory as an argument to use as the book's
 root instead of the current working directory.
@@ -33,7 +33,7 @@ book. Relative paths are interpreted relative to the book's root directory. If
 not specified it will default to the value of the `build.build-dir` key in
 `book.toml`, or to `./book`.
 
--------------------
+---
 
-***Note:*** *Make sure to run the build command in the root directory and not in
-the source directory*
+**_Note:_** _Make sure to run the build command in the root directory and not in
+the source directory_

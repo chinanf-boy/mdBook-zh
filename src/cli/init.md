@@ -11,6 +11,7 @@ mdbook init
 
 When using the `init` command for the first time, a couple of files will be set
 up for you:
+
 ```bash
 book-test/
 ├── book
@@ -36,7 +37,7 @@ and generate the missing files according to the paths used in the `SUMMARY.md`.
 This allows you to think and create the whole structure of your book and then
 let mdBook generate it for you.
 
-#### Specify a directory
+#### 指定目录
 
 The `init` command can take a directory as an argument to use as the book's root
 instead of the current working directory.
