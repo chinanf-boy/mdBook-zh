@@ -48,8 +48,10 @@ partial includes:
 ```
 
 The first command only includes the second line from file `file.rs`. The second
-command includes all lines up to line 10, i.e. the lines from 11 till the end of
-the file are omitted. The third command includes all lines from line 2, i.e. the
+command includes all lines up to line 10. i.e. the lines from 11 till the end of
+the file are omitted. 
+
+The third command includes all lines from line 2, i.e. the
 first line is omitted. The last command includes the excerpt of `file.rs`
 consisting of lines 2 to 10.
 

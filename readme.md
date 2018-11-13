@@ -41,14 +41,14 @@
   - [x] [serve](./src/cli/serve.zh.md)
   - [x] [test](./src/cli/test.zh.md)
   - [x] [clean](./src/cli/clean.zh.md)
-- [ ] [格式](./src/format/README.zh.md)
-  - [ ] [SUMMARY.md](./src/format/summary.zh.md)
-  - [ ] [配置](./src/format/config.zh.md)
-  - [ ] [Theme-主题](./src/format/theme/README.zh.md)
-    - [ ] [index.hbs](./src/format/theme/index-hbs.zh.md)
-    - [ ] [语法高亮显示](./src/format/theme/syntax-highlighting.zh.md)
-    - [ ] [编辑器](./src/format/theme/editor.zh.md)
-  - [ ] [MathJax 支持](./src/format/mathjax.zh.md)
+- [x] [格式](./src/format/README.zh.md)
+  - [x] [SUMMARY.md](./src/format/summary.zh.md)
+  - [x] [配置](./src/format/config.zh.md)
+  - [x] [Theme-主题](./src/format/theme/README.zh.md)
+    - [x] [index.hbs](./src/format/theme/index-hbs.zh.md)
+    - [x] [语法高亮显示](./src/format/theme/syntax-highlighting.zh.md)
+    - [x] [编辑器](./src/format/theme/editor.zh.md)
+  - [x] [MathJax 支持](./src/format/mathjax.zh.md)
   - [ ] [mdBook 特殊功能](./src/format/mdbook.zh.md)
 - [ ] [持续集成](./src/continuous-integration.zh.md)
 - [ ] [对开发者说](./src/for_developers/README.zh.md)
@@ -57,7 +57,7 @@
 
 ---
 
-- [ ] [贡献者](misc/contributors.zh.md)
+- [x] [贡献者](./src/misc/contributors.zh.md)
 
 ### 贡献
 
