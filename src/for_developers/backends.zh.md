@@ -37,7 +37,7 @@ fn main() {
 }
 ```
 
-> **注意:**`RenderContext`包含一个`version`领域.这使得后端可以确定它们是否与版本兼容`mdbook`它被称为.这个`version`直接来自相应的字段`mdbook`的`Cargo.toml`.
+> **注意:** `RenderContext`包含一个`version`领域.这使得后端可以确定它们是否与版本兼容`mdbook`它被称为.这个`version`直接来自相应的字段`mdbook`的`Cargo.toml`.
 
 建议后端使用[`semver`]如果可能存在兼容性问题,请检查此字段并发出警告.
 
@@ -212,7 +212,7 @@ pub struct WordcountConfig {
   }
 ```
 
-> **注意:**无法保证目标目录存在或为空(`mdbook`可能会留下以前的内容让后端进行缓存),因此创建它总是一个好主意`fs::create_dir_all()`.
+> **注意:** 无法保证目标目录存在或为空(`mdbook`可能会留下以前的内容让后端进行缓存),因此创建它总是一个好主意`fs::create_dir_all()`.
 
 处理书籍时总会出现错误(只需查看全部内容)`unwrap()`我们已经写过了,所以`mdbook`将非零退出代码解释为渲染失败.
 
