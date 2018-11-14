@@ -31,7 +31,7 @@
 
 ～*～ |
 ---|
-[中文网址](https://chinanf-boy.github.io/mdbook-zh) |
+[中文网址](https://chinanf-boy.github.io/mdBook-zh) |
 
 <details>
 
