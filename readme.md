@@ -29,9 +29,9 @@
 
 <!-- doc-templite END generated -->
 
-～*～ |
----|
-[中文网址](https://chinanf-boy.github.io/mdBook-zh) |
+～*～ | 模范示例
+---|---
+[中文网址](https://chinanf-boy.github.io/mdBook-zh) | [github](https://github.com/chinanf-boy/mdbook-nice-example)
 
 <details>
 
