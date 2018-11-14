@@ -1,6 +1,6 @@
 # Theme
 
-默认渲染器使用一个[handlebars](http://handlebarsjs.com/)模板，用于呈现markdown文件,并mdBook二进制文件包含默认主题.
+默认渲染器使用一个[handlebars](http://handlebarsjs.com/)模板，用于渲染markdown文件,并mdBook二进制文件包含默认主题.
 
 主题是完全可定制的,您可以通过在根目录`src`旁边，新建一个`theme`文件夹，在其中选择性地添加文件名称，覆盖主题的任意文件。
 

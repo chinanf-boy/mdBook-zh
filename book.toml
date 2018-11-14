@@ -1,10 +1,22 @@
 [book]
-title = "mdBook Documentation"
-description = "Create book from markdown files. Like Gitbook but implemented in Rust"
-authors = ["Mathieu David", "Michael-F-Bryan"]
+title = "mdBook 文档"
+description = "markdown生成记. 就像Gitbook, 但专为Rust设计"
+authors = ["Mathieu David", "Michael-F-Bryan", "译:yobrave"]
+language = "zh-CN"
+
+[build]
+build-dir = "docs"
+create-missing = true
+preprocess = ["links", "index"]
 
 [output.html]
 mathjax-support = true
+theme = "src/theme"
+curly-quotes = true
+google-analytics = "UA-128555056-1"
+additional-css = ["src/theme/custom.css"]
+git_repository_url = "https://github.com/chinanf-boy/mdbook-nice-example"
+git_repository_icon = "fa-github"
 
 [output.html.playpen]
 editable = true

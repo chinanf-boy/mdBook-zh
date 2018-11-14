@@ -1,10 +1,10 @@
-# Alternate Backends
+# 备用后端
 
-"后端"只是一个程序`mdbook`将在书籍渲染过程中调用.该程序通过书籍和配置信息的JSON表示传递`stdin`.一旦后端收到这些信息,就可以自由地做任何想做的事情.
+"后端"只是一个，`mdbook`在书籍渲染过程中调用的程序。该程序通过传递`stdin`的书籍和配置信息的JSON表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.
 
 GitHub上已有几个备用后端,可以作为在实践中如何实现这一功能的粗略示例.
 
--   [mdbook-linkcheck]- 用于验证书籍的简单程序不包含任何损坏的链接
+-   [mdbook-linkcheck]- 用于验证书籍的简单程序，不包含任何损坏的链接
 -   [mdbook-EPUB]-  EPUB渲染器
 -   [mdbook测试-]- 一个运行书籍内容的程序[防锈怀疑论者-]验证一切编译并正确运行(类似于`rustdoc --test`)
 
@@ -86,7 +86,7 @@ $ cargo install
 + [output.wordcount]
 ```
 
-当它将一本书加载到内存中时`mdbook`会检查你的`book.toml`通过查找所有文件来尝试找出要使用的后端`output.*`表.如果没有提供,它将回退到使用默认的HTML呈现器.
+当它将一本书加载到内存中时`mdbook`会检查你的`book.toml`通过查找所有文件来尝试找出要使用的后端`output.*`表.如果没有提供,它将回退到使用默认的HTML渲染器.
 
 值得注意的是,这意味着如果你想添加自己的自定义后端,你还需要确保添加HTML后端,即使它的表只是空的.
 
@@ -112,7 +112,7 @@ Syntax highlighting: 314
 MathJax Support: 153
 Rust code specific features: 148
 For Developers: 788
-Alternate Backends: 710
+备用后端: 710
 Contributors: 85
 ```
 
