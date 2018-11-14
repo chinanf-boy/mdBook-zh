@@ -1,0 +1,1322 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+
+<head>
+    <!-- Book generated using mdBook -->
+    <meta charset="UTF-8">
+    <title>mdBook 中文文档</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="description" content="mdbook :) markdown生成记. 就像Gitbook, 但专为Rust设计">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/chrome.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="highlight.css">
+    <link rel="stylesheet" href="tomorrow-night.css">
+    <link rel="stylesheet" href="ayu-highlight.css">
+
+    <!-- Custom theme stylesheets -->
+    
+    <link rel="stylesheet" href="src/theme/custom.css">
+    
+
+    
+    <!-- MathJax -->
+    <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+</head>
+
+<body class="light">
+    <!-- Provide site root to javascript -->
+    <script type="text/javascript">var path_to_root = "";</script>
+
+    <!-- Work around some values being stored in localStorage wrapped in quotes -->
+    <script type="text/javascript">
+        try {
+            var theme = localStorage.getItem('mdbook-theme');
+            var sidebar = localStorage.getItem('mdbook-sidebar');
+
+            if (theme.startsWith('"') && theme.endsWith('"')) {
+                localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+            }
+
+            if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+            }
+        } catch (e) { }
+    </script>
+
+    <!-- Set the theme before any content is loaded, prevents flash -->
+    <script type="text/javascript">
+        var theme;
+        try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+        if (theme === null || theme === undefined) { theme = 'light'; }
+        document.body.className = theme;
+        document.querySelector('html').className = theme + ' js';
+    </script>
+
+    <!-- Hide / unhide sidebar before it is displayed -->
+    <script type="text/javascript">
+        var html = document.querySelector('html');
+        var sidebar = 'hidden';
+        if (document.body.clientWidth >= 1080) {
+            try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
+            sidebar = sidebar || 'visible';
+        }
+        html.classList.remove('sidebar-visible');
+        html.classList.add("sidebar-" + sidebar);
+    </script>
+
+    <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <ol class="chapter"><li><a href="README.zh.html"><strong aria-hidden="true">1.</strong> mdbook</a></li><li><a href="cli/README.zh.html"><strong aria-hidden="true">2.</strong> 命令行工具</a></li><li><ol class="section"><li><a href="cli/init.zh.html"><strong aria-hidden="true">2.1.</strong> init</a></li><li><a href="cli/build.zh.html"><strong aria-hidden="true">2.2.</strong> build</a></li><li><a href="cli/watch.zh.html"><strong aria-hidden="true">2.3.</strong> watch</a></li><li><a href="cli/serve.zh.html"><strong aria-hidden="true">2.4.</strong> serve</a></li><li><a href="cli/test.zh.html"><strong aria-hidden="true">2.5.</strong> test</a></li><li><a href="cli/clean.zh.html"><strong aria-hidden="true">2.6.</strong> clean</a></li></ol></li><li><a href="format/README.zh.html"><strong aria-hidden="true">3.</strong> 格式</a></li><li><ol class="section"><li><a href="format/summary.zh.html"><strong aria-hidden="true">3.1.</strong> SUMMARY.md</a></li><li><a href="format/config.zh.html"><strong aria-hidden="true">3.2.</strong> 配置</a></li><li><a href="format/theme/README.zh.html"><strong aria-hidden="true">3.3.</strong> Theme-主题</a></li><li><ol class="section"><li><a href="format/theme/index-hbs.zh.html"><strong aria-hidden="true">3.3.1.</strong> index.hbs</a></li><li><a href="format/theme/syntax-highlighting.zh.html"><strong aria-hidden="true">3.3.2.</strong> 语法高亮显示</a></li><li><a href="format/theme/editor.zh.html"><strong aria-hidden="true">3.3.3.</strong> 编辑器</a></li></ol></li><li><a href="format/mathjax.zh.html"><strong aria-hidden="true">3.4.</strong> MathJax 支持</a></li><li><a href="format/mdbook.zh.html"><strong aria-hidden="true">3.5.</strong> mdBook 特殊功能</a></li></ol></li><li><a href="continuous-integration.zh.html"><strong aria-hidden="true">4.</strong> 持续集成</a></li><li><a href="for_developers/README.zh.html"><strong aria-hidden="true">5.</strong> 对开发者说</a></li><li><ol class="section"><li><a href="for_developers/preprocessors.zh.html"><strong aria-hidden="true">5.1.</strong> 预处理程序</a></li><li><a href="for_developers/backends.zh.html"><strong aria-hidden="true">5.2.</strong> 备用后端</a></li><li class="spacer"></li></ol></li><li><a href="misc/contributors.zh.html">贡献者</a></li></ol>
+    </nav>
+
+    <div id="page-wrapper" class="page-wrapper">
+
+        <div class="page">
+            
+            <div id="menu-bar" class="menu-bar">
+                <div id="menu-bar-sticky-container">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
+                            aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <!-- START - Rust Cookbook customization -->
+                        <button id="edit-button" class="icon-button" type="button" title="Fork and edit" aria-label="Fork and edit"
+                            aria-haspopup="true" aria-expanded="false" aria-controls="edit">
+                            <i class="fa fa-edit">Edit</i>
+                        </button>
+                        <!-- END - Rust Cookbook customization -->
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme"
+                            aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
+                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">mdBook 中文文档</h1>
+                    
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            
+            <div id="search-wrapper" class="hidden">
+                <form id="searchbar-outer" class="searchbar-outer">
+                    <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
+                        aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                </form>
+                <div id="searchresults-outer" class="searchresults-outer hidden">
+                    <div id="searchresults-header" class="searchresults-header"></div>
+                    <ul id="searchresults">
+                    </ul>
+                </div>
+            </div>
+            
+
+            <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+            <script type="text/javascript">
+                document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+                    link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                });
+            </script>
+
+            <!-- // START - Rust Cookbook customization -->
+            <script>
+                document.getElementById("edit-button").addEventListener("click", function () {
+                    var editWindow = window.open("https://github.com/chinanf-boy/mdbook-zh/edit/master/src/print.md");
+                });</script>
+            <!-- // END - Rust Cookbook customization -->
+
+            <div id="content" class="content">
+                <main>
+                    <a class="header" href="#mdbook" id="mdbook"><h1>mdBook</h1></a>
+<p><strong>mdBook</strong>是一个命令行工具和Rust crate。可将Markdown文件创建为书籍。它与Gitbook非常相似,但用<a href="http://www.rust-lang.org">Rust</a>编写.</p>
+<p>您正在阅读的内容，是mdBook输出的一个示例,同时也是一个高级文档.</p>
+<p>mdBook是免费的开源,你可以在<a href="https://github.com/rust-lang-nursery/mdBook">GitHub</a>找到源代码。问题和功能请求可以发布在<a href="https://github.com/rust-lang-nursery/mdBook/issues">GitHub issue tracker</a>.</p>
+<a class="header" href="#api-docs" id="api-docs"><h2>API docs</h2></a>
+<p>除了这本书,你还可以阅读Rustdoc生成的<a href="https://docs.rs/mdbook/*/mdbook/">API 文档</a>。如果您想将mdBook用作包或者编写新的渲染器，并需要浏览底层代码.</p>
+<a class="header" href="#license" id="license"><h2>License</h2></a>
+<p>mdBook,所有源代码,都是在<a href="https://www.mozilla.org/MPL/2.0/">Mozilla Public License
+v2.0</a>下发布的.</p>
+<a class="header" href="#command-line-tool" id="command-line-tool"><h1>Command Line Tool</h1></a>
+<p>mdBook既可以用作命令行工具,也可以用作<a href="https://crates.io/crates/mdbook">Rust
+crate</a>。让我们首先关注命令行工具功能.</p>
+<a class="header" href="#a二进制" id="a二进制"><h2>二进制</h2></a>
+<p>在尽力而为的基础上,预先编译主要平台的二进制文件。访问<a href="https://github.com/rust-lang-nursery/mdBook/releases"> releases 页面</a>下载适合您平台的版本.</p>
+<a class="header" href="#a源码安装" id="a源码安装"><h2>源码安装</h2></a>
+<p>mdBook也可以从源代码安装</p>
+<a class="header" href="#pre-requisite" id="pre-requisite"><h3>Pre-requisite</h3></a>
+<p>mdBook是写的 <strong><a href="https://www.rust-lang.org/">Rust</a></strong> 因此需要<strong>Cargo</strong>编译。如果您还没有安装Rust,请现在就<a href="https://www.rust-lang.org/zh-CN/install.html">官方安装</a>.</p>
+<a class="header" href="#a安装-cratesio-的版本" id="a安装-cratesio-的版本"><h3>安装 Crates.io 的版本</h3></a>
+<p>如果您已安装Rust和Cargo,则安装mdBook相当容易。您只需在终端中键入以下代码段:</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<p>这将在<a href="https://crates.io/">Crates.io</a>获取最新版本的源代码，并编译它。你需要添加Cargo的<code>bin</code>目录，到你的环境变量<code>PATH</code>.</p>
+<p>在您的终端，运行<code>mdbook help</code>验证它是否有效。</p>
+<p>恭喜你,你已经安装了mdBook!</p>
+<a class="header" href="#a安装-git-版本" id="a安装-git-版本"><h3>安装 Git 版本</h3></a>
+<p>该 <strong><a href="https://github.com/rust-lang-nursery/mdBook">git 版本</a></strong> 包含所有最新的错误修复和功能, 且是在下一个版本中才发布<strong>Crates.io</strong>, 如果你不能等到下一个版本。你可以自己构建git版本。打开终端，并导航到您选择的目录。我们需要克隆git存储库,然后使用Cargo构建它.</p>
+<pre><code class="language-bash">git clone --depth=1 https://github.com/rust-lang-nursery/mdBook.git
+cd mdBook
+cargo build --release
+</code></pre>
+<p>可执行文件<code>mdbook</code>输出在<code>./target/release</code>文件夹,这应该添加到环境变量<code>PATH</code>中，方便使用。</p>
+<a class="header" href="#init-命令" id="init-命令"><h1>init 命令</h1></a>
+<p>每本新书都有一些最小的样板。为此目的,mdBook支持<code>init</code>命令.</p>
+<p><code>init</code>命令使用如下:</p>
+<pre><code class="language-bash">mdbook init
+</code></pre>
+<p>第一次使用<code>init</code>命令,将为您设置几个文件:</p>
+<pre><code class="language-bash">book-test/
+├── book
+└── src
+    ├── chapter_1.md
+    └── SUMMARY.md
+</code></pre>
+<ul>
+<li>
+<p><code>src</code>目录是你在写的markdown书。它包含所有源文件,配置文件等.</p>
+</li>
+<li>
+<p><code>book</code>目录是您的书html页面输出的位置。所有输出都可以上传到服务器,供观众查看.</p>
+</li>
+<li>
+<p><code>SUMMARY.md</code>文件是最重要的文件,它是您图书的骨架,并将在<a href="../format/summary.html">其他章节</a>进行更详细的讨论</p>
+</li>
+</ul>
+<a class="header" href="#tip-根据-summarymd-生成" id="tip-根据-summarymd-生成"><h4>Tip: 根据 SUMMARY.md 生成</h4></a>
+<p>当一个<code>SUMMARY.md</code>文件已存在,<code>init</code>命令将首先解析它，并根据<code>SUMMARY.md</code>中，帮其补全丢失的文件路径。这允许您思考和创建书的整个结构,然后让mdBook为您生成它.</p>
+<a class="header" href="#a指定目录" id="a指定目录"><h4>指定目录</h4></a>
+<p><code>init</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook init path/to/book
+</code></pre>
+<a class="header" href="#a--theme" id="a--theme"><h4>--theme</h4></a>
+<p>当你使用<code>--theme</code>,默认主题将被复制到一个名为<code>theme</code>的目录.</p>
+<blockquote>
+<p>在您的源目录中,以便您可以修改它.</p>
+</blockquote>
+<p>主题会被选择性地覆盖,这意味着如果您不想覆盖,只需删除它,就会使用默认文件.</p>
+<a class="header" href="#build-命令" id="build-命令"><h1>build 命令</h1></a>
+<p>构建命令,用于渲染您的 md,并输出静态 html:</p>
+<pre><code class="language-bash">mdbook build
+</code></pre>
+<p>它会尝试解析你的<code>SUMMARY.md</code>文件，以了解您的图书的结构并获取相应的文件.</p>
+<p>为方便起见,渲染的输出将保持与源目录结构相同。因此,大型书籍在渲染时能保持结构化.</p>
+<a class="header" href="#a指定目录-1" id="a指定目录-1"><h4>指定目录</h4></a>
+<p><code>build</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook build path/to/book
+</code></pre>
+<a class="header" href="#a--open" id="a--open"><h4>--open</h4></a>
+<p>当你使用<code>--open</code>(<code>-o</code>),mdbook 将在构建之后，在默认 Web 浏览器中打开网页书.</p>
+<a class="header" href="#a--dest-dir" id="a--dest-dir"><h4>--dest-dir</h4></a>
+<p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
+<hr />
+<p><strong><em>注意:</em></strong> <em>确保在根目录中运行 build 命令,而不是在源<code>src</code>目录中运行</em></p>
+<a class="header" href="#watch-命令" id="watch-命令"><h1>watch 命令</h1></a>
+<p>当您希望在每次更改文件，都生成图书时, <code>watch</code>命令会很有用。你当然可以在每次更改文件反复发出<code>mdbook build</code>。但，聪明的是使用<code>mdbook watch</code>，这样就能观察您的文件,并会在您修改文件时，自动触发构建.</p>
+<a class="header" href="#a指定目录-2" id="a指定目录-2"><h4>指定目录</h4></a>
+<p><code>watch</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook watch path/to/book
+</code></pre>
+<a class="header" href="#a--open-1" id="a--open-1"><h4>--open</h4></a>
+<p>当你使用<code>--open</code>(<code>-o</code>)选项,mdbook 将在您的默认 Web 浏览器中打开网页书.</p>
+<a class="header" href="#a--dest-dir-1" id="a--dest-dir-1"><h4>--dest-dir</h4></a>
+<p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
+<a class="header" href="#the-serve-command" id="the-serve-command"><h1>The serve command</h1></a>
+<p>serve 命令用于通过 HTTP 服务来预览书籍，默认情况下<code>localhost:3000</code>。此外,它还会观察图书的目录的更改,自动重建图书，以及为每次更改刷新客户端。</p>
+<blockquote>
+<p>websocket 连接用于触发客户端刷新.</p>
+</blockquote>
+<p><strong><em>注意:</em></strong> <em><code>serve</code>命令用于测试书籍的 HTML 输出,并不打算成为网站的完整 HTTP 服务器.</em></p>
+<a class="header" href="#a指定目录-3" id="a指定目录-3"><h4>指定目录</h4></a>
+<p><code>serve</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook serve path/to/book
+</code></pre>
+<a class="header" href="#server-选项" id="server-选项"><h4>Server 选项</h4></a>
+<p><code>serve</code>有四个选项:</p>
+<ul>
+<li>HTTP 端口,</li>
+<li>WebSocket 端口,</li>
+<li>要侦听的 HTTP 主机名,以及</li>
+<li>要连接到 WebSockets 的浏览器的主机名.</li>
+</ul>
+<p>例如:假设您有一个公共地址为 192.168.1.100，可用 SSL 终止符 的 nginx 服务器,其端口 80 , 在127.0.0.1的 8000端口 上代理。要运行使用 nginx 代理,请执行以下操作:</p>
+<pre><code class="language-bash">mdbook serve path/to/book -p 8000 -n 127.0.0.1 --websocket-hostname 192.168.1.100
+</code></pre>
+<p>如果你想要实时重新加载,你需要通过 nginx 来代理 websocket 调用<code>192.168.1.100:&lt;WS_PORT&gt;</code>到<code>127.0.0.1:&lt;WS_PORT&gt;</code>。</p>
+<p><code>-w</code>选项会允许配置 websocket 端口.</p>
+<a class="header" href="#a--open-2" id="a--open-2"><h4>--open</h4></a>
+<p>当你使用<code>--open</code>(<code>-o</code>)标志,mdbook 将在启动服务器后,在您的默认 Web 浏览器中打开该书.</p>
+<a class="header" href="#a--dest-dir-2" id="a--dest-dir-2"><h4>--dest-dir</h4></a>
+<p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
+<a class="header" href="#test-命令" id="test-命令"><h1>test 命令</h1></a>
+<p>写书时,有时需要一些自动化测试.例如,<a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Book</a>使用了许多可能过时的代码示例。因此,能够自动测试这些代码示例对他们来说非常重要.</p>
+<p>mdBook 支持<code>test</code>将运行，书中所有可用测试的命令。目前,只支持 rustdoc 测试,但未来可能会扩展.</p>
+<a class="header" href="#a在一个代码块禁用测试" id="a在一个代码块禁用测试"><h4>在一个代码块，禁用测试</h4></a>
+<p>rustdoc 不会测试，包含<code>ignore</code>属性的代码块:</p>
+<pre><code>```rust,ignore
+fn main() {}
+```
+</code></pre>
+<p>rustdoc 也不会测试，指定了除 Rust 之外的语言的代码块:</p>
+<pre><code>```markdown
+**Foo**: _bar_
+```
+</code></pre>
+<p>rustdoc<em>不会</em>测试，没有指定语言的代码块:</p>
+<pre><code>```
+This is going to cause an error!
+```
+</code></pre>
+<a class="header" href="#a指定目录-4" id="a指定目录-4"><h4>指定目录</h4></a>
+<p><code>test</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook test path/to/book
+</code></pre>
+<a class="header" href="#a--library-path" id="a--library-path"><h4>--library-path</h4></a>
+<p><code>--library-path</code>(<code>-L</code>)选项允许您，当<code>rustdoc</code>构建和测试示例时，将目录添加到搜索路径。可以指定多个目录(<code>-L foo -L bar</code>)，或用逗号分隔的列表(<code>-L foo,bar</code>).</p>
+<a class="header" href="#a--dest-dir-3" id="a--dest-dir-3"><h4>--dest-dir</h4></a>
+<p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
+<a class="header" href="#clean-命令" id="clean-命令"><h1>clean 命令</h1></a>
+<p>clean 命令用于删除生成的书籍，和任何其他构建工件.</p>
+<pre><code class="language-bash">mdbook clean
+</code></pre>
+<a class="header" href="#a指定目录-5" id="a指定目录-5"><h4>指定目录</h4></a>
+<p><code>clean</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
+<pre><code class="language-bash">mdbook clean path/to/book
+</code></pre>
+<a class="header" href="#a--dest-dir-4" id="a--dest-dir-4"><h4>--dest-dir</h4></a>
+<p><code>--dest-dir</code>(<code>-d</code>)选项允许您覆盖书籍的输出目录,该目录会删除。
+为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
+<pre><code class="language-bash">mdbook clean --dest-dir=path/to/book
+</code></pre>
+<p><code>path/to/book</code>可以是绝对的，或相对的.</p>
+<a class="header" href="#a格式" id="a格式"><h1>格式</h1></a>
+<p>在本节中,您将学习如何:</p>
+<ul>
+<li>正确构建您的书</li>
+<li>格式化你的<code>SUMMARY.md</code>文件</li>
+<li>使用<code>book.toml</code>配置您的图书</li>
+<li>自定义主题</li>
+</ul>
+<a class="header" href="#summarymd" id="summarymd"><h1>SUMMARY.md</h1></a>
+<p>mdBook使用Summary文件，来了解要书的章节,应显示的顺序,层次结构以及源文件的位置。<strong>没有这个文件,就没有书.</strong></p>
+<p>即使<code>SUMMARY.md</code>是一个markdown文件, 但格式是非常严格,以便于给mdbook解析。我们来看看你应该如何格式化你的<code>SUMMARY.md</code>文件.</p>
+<a class="header" href="#a允许的-elements" id="a允许的-elements"><h4>允许的 elements</h4></a>
+<ol>
+<li>
+<p><strong><em>Title</em></strong>一般来说,通常以<code
+class="language-markdown"># Summary</code>.标题开头是常见的做法，但它不是强制性的,解析器只是忽略它.如果你也是这样想,也忽略它。</p>
+</li>
+<li>
+<p><strong><em>开头章节</em></strong>位于主编号章节前,您可以添加一些不编号的元素。这对<code>前言,介绍</code>等很有用.但是有一些限制。你不能嵌套开头章节,它们都应该在根级别.一旦添加了编号章节,就无法添加开头章节.</p>
+<pre><code class="language-markdown">[开头章节的标题](relative/path/to/markdown.md)
+</code></pre>
+</li>
+<li>
+<p><strong><em>编号章节</em></strong>是本书的主要内容,它们将被编号，并可以嵌套,从而产生一个很好的层次结构(章节,子章节等)</p>
+<pre><code class="language-markdown">- [编号章节的标题](relative/path/to/markdown.md)
+</code></pre>
+<p>你可以使用<code>-</code>或<code>*</code>表示编号的章节.</p>
+</li>
+<li>
+<p><strong><em>结尾章节</em></strong>位于在编号章节后,您可以添加几个未编号的章节.它们与开头章节相同,但是在编号章节之后，而不是之前.</p>
+</li>
+</ol>
+<p>所有其他元素都不受支持,最多将被忽略或导致错误.</p>
+<a class="header" href="#a配置" id="a配置"><h1>配置</h1></a>
+<p>您可以在 <strong><em>book.toml</em></strong> 文件中配置图书的参数.</p>
+<p>这是一个 <strong><em>book.toml</em></strong> 文件示例，如下所示:</p>
+<pre><code class="language-toml">[book]
+title = &quot;Example book&quot;
+author = &quot;John Doe&quot;
+description = &quot;The example book covers examples.&quot;
+
+[build]
+build-dir = &quot;my-example-book&quot;
+create-missing = false
+
+[preprocess.index]
+
+[preprocess.links]
+
+[output.html]
+additional-css = [&quot;custom.css&quot;]
+
+[output.html.search]
+limit-results = 15
+</code></pre>
+<a class="header" href="#a支持的配置选项" id="a支持的配置选项"><h2>支持的配置选项</h2></a>
+<p>重要的是要注意到，配置中指定的<strong>任何</strong>相对路径，都是相对于配置文件所在的书籍的根目录.</p>
+<a class="header" href="#a通用元数据" id="a通用元数据"><h3>通用元数据</h3></a>
+<p>这是有关您图书的一般</p>
+<table><thead><tr><th>信息 </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>title</strong> </td><td> 这本书的标题</td></tr>
+<tr><td><strong>author</strong> </td><td> 本书的作者</td></tr>
+<tr><td><strong>description</strong> </td><td>  该书的描述,作为元信息,添加在每页 html 的<code>&lt;head&gt;</code></td></tr>
+<tr><td><strong>src</strong> </td><td> 默认情况下,源目录位于名为<code>src</code>的目录中(在根文件夹)。但这<code>src</code>是可配置的，就在<code>book.toml</code>。</td></tr>
+</tbody></table>
+<p><strong>book.toml</strong></p>
+<pre><code class="language-toml">[book]
+title = &quot;Example book&quot;
+authors = [&quot;John Doe&quot;, &quot;Jane Doe&quot;]
+description = &quot;The example book covers examples.&quot;
+src = &quot;my-src&quot;  # 源文件夹，用 `root/my-src` 替代 `root/src`
+</code></pre>
+<a class="header" href="#build-选项" id="build-选项"><h3>Build 选项</h3></a>
+<p>这可以控制您图书的构建过程.</p>
+<ul>
+<li>
+<p><strong>build-dir</strong> | 放置渲染图书的目录。默认情况下在根目录的<code>book/</code>:</p>
+</li>
+<li>
+<p><strong>create-missing</strong> | 默认情况(<code>create-missing = true</code>)下，在书籍建成时，会创建<code>SUMMARY.md</code>中缺失的文件。如果是<code>false</code>，则有文件不存在,那么构建过程将以错误退出。</p>
+</li>
+<li>
+<p><strong>use-default-preprocessors</strong> |  设为 <code>false</code>，会禁用(<code>links</code>&amp;<code>index</code>)的默认预处理器。</p>
+<p>如果您通过配置文件声明了，相同的和/或其他预处理器,由它们主导.</p>
+<ul>
+<li>为清楚起见,没有预处理器配置,默认<code>links</code>和<code>index</code>运行.</li>
+<li>设置<code>use-default-preprocessors = false</code>，将禁用这些默认预处理器运行.</li>
+<li>若添加<code>[preprocessor.links]</code>，那无论如何,都能确保<code>use-default-preprocessors</code>运行<code>links</code>。</li>
+</ul>
+</li>
+</ul>
+<a class="header" href="#a配置-预处理器" id="a配置-预处理器"><h2>配置 预处理器</h2></a>
+<p>默认情况下,以下预处理器运行，并包含:</p>
+<ul>
+<li><code>links</code>:扩展章节中<code>{{ #playpen }}</code>和<code>{{ #include }}</code>控制条，能帮助引入文件的内容.</li>
+<li><code>index</code>:将所有名为<code>README.md</code>的章节文件转换<code>index.md</code>。也就是说,所有<code>README.md</code>将被渲染成<code>index.html</code>，在渲染的书中.</li>
+</ul>
+<p><strong>book.toml</strong></p>
+<pre><code class="language-toml">[build]
+build-dir = &quot;build&quot;
+create-missing = false
+
+[preprocess.links]
+
+[preprocess.index]
+</code></pre>
+<a class="header" href="#a自定义预处理器配置" id="a自定义预处理器配置"><h3>自定义预处理器配置</h3></a>
+<p>与渲染器一样,预处理器需要有自己的表格(例如<code>[preprocessor.mathjax]</code>)。在该部分中,您可以通过向特有表中，添加键值对来将额外配置传递给预处理器.</p>
+<p>例如</p>
+<pre><code>[preprocess.links]
+# 设置此预处理器将运行的渲染器
+renderers = [&quot;html&quot;]
+some_extra_feature = true
+</code></pre>
+<a class="header" href="#a锁住一个预处理依赖给一个渲染器" id="a锁住一个预处理依赖给一个渲染器"><h4>锁住一个预处理依赖给一个渲染器</h4></a>
+<p>您可以通过将两者绑定在一起，显式指定预处理器将运行的渲染器</p>
+<pre><code>[preprocessor.mathjax]
+renderers = [&quot;html&quot;]  # mathjax 只HTML渲染合作
+</code></pre>
+<a class="header" href="#a添加你的命令" id="a添加你的命令"><h3>添加你的命令</h3></a>
+<p>默认情况下,添加<code>[preprocessor.foo]</code>到你的<code>book.toml</code>文件,<code>mdbook</code>将尝试调用<code>mdbook-foo</code>启动。如果你想使用不同的程序名 或传递一个命令行参数。这些都能通过<code>command</code>字段覆盖完成。</p>
+<pre><code class="language-toml">[preprocessor.random]
+command = &quot;python random.py&quot;
+</code></pre>
+<a class="header" href="#a配置渲染器" id="a配置渲染器"><h2>配置渲染器</h2></a>
+<a class="header" href="#html-渲染器选项" id="html-渲染器选项"><h3>HTML 渲染器选项</h3></a>
+<p>HTML 渲染器也有几个选项,在 TOML 下指定渲染器的所有选项.</p>
+<table><thead><tr><th><code>[output.html]</code>可以使用以下配置选项: </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>theme</strong> </td><td> mdBook 附带一个默认主题，及其所需的所有资源文件.但是如果设置了此选项,mdBook 将选择性地使用，能在指定文件夹中找到的主题文件，覆盖主题文件.</td></tr>
+<tr><td><strong>default-theme</strong> </td><td> 默认情况下在”更改主题”下拉列表中，选择的主题颜色方案。默认为<code>light</code>.</td></tr>
+<tr><td><strong>curly-quotes</strong> </td><td> 将直引号转换为反引号,除了代码块和代码spans中出现的引号。默认为<code>false</code>.</td></tr>
+<tr><td><strong>google-analytics</strong> </td><td> 如果您使用 Google Analytics,则可以通过在配置文件中指定 ID 来启用此选项.</td></tr>
+<tr><td><strong>additional-css</strong> </td><td> 如果您需要稍微更改图书的外观，而不覆盖整个样式,则可以指定一组css样式表,这些样式表将在默认情况下加载,这样您就通过’外科手术’更改样式.</td></tr>
+<tr><td><strong>additional-js</strong> </td><td> 如果您需要在不删除当前行为的情况下，向书中添加某些行为,则可以指定一组，将与默认文件一起加载的 JavaScript 文件.</td></tr>
+<tr><td><strong>no-section-label</strong> </td><td> 默认情况下,mdBook 在目录列中，添加章节标签编号。例如,”1.”,”2.1”。将此选项设置为 true 可禁用这些标签.默认为<code>false</code>.</td></tr>
+<tr><td><strong>playpen</strong> </td><td> 用于配置各种playpen设置的子表.</td></tr>
+<tr><td><strong>search</strong> </td><td> 用于配置浏览器内搜索功能的子表。mdBook 必须启用<code>search</code>功能编译(默认情况下已启用).</td></tr>
+<tr><td><strong>git_repository_url</strong> </td><td> 这本书的 git 存储库的 URL。如果提供,将在书的菜单栏中，输出图标链接.</td></tr>
+<tr><td><strong>git_repository_icon</strong> </td><td> 用于 git 存储库链接的 FontAwesome 图标类。默认为<code>fa-github</code>.</td></tr>
+</tbody></table>
+<table><thead><tr><th><code>[output.html.playpen]</code>可用的配置选项表: </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>editable</strong> </td><td> 允许编辑源代码。默认为<code>false</code>.</td></tr>
+<tr><td><strong>copy-js</strong> </td><td> 将编辑器的 JavaScript 文件，复制到输出目录。默认为<code>true</code>.</td></tr>
+</tbody></table>
+<table><thead><tr><th><code>[output.html.search]</code>可用的配置选项表: </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>enable</strong> </td><td> 启用搜索功能.默认为<code>true</code>.</td></tr>
+<tr><td><strong>limit-results</strong> </td><td> 搜索结果的最大数量.默认为<code>30</code>.</td></tr>
+<tr><td><strong>teaser-word-count</strong> </td><td> 搜索结果预告的单词数。默认为<code>30</code>.</td></tr>
+<tr><td><strong>use-boolean-and</strong> </td><td> 定义多个搜索词之间的逻辑链接。如果为 true,则所有搜索词必须出现在每个结果中。默认为<code>true</code>.</td></tr>
+<tr><td><strong>boost-title</strong> </td><td> 如果标题中出现搜索词,则提升搜索结果。默认为<code>2</code>.</td></tr>
+<tr><td><strong>boost-hierarchy</strong> </td><td> 如果搜索结果出现在层次结构中,则提升搜索结果。层次结构包含父文档的所有标题，和所有父标题。默认为<code>1</code>.</td></tr>
+<tr><td><strong>boost-paragraph</strong> </td><td> 如果搜索词出现在文本中,则提升搜索结果。默认为<code>1</code>.</td></tr>
+<tr><td><strong>expand</strong> </td><td> 默认搜索匹配更长的结果。搜索<code>micro</code>应该匹配<code>microwave</code>。默认为<code>true</code>.</td></tr>
+<tr><td><strong>heading-split-level</strong> </td><td> 搜索结果将链接到包含结果的文档部分。文档按此级别或更低级别划分为多个部分。默认为<code>3</code>.(<code>### This is a level 3 heading</code>)</td></tr>
+<tr><td><strong>copy-js</strong> </td><td> 将搜索实现的 JavaScript 文件，复制到输出目录。默认为<code>true</code>.</td></tr>
+</tbody></table>
+<p>这显示了<strong>book.toml</strong>所有可用的 HTML 输出选项:</p>
+<pre><code class="language-toml">[book]
+title = &quot;Example book&quot;
+authors = [&quot;John Doe&quot;, &quot;Jane Doe&quot;]
+description = &quot;The example book covers examples.&quot;
+
+[build]
+build-dir = &quot;book&quot;
+create-missing = true
+preprocess = [&quot;links&quot;, &quot;index&quot;]
+
+[output.html]
+theme = &quot;my-theme&quot;
+curly-quotes = true
+google-analytics = &quot;123456&quot;
+additional-css = [&quot;custom.css&quot;, &quot;custom2.css&quot;]
+additional-js = [&quot;custom.js&quot;]
+
+[output.html.playpen]
+editor = &quot;./path/to/editor&quot;
+editable = false
+
+[output.html.search]
+enable = true
+searcher = &quot;./path/to/searcher&quot;
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+copy-js = true
+</code></pre>
+<a class="header" href="#a自定义-renderers" id="a自定义-renderers"><h3>自定义 Renderers</h3></a>
+<p>可以通过添加一个<code>[output.foo]</code>表到你的<code>book.toml</code>，来启用自定义渲染器。与<a href="#%E9%85%8D%E7%BD%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8">preprocessors</a>相似，指示<code>mdbook</code>将书的表达传递给<code>mdbook-foo</code>渲染.</p>
+<p>自定义渲染器可以访问其表中的所有配置(即,在其<code>[output.foo]</code>下的任何内容),并且可以使用<code>command</code>字段手动指定要调用的命令.</p>
+<a class="header" href="#a环境-变量" id="a环境-变量"><h2>环境 变量</h2></a>
+<p>通过设置相应的环境变量,命令行的运行，覆盖到所有配置值。因为许多操作系统将环境变量限制为<code>_</code>字母数字字符,配置字段需要格式化成，正常情况的<code>foo.bar.baz</code>形式。</p>
+<p>变量以<code>MDBOOK_</code>开头配置。通过删除<code>MDBOOK_</code>前缀，并将结果字符串转换为<code>kebab-case</code>。双下划线(<code>__</code>)变<code>.</code> ，而单个下划线(<code>_</code>)用短划线代替(<code>-</code>).</p>
+<p>例如:</p>
+<ul>
+<li><code>MDBOOK_foo</code> -&gt; <code>foo</code></li>
+<li><code>MDBOOK_FOO</code> -&gt; <code>foo</code></li>
+<li><code>MDBOOK_FOO__BAR</code> -&gt; <code>foo.bar</code></li>
+<li><code>MDBOOK_FOO_BAR</code> -&gt; <code>foo-bar</code></li>
+<li><code>MDBOOK_FOO_bar__baz</code> -&gt; <code>foo-bar.baz</code></li>
+</ul>
+<p>所以通过设置<code>MDBOOK_BOOK__TITLE</code>环境变量,你可以覆盖书的标题,而无需修改你的<code>book.toml</code>.</p>
+<blockquote>
+<p><strong>注意</strong> 为了便于设置更复杂的配置项,首先将环境变量的值解析为 JSON,如果解析失败，则返回到字符串.</p>
+<p>这意味着,如果您愿意,可以在构建书籍时覆盖所有书籍元数据</p>
+<pre><code class="language-text">$ export MDBOOK_BOOK=&quot;{'title': 'My Awesome Book', authors: ['Michael-F-Bryan']}&quot;
+$ mdbook build
+</code></pre>
+</blockquote>
+<p>后一种情况，在以下情况下可能有用，</p>
+<ul>
+<li>脚本或 CI 调用<code>mdbook</code>,</li>
+<li>有时在构建前，无法更新<code>book.toml</code>.</li>
+</ul>
+<a class="header" href="#theme" id="theme"><h1>Theme</h1></a>
+<p>默认渲染器使用一个<a href="http://handlebarsjs.com/">handlebars</a>模板，用于渲染markdown文件,并mdBook二进制文件包含默认主题.</p>
+<p>主题是完全可定制的,您可以通过在根目录<code>src</code>旁边，新建一个<code>theme</code>文件夹，在其中选择性地添加文件名称，覆盖主题的任意文件。</p>
+<table><thead><tr><th>以下是您可以覆盖的文件: </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>index.hbs</strong> </td><td> hbs模板.</td></tr>
+<tr><td><strong>book.css</strong> </td><td> 是输出中使用的样式。如果要更改图书的设计,可能是您要修改的文件。有时与<code>index.hbs</code>一起，当你想从根本上改变布局.</td></tr>
+<tr><td><strong>book.js</strong> </td><td> 主要用于添加客户端功能,如隐藏/取消隐藏侧边栏,更改主题,...</td></tr>
+<tr><td><strong>highlight.js</strong> </td><td> 是用于突出显示代码片段的JavaScript,您不需要修改它.</td></tr>
+<tr><td><strong>highlight.css</strong> </td><td> 是用于代码突出显示的主题</td></tr>
+<tr><td><strong>favicon.png</strong> </td><td> 将使用的favicon</td></tr>
+</tbody></table>
+<p>通常,当您想要调整主题时,您不需要覆盖所有文件。如果您只需要更改css样式表,那么覆盖所有其他文件是没有意义的。由于自定义文件优先于内置文件，那以后的新的修补程序/功能，你都更新不了。</p>
+<p><strong>注意:</strong> 覆盖文件时,可能会破坏某些功能。因此,我建议使用默认主题中的文件作为模板,只添加/修改您需要的内容。您可以使用<code>mdbook init --theme</code>命令自动将默认主题自动复制到源目录中，只需删除您不想覆盖的文件.</p>
+<a class="header" href="#indexhbs" id="indexhbs"><h1>index.hbs</h1></a>
+<p><code>index.hbs</code>是用于渲染书籍的hbs模板。markdown文件被处理为html,然后注入该模板.</p>
+<p>如果您想更改图书的布局或样式,您可能需要稍微修改此模板。那下面是你需要知道的。</p>
+<a class="header" href="#data" id="data"><h2>Data</h2></a>
+<p>大量数据通过”上下文”暴露给hbs模板.在hbs模板中,您可以使用以下方式访问此信息</p>
+<pre><code class="language-handlebars">{{name_of_property}}
+</code></pre>
+<table><thead><tr><th>以下是公开的属性列表: </th><th> 描述</th></tr></thead><tbody>
+<tr><td><strong>language</strong> </td><td> 书的语言<code>en</code>。例如<code>&lt;code class=&quot;language-html&quot;&gt;\\&lt;html lang=&quot;{{ language }}&quot;&gt;&lt;/code&gt;</code>。目前它是硬编码的.</td></tr>
+<tr><td><strong>title</strong> </td><td> 该书的标题,如<code>book.toml</code>中所述</td></tr>
+<tr><td><strong>chapter_title</strong> </td><td> 本章的标题,如<code>SUMMARY.md</code>下所列</td></tr>
+<tr><td><strong>path</strong> </td><td> 源目录中原始markdown文件的相对路径</td></tr>
+<tr><td><strong>content</strong> </td><td> 这是渲染的markdown.</td></tr>
+<tr><td><strong>path_to_root</strong> </td><td> 这是一条完全包含<code>../</code>的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.</td></tr>
+<tr><td><strong>chapters</strong> </td><td> 是一个字典数组</td></tr>
+<tr><td>```json</td></tr>
+<tr><td>{”section”: “1.2.1”, “name”: “name of this chapter”, “path”: “dir/markdown.md”}</td></tr>
+<tr><td>```</td></tr>
+<tr><td>包含本书的所有章节.它用于例如构建目录(侧边栏).</td></tr>
+</tbody></table>
+<a class="header" href="#handlebars-帮手" id="handlebars-帮手"><h2>Handlebars 帮手</h2></a>
+<p>除了您可以访问的属性外,您还可以使用一些hbs帮手.</p>
+<a class="header" href="#a1-toc" id="a1-toc"><h3>1. toc</h3></a>
+<pre><code>toc助手就像这样使用
+
+```handlebars
+{{#toc}}{{/toc}}
+```
+
+并输出看起来像这样的东西，这取决于你的书的结构
+
+```html
+&lt;ul class=&quot;chapter&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;link/to/file.html&quot;&gt;Some chapter&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+        &lt;ul class=&quot;section&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;link/to/other_file.html&quot;&gt;Some other Chapter&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+```
+
+如果您想使用其他结构创建一个toc，则可以访问包含所有数据的chapters属性。
+目前唯一的限制是您必须使用JavaScript,而不是使用hbs帮助程序。
+
+```html
+&lt;script&gt;
+var chapters = {{chapters}};
+// Processing here
+&lt;/script&gt;
+```
+</code></pre>
+<a class="header" href="#a2-previous--next" id="a2-previous--next"><h3>2. previous / next</h3></a>
+<pre><code>上一个和下一个助手将`link`和`name`属性暴露给前一章和下一章。
+
+就像这样使用
+
+```handlebars
+{{#previous}}
+    &lt;a href=&quot;{{link}}&quot; class=&quot;nav-chapters previous&quot;&gt;
+        &lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;/i&gt;
+    &lt;/a&gt;
+{{/previous}}
+```
+
+只有在前一个/下一个章节存在时,才会渲染内部html。
+当然内部html可以根据自己的喜好进行更改。
+</code></pre>
+<hr />
+<p><em>如果您希望其他属性或帮手,请<a href="https://github.com/rust-lang-nursery/mdBook/issues">create a new
+issue</a></em></p>
+<a class="header" href="#a语法高亮" id="a语法高亮"><h1>语法高亮</h1></a>
+<p>对于我使用的语法高亮<a href="https://highlightjs.org">Highlight.js</a>自定义主题.</p>
+<p>自动语言检测已关闭,因此您可能希望指定您使用的编程语言</p>
+<pre><code class="language-markdown">```rust
+fn main() {
+    // Some code
+}
+```</code></pre>
+<a class="header" href="#a自定义主题" id="a自定义主题"><h2>自定义主题</h2></a>
+<p>与主题的其余部分一样,用于语法突出显示的css，可以使用您自己的文件覆盖.</p>
+<ul>
+<li><strong><em>highlight.js</em></strong> 通常你不应该覆盖这个文件,除非你想使用更新的版本.</li>
+<li><strong><em>highlight.css</em></strong> highlight.js用于语法高亮的主题.</li>
+</ul>
+<p>如果你想使用<code>highlight.js</code>另一个主题,可从他们的网站下载,或自己制作,重命名为<code>highlight.css</code>，并把它放进去<code>src/theme</code>(或等效的,如果您更改了源文件夹)</p>
+<p>现在将使用您的主题，而不是默认主题.</p>
+<a class="header" href="#a隐藏代码行数" id="a隐藏代码行数"><h2>隐藏代码行数</h2></a>
+<p>mdBook中有一个功能,可以通过在代码行前加上来隐藏代码行<code>#</code>.</p>
+<pre><code class="language-bash"># fn main() {
+    let x = 5;
+    let y = 6;
+
+    println!(&quot;{}&quot;, x + y);
+# }
+</code></pre>
+<p>将渲染为</p>
+<pre><pre class="playpen"><code class="language-rust"># fn main() {
+    let x = 5;
+    let y = 7;
+
+    println!(&quot;{}&quot;, x + y);
+# }
+</code></pre></pre>
+<p><strong>目前,这仅适用于带注释的代码示例<code>rust</code>。因为它会与某些编程语言的语义冲突.在未来,我们希望通过这个，可在<code>book.toml</code>配置，这样每个人都可以从中受益.</strong></p>
+<a class="header" href="#a加强默认主题" id="a加强默认主题"><h2>加强默认主题</h2></a>
+<p>如果您认为默认主题看起来不适合特定语言,或者可以改进。随意地<a href="https://github.com/rust-lang-nursery/mdBook/issues">submit a new
+issue</a>解释你的想法,我会看看它.</p>
+<p>您还可以使用建议的改进创建拉取请求.</p>
+<p>总的来说,主题应该是清淡和清醒,没有许多华丽的颜色.</p>
+<a class="header" href="#a编辑器" id="a编辑器"><h1>编辑器</h1></a>
+<p>除了提供可运行的代码playpens之外,mdBook还可以选择进行编辑。为了启用可编辑的代码块,需要添加以下内容<strong><em>book.toml</em></strong>:</p>
+<pre><code class="language-toml">[output.html.playpen]
+editable = true
+</code></pre>
+<p>要使特定块可用于编辑,请使用该属性<code>editable</code>添加:</p>
+<pre><code class="language-markdown">```rust,editable
+fn main() {
+    let number = 5;
+    print!("{}", number);
+}
+```</code></pre>
+<p>以上将导致这个可编辑的围栏:</p>
+<pre><pre class="playpen"><code class="language-rust editable">fn main() {
+    let number = 5;
+    print!(&quot;{}&quot;, number);
+}
+</code></pre></pre>
+<p>注意新的<code>Undo Changes</code>的按钮会出现在可编辑的playpens中.</p>
+<a class="header" href="#a定制编辑器" id="a定制编辑器"><h2>定制编辑器</h2></a>
+<p>默认情况下,编辑器是<a href="https://ace.c9.io/">Ace</a>编辑器,但是,如果需要,可以通过提供不同的文件夹来覆盖功能:</p>
+<pre><code class="language-toml">[output.html.playpen]
+editable = true
+editor = &quot;/path/to/editor&quot;
+</code></pre>
+<p>请注意,要让编辑器更改正常运行,<code>book.js</code>里面的<code>theme</code>文件夹，你需要覆盖下,因为它与默认的Ace编辑器有一些耦合.</p>
+<a class="header" href="#mathjax-支持" id="mathjax-支持"><h1>MathJax 支持</h1></a>
+<p>mdBook，可选的支持数学方程式<a href="https://www.mathjax.org/">MathJax</a>.</p>
+<p>要启用MathJax,您需要在<code>book.toml</code>中的<code>output.html</code>部分添加<code>mathjax-support</code>，.</p>
+<pre><code class="language-toml">[output.html]
+mathjax-support = true
+</code></pre>
+<blockquote>
+<p><strong>注意:</strong> MathJax使用的常用分隔符尚不支持.你目前无法使用<code>$$ ... $$</code>作为分隔符和<code>\[ ... \]</code>分隔符需要额外的反斜杠才能工作。希望这个限制很快就会解除.</p>
+<p><strong>注意:</strong> 在MathJax块中使用双反斜杠时(例如在诸如<code>\begin{cases} \frac 1 2 \\ \frac 3 4 \end{cases}</code>之类的命令中)你需要添加<em>另外两个</em>反斜杠(例如,<code>\begin{cases} \frac 1 2 \\\\ \frac 3 4 \end{cases}</code>).</p>
+</blockquote>
+<a class="header" href="#a内联方程" id="a内联方程"><h3>内联方程</h3></a>
+<p>内联方程由以下分隔<code>\\(</code>和<code>\\)</code>。例如,渲染以下内联方程\(\ int x dx = \ frac {x ^ 2} {2} + C.\)，你要写下面的内容:</p>
+<pre><code>\\( \int x dx = \frac{x^2}{2} + C \\)
+</code></pre>
+<a class="header" href="#a块方程" id="a块方程"><h3>块方程</h3></a>
+<p>块方程由以下分隔<code>\\[</code>和<code>\\]</code>.要渲染以下等式</p>
+<p>\[\ mu = \ frac {1}{ }N\ _{ sum= }i _ 0\ xi]</p>
+<p>你会写:</p>
+<pre><code class="language-bash">\\[ \mu = \frac{1}{N} \sum_{i=0} x_i \\]
+</code></pre>
+<a class="header" href="#mdbook特有-markdown" id="mdbook特有-markdown"><h1>mdBook特有 markdown</h1></a>
+<a class="header" href="#a隐藏代码行数-1" id="a隐藏代码行数-1"><h2>隐藏代码行数</h2></a>
+<p>mdBook中有一个功能,可以通过在代码行前加上<code>#</code>来隐藏代码行.</p>
+<pre><code class="language-bash"># fn main() {
+    let x = 5;
+    let y = 6;
+
+    println!(&quot;{}&quot;, x + y);
+# }
+</code></pre>
+<p>渲染为</p>
+<pre><pre class="playpen"><code class="language-rust"># fn main() {
+    let x = 5;
+    let y = 7;
+
+    println!(&quot;{}&quot;, x + y);
+# }
+</code></pre></pre>
+<a class="header" href="#include包含文件内容" id="include包含文件内容"><h2>include，包含文件内容</h2></a>
+<p>使用以下语法,您可以将文件包含到您的书中:</p>
+<pre><code class="language-hbs">{{#include file.rs}}
+</code></pre>
+<p>文件的路径必须是 <strong>当前</strong> 源文件的 <strong>相对</strong> 路径.</p>
+<p>通常,此命令用于包含代码段和示例。在这种情况下, 可指定文件的包含部分,例如其中只包含示例的相关行.</p>
+<pre><code class="language-hbs">{{#include file.rs:2}}
+{{#include file.rs::10}}
+{{#include file.rs:2:}}
+{{#include file.rs:2:10}}
+</code></pre>
+<p>我们支持四种不同的决定<code>file.rs</code>部分模式:</p>
+<ul>
+<li>第一个命令仅包含文件中的第二行.</li>
+<li>第二个命令包含直到第10行的所有行。即,从11到文件末尾的行被省略.</li>
+<li>第三个命令包含第2行的所有行,即省略第一行.</li>
+<li>最后一个命令包含摘录<code>file.rs</code>由2到10行组成.</li>
+</ul>
+<a class="header" href="#a插入可运行的rust文件" id="a插入可运行的rust文件"><h2>插入可运行的Rust文件</h2></a>
+<p>使用以下语法,您可以将可运行的Rust文件插入到您的书中:</p>
+<pre><code class="language-hbs">{{#playpen file.rs}}
+</code></pre>
+<p>Rust文件的路径必须是当前源文件的相对路径.</p>
+<p>点击播放后,代码段将被发送到<a href="https://play.rust-lang.org/">rust的游乐场</a>编译和运行。结果被返回，并直接显示在代码下方.</p>
+<p>以下是代码段的渲染的样子:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    println!(&quot;Hello World!&quot;);
+#
+#    // You can even hide lines! :D
+#   println!(&quot;I am hidden! Expand the code snippet to see me&quot;);
+}
+
+</code></pre></pre>
+<blockquote>
+<p>试试 点击 播放箭头</p>
+</blockquote>
+<a class="header" href="#a在持续集成中运行-mdbook" id="a在持续集成中运行-mdbook"><h1>在持续集成中运行 <code>mdbook</code></h1></a>
+<p>虽然以下示例中使用在Travis CI,但原则上应该，也可以直接转移到其他持续集成提供商.</p>
+<a class="header" href="#a确保mdbook的构建与测试成功" id="a确保mdbook的构建与测试成功"><h2>确保mdbook的构建与测试成功</h2></a>
+<p>以下是Travis CI的<code>.travis.yml</code>示例，确保配置了<code>mdbook build</code>和<code>mdbook test</code>运行成功。加快CI运转时间的关键是缓存<code>mdbook</code>的安装,以便您可以不用每次CI运行就编译一次<code>mdbook</code>。</p>
+<pre><code class="language-yaml">language: rust
+sudo: false
+
+cache:
+  - cargo
+
+rust:
+  - stable
+
+before_script:
+  - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
+  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers &quot;^0.1&quot; mdbook)
+  - cargo install-update -a
+
+script:
+  - mdbook build path/to/mybook &amp;&amp; mdbook test path/to/mybook
+</code></pre>
+<a class="header" href="#a发布你的图书到-github-pages" id="a发布你的图书到-github-pages"><h2>发布你的图书到 GitHub Pages</h2></a>
+<p>遵循这些命令的结果是，在您的存储库运行CI成功后,您的图书将发布到GitHub页面的<code>master</code>分支.</p>
+<p>首先,创建一个新的GitHub的”Personal Access Token”，保证”public_repo”权限(或私有存储库的”repo”)。转到Travis CI网站的该库设置页面，并添加一个名为<code>GITHUB_TOKEN</code>的环境变量，该变量能保证安全和<em>不</em>显示在日志中.</p>
+<p>然后,将此代码段附加到您的<code>.travis.yml</code>，并更新为<code>book</code>目录路径:</p>
+<blockquote>
+<p><code>book</code>目录是<code>mdbook build</code>的默认输出目录，请根据你的构建目录填写</p>
+</blockquote>
+<pre><code class="language-yaml">deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local-dir: path/to/mybook/book
+  keep-history: false
+  on:
+    branch: master
+</code></pre>
+<p>就这样!</p>
+<a class="header" href="#a致-developers" id="a致-developers"><h1>致 Developers</h1></a>
+<p>虽然<code>mdbook</code>主要用作命令行工具, 但您也可以直接导入底层库，并使用它来管理书籍。它还具有相当灵活的插件机制，允许您创建自己的自定义工具和消费者(通常称为<em>后端</em>)，如果您需要对书籍进行一些分析，或以不同的格式渲染它.</p>
+<p>该<em>对于开发人员</em>章节在这里向您展示<code>mdbook</code>更高级的用法.</p>
+<p>开发人员可以通过以下两种方式，影响本书的构建过程,</p>
+<ul>
+<li><a href="preprocessors.html">Preprocessors-预处理器</a></li>
+<li><a href="backends.html">Alternate Backends - 备用后端</a></li>
+</ul>
+<a class="header" href="#a构建过程" id="a构建过程"><h2>构建过程</h2></a>
+<p>渲染图书项目的过程经历了几个步骤.</p>
+<ol>
+<li>加载书
+<ul>
+<li>解析<code>book.toml</code>。 如果其中不存在，使用<code>Config</code>默认值。</li>
+<li>将书籍章节加载到内存中</li>
+<li>了解应该使用哪些预处理器/后端</li>
+</ul>
+</li>
+<li>运行预处理器</li>
+<li>依次运行每个后端</li>
+</ol>
+<a class="header" href="#mdbook作为库使用" id="mdbook作为库使用"><h2><code>mdbook</code>作为库使用</h2></a>
+<p><code>mdbook</code>二进制只是一个<code>mdbook</code>箱的包装器,将其功能暴露出来，作为命令行程序。因此,很容易自制使用<code>mdbook</code>的程序,并添加自己的功能(例如自定义预处理器)或调整构建过程.</p>
+<p>如何找到使用<code>mdbook</code>箱子最简单方法，答案就是<a href="https://docs.rs/mdbook/*/mdbook/">API文档</a>。顶级API文档解释了如何使用<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.MDBook.html"><code>MDBook</code></a>类型，加载和构建一本书,而<a href="file:///home/michael/Documents/forks/mdBook/target/doc.html">config</a>模块很好地解释了配置系统.</p>
+<a class="header" href="#preprocessors" id="preprocessors"><h1>Preprocessors</h1></a>
+<p>一个<em>预处理器</em>只是一些代码，运行在加载书之后,和渲染之前,允许您更新和改变本书。可能的用例是:</p>
+<ul>
+<li>创建自定义帮助程序<code>{{#include /path/to/file.md}}</code></li>
+<li>更新链接<code>[some chapter](some_chapter.md)</code>自动更改为<code>[some chapter](some_chapter.html)</code>，这是 HTML 渲染器功能</li>
+<li>用 latex 样式(<code>$$ \frac{1}{3} $$</code>)的表达式代替为 mathjax 的等价物</li>
+</ul>
+<a class="header" href="#a勾住-mdbook" id="a勾住-mdbook"><h2>勾住 MDBook</h2></a>
+<p>MDBook 使用一种相当简单的机制来发现第三方插件。<code>book.toml</code>添加了一个新表格(例如<code>preprocessor.foo</code>，给<code>foo</code>预处理器)，然后<code>mdbook</code>将尝试调用<code>mdbook-foo</code>程序，作为构建过程的一部分.</p>
+<p>虽然预处理器可以进行硬编码,以指定应该运行哪个后端，来处理如<code>preprocessor.foo.renderer</code>的字段(但奇奇怪怪的是，像 MathJax 用于非 HTML 渲染器没有意义).</p>
+<pre><code class="language-toml">[book]
+title = &quot;My Book&quot;
+authors = [&quot;Michael-F-Bryan&quot;]
+
+[preprocessor.foo]
+# 指定命令的使用
+command = &quot;python3 /path/to/foo.py&quot;
+#  `foo` 预处理器 只被用于 HTML 和 EPUB 的渲染器
+renderer = [&quot;html&quot;, &quot;epub&quot;]
+</code></pre>
+<p>在典型的 unix 样式中,插件的所有输入都被写入<code>stdin</code>作为 JSON，和<code>mdbook</code>将从<code>stdout</code>中读取，如果它是期待的输出.</p>
+<p>最简单的入门方法是创建自己的实现<code>Preprocessor</code> trait(例如在<code>lib.rs</code>)，然后创建一个 shell 二进制文件,将输入转换为正确的<code>Preprocessor</code>方法。为方便起见,有个<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs">无操作预处理器:示例</a>在<code>examples/</code>目录,可以很容易地适应其他预处理器.</p>
+<p><details>
+<summary>Example 无操作预处理器</summary></p>
+<pre><pre class="playpen"><code class="language-rust">// nop-preprocessors.rs
+
+extern crate clap;
+extern crate mdbook;
+extern crate serde_json;
+
+use clap::{App, Arg, ArgMatches, SubCommand};
+use mdbook::book::Book;
+use mdbook::errors::Error;
+use mdbook::preprocess::{CmdPreprocessor, Preprocessor, PreprocessorContext};
+use std::io;
+use std::process;
+use nop_lib::Nop;
+
+pub fn make_app() -&gt; App&lt;'static, 'static&gt; {
+    App::new(&quot;nop-preprocessor&quot;)
+        .about(&quot;A mdbook preprocessor which does precisely nothing&quot;)
+        .subcommand(
+            SubCommand::with_name(&quot;supports&quot;)
+                .arg(Arg::with_name(&quot;renderer&quot;).required(true))
+                .about(&quot;Check whether a renderer is supported by this preprocessor&quot;))
+}
+
+fn main() {
+    let matches = make_app().get_matches();
+
+    // Users will want to construct their own preprocessor here
+    let preprocessor = Nop::new();
+
+    if let Some(sub_args) = matches.subcommand_matches(&quot;supports&quot;) {
+        handle_supports(&amp;preprocessor, sub_args);
+    } else {
+        if let Err(e) = handle_preprocessing(&amp;preprocessor) {
+            eprintln!(&quot;{}&quot;, e);
+            process::exit(1);
+        }
+    }
+}
+
+fn handle_preprocessing(pre: &amp;dyn Preprocessor) -&gt; Result&lt;(), Error&gt; {
+    let (ctx, book) = CmdPreprocessor::parse_input(io::stdin())?;
+
+    if ctx.mdbook_version != mdbook::MDBOOK_VERSION {
+        // We should probably use the `semver` crate to check compatibility
+        // here...
+        eprintln!(
+            &quot;Warning: The {} plugin was built against version {} of mdbook, \
+             but we're being called from version {}&quot;,
+            pre.name(),
+            mdbook::MDBOOK_VERSION,
+            ctx.mdbook_version
+        );
+    }
+
+    let processed_book = pre.run(&amp;ctx, book)?;
+    serde_json::to_writer(io::stdout(), &amp;processed_book)?;
+
+    Ok(())
+}
+
+fn handle_supports(pre: &amp;dyn Preprocessor, sub_args: &amp;ArgMatches) -&gt; ! {
+    let renderer = sub_args.value_of(&quot;renderer&quot;).expect(&quot;Required argument&quot;);
+    let supported = pre.supports_renderer(&amp;renderer);
+
+    // Signal whether the renderer is supported by exiting with 1 or 0.
+    if supported {
+        process::exit(0);
+    } else {
+        process::exit(1);
+    }
+}
+
+/// The actual implementation of the `Nop` preprocessor. This would usually go
+/// in your main `lib.rs` file.
+mod nop_lib {
+    use super::*;
+
+    /// A no-op preprocessor.
+    pub struct Nop;
+
+    impl Nop {
+        pub fn new() -&gt; Nop {
+            Nop
+        }
+    }
+
+    impl Preprocessor for Nop {
+        fn name(&amp;self) -&gt; &amp;str {
+            &quot;nop-preprocessor&quot;
+        }
+
+        fn run(
+            &amp;self,
+            ctx: &amp;PreprocessorContext,
+            book: Book,
+        ) -&gt; Result&lt;Book, Error&gt; {
+            // In testing we want to tell the preprocessor to blow up by setting a
+            // particular config value
+            if let Some(nop_cfg) = ctx.config.get_preprocessor(self.name()) {
+                if nop_cfg.contains_key(&quot;blow-up&quot;) {
+                    return Err(&quot;Boom!!1!&quot;.into());
+                }
+            }
+
+            // we *are* a no-op preprocessor after all
+            Ok(book)
+        }
+
+        fn supports_renderer(&amp;self, renderer: &amp;str) -&gt; bool {
+            renderer != &quot;not-supported&quot;
+        }
+    }
+}
+
+
+</code></pre></pre>
+<p></details></p>
+<a class="header" href="#a实现一个预处理器的提示" id="a实现一个预处理器的提示"><h2>实现一个预处理器的提示</h2></a>
+<p>通过拉取<code>mdbook</code>，作为一个库,预处理器可以访问现有的基础架构来处理书籍.</p>
+<p>例如,自定义预处理器可以使用<a href="https://docs.rs/mdbook/latest/mdbook/preprocess/trait.Preprocessor.html#method.parse_input"><code>CmdPreprocessor::parse_input()</code></a>函数， 用于反序列化写入<code>stdin</code>的 JSON。然后是<code>Book</code>的每一章可以通过<a href="https://docs.rs/mdbook/latest/mdbook/book/struct.Book.html#method.for_each_mut"><code>Book::for_each_mut()</code></a>成为可变权限，然后随着<code>serde_json</code>箱写到<code>stdout</code>.</p>
+<p>章节可以直接访问(通过递归迭代章节)或通过便利方法<code>Book::for_each_mut()</code>.</p>
+<p><code>chapter.content</code>只是一个恰好是 markdown 的字符串。虽然完全可以使用正则表达式或进行手动查找和替换，但您可能希望将输入处理为更加计算机友好的内容。该<a href="https://crates.io/crates/pulldown-cmark"><code>pulldown-cmark</code></a>crate 实现了一个基于事件，生产质量的 Markdown 解析器，而<a href="https://crates.io/crates/pulldown-cmark-to-cmark"><code>pulldown-cmark-to-cmark</code></a>允许您将事件转换回 markdown 文本.</p>
+<p>以下代码块，显示了如何从 markdown 中删除所有强调(粗体),而不会意外地破坏文档.</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+fn remove_emphasis(
+    num_removed_items: &amp;mut usize,
+    chapter: &amp;mut Chapter,
+) -&gt; Result&lt;String&gt; {
+    let mut buf = String::with_capacity(chapter.content.len());
+
+    let events = Parser::new(&amp;chapter.content).filter(|e| {
+        let should_keep = match *e {
+            Event::Start(Tag::Emphasis)
+            | Event::Start(Tag::Strong)
+            | Event::End(Tag::Emphasis)
+            | Event::End(Tag::Strong) =&gt; false,
+            _ =&gt; true,
+        };
+        if !should_keep {
+            *num_removed_items += 1;
+        }
+        should_keep
+    });
+
+    cmark(events, &amp;mut buf, None).map(|_| buf).map_err(|err| {
+        Error::from(format!(&quot;Markdown serialization failed: {}&quot;, err))
+    })
+}
+#}</code></pre></pre>
+<p>对于其他的一切,看<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/de-emphasize.rs">完整的例子</a>.</p>
+<a class="header" href="#a备用后端" id="a备用后端"><h1>备用后端</h1></a>
+<p>“后端”只是一个，<code>mdbook</code>在书籍渲染过程中调用的程序。该程序会拿到传递到<code>stdin</code>的书籍和配置信息的JSON表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.</p>
+<p>GitHub上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.</p>
+<ul>
+<li><a href="https://github.com/Michael-F-Bryan/mdbook-linkcheck">mdbook-linkcheck</a>- 用于验证书籍的简单程序，不包含任何损坏的链接</li>
+<li><a href="https://github.com/Michael-F-Bryan/mdbook-epub">mdbook-epub</a>-  EPUB渲染器</li>
+<li>[mdboob-test]- 一个使用<a href="https://github.com/budziq/rust-skeptic">rust-skeptic</a>运用书籍内容的程序，会验证一切编译且正确(类似于<code>rustdoc --test</code>)</li>
+</ul>
+<p>此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用Rust编写,但没有理由不能用Python或Ruby之类，来完成它.</p>
+<a class="header" href="#a目录" id="a目录"><h2>目录</h2></a>
+<!-- START doctoc -->
+<!-- END doctoc -->
+<a class="header" href="#a设置好" id="a设置好"><h2>设置好</h2></a>
+<p>首先,您需要创建一个新的二进制程序，并添加<code>mdbook</code>作为依赖.</p>
+<pre><code>$ cargo new --bin mdbook-wordcount
+$ cd mdbook-wordcount 
+$ cargo add mdbook
+</code></pre>
+<p>捋一捋，当我们的<code>mdbook-wordcount</code>插件被调用,<code>mdbook</code>将通过我们的插件的<code>stdin</code>，发送它<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的JSON版本。为方便起见,有一个<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html#method.from_json"><code>RenderContext::from_json()</code></a>构造函数，加载一个<code>RenderContext</code>.</p>
+<p>这是我们后端加载本书，所需的所有样板.</p>
+<pre><pre class="playpen"><code class="language-rust">// src/main.rs
+extern crate mdbook;
+
+use std::io;
+use mdbook::renderer::RenderContext;
+
+fn main() {
+    let mut stdin = io::stdin();
+    let ctx = RenderContext::from_json(&amp;mut stdin).unwrap();
+}
+</code></pre></pre>
+<blockquote>
+<p><strong>注意:</strong> <code>RenderContext</code>包含一个<code>version</code>字段。这使得后端在被调用时确定它们是否与<code>mdbook</code>版本兼容。这个<code>version</code>直接来自<code>mdbook</code>的<code>Cargo.toml</code>中的相应字段.</p>
+</blockquote>
+<p>建议后端使用<a href="https://crates.io/crates/semver"><code>semver</code></a>，如果可能存在兼容性问题,请检查此字段，并发出警告.</p>
+<a class="header" href="#a检查-book" id="a检查-book"><h2>检查 Book</h2></a>
+<p>现在我们的后端有一本书的副本,让我们计算每章中有多少单词!</p>
+<p>因为<code>RenderContext</code>包含一个<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html"><code>Book</code></a>字段(<code>book</code>),和一个<code>Book</code>有<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html#method.iter"><code>Book::iter()</code></a>，用于迭代其<code>Book</code>中所有项的方法，这一步就和第一步一样简单.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    let mut stdin = io::stdin();
+    let ctx = RenderContext::from_json(&amp;mut stdin).unwrap();
+
+    for item in ctx.book.iter() {
+        if let BookItem::Chapter(ref ch) = *item {
+            let num_words = count_words(ch);
+            println!(&quot;{}: {}&quot;, ch.name, num_words);
+        }
+    }
+}
+
+fn count_words(ch: &amp;Chapter) -&gt; usize {
+    ch.content.split_whitespace().count()
+}
+</code></pre></pre>
+<a class="header" href="#a启用吧我的-backend" id="a启用吧我的-backend"><h2>启用吧，我的 Backend</h2></a>
+<p>现在我们的基本部分已经运行了，我们希望实际使用它。那首先,当然是安装程序.</p>
+<pre><code>$ cargo install
+</code></pre>
+<p>然后<code>cd</code>在特定的书目录中，若你想要数字计数，那更新它的<code>book.toml</code>文件.</p>
+<pre><code class="language-diff">  [book]
+  title = &quot;mdBook Documentation&quot;
+  description = &quot;Create book from markdown files. Like Gitbook but implemented in Rust&quot;
+  authors = [&quot;Mathieu David&quot;, &quot;Michael-F-Bryan&quot;]
+
++ [output.html]
+
++ [output.wordcount]
+</code></pre>
+<p>当<code>mdbook</code>将一本书加载到内存中时，它会尝试检查你的<code>book.toml</code>，并查找所有<code>output.*</code>表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的HTML渲染器.</p>
+<p>值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加HTML后端,即使只是空表格。</p>
+<p>现在你只需要像平常一样构建你的书,一切都应该<em>干得好</em>.</p>
+<pre><code>$ mdbook build
+...
+2018-01-16 07:31:15 [INFO] (mdbook::renderer): Invoking the &quot;mdbook-wordcount&quot; renderer
+mdBook: 126
+Command Line Tool: 224
+init: 283
+build: 145
+watch: 146
+serve: 292
+test: 139
+Format: 30
+SUMMARY.md: 259
+Configuration: 784
+Theme: 304
+index.hbs: 447
+Syntax highlighting: 314
+MathJax Support: 153
+Rust code specific features: 148
+For Developers: 788
+备用后端: 710
+Contributors: 85
+</code></pre>
+<p>我们之所以不需要指定我们<code>wordcount</code>后端的全名/路径，是因为<code>mdbook</code>会尽力的<em>推断</em>程序的名称，这些都是因为规范化，如下: 可执行文件<code>foo</code>后端通常被称为<code>mdbook-foo</code>,还有相关联的<code>[output.foo]</code>会进入<code>book.toml</code>。而要明确告诉<code>mdbook</code>要调用什么命令(可能需要命令行参数或是解释的脚本), 你可以使用<code>command</code>字段。</p>
+<pre><code class="language-diff">  [book]
+  title = &quot;mdBook Documentation&quot;
+  description = &quot;Create book from markdown files. Like Gitbook but implemented in Rust&quot;
+  authors = [&quot;Mathieu David&quot;, &quot;Michael-F-Bryan&quot;]
+
+  [output.html]
+
+  [output.wordcount]
++ command = &quot;python /path/to/wordcount.py&quot;
+</code></pre>
+<a class="header" href="#a配置-1" id="a配置-1"><h2>配置</h2></a>
+<p>现在假设您不想计算特定章节上的单词数(可能是生成的文本/代码等)。要做到这样的规范方法，是通过常规<code>book.toml</code>配置文件，添加个别项到您的<code>[output.foo]</code>表格。</p>
+<p><code>Config</code>可以粗略地视为嵌套的<code>hashmap</code>，它允许您调用类似的方法<code>get()</code>使用访问配置的内容，也带<code>get_deserialized()</code>这一方便方法,用于检索值，并自动反序列化为某种任意类型<code>T</code>.</p>
+<p>为实现这一点,我们将创建自己的可序列化<code>WordcountConfig</code>结构将封装此后端的所有配置.</p>
+<p>首先添加<code>serde</code>和<code>serde_derive</code>到你的<code>Cargo.toml</code>,</p>
+<pre><code>$ cargo add serde serde_derive
+</code></pre>
+<p>然后你可以创建配置结构,</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+extern crate serde;
+#[macro_use]
+extern crate serde_derive;
+
+...
+
+#[derive(Debug, Default, Serialize, Deserialize)]
+#[serde(default, rename_all = &quot;kebab-case&quot;)]
+pub struct WordcountConfig {
+  pub ignores: Vec&lt;String&gt;,
+}
+#}</code></pre></pre>
+<p>现在我们只需要我们的<code>RenderContext</code>，反序列化成<code>WordcountConfig</code>，然后添加一个检查，以确保我们跳过忽略的章节.</p>
+<pre><code class="language-diff">  fn main() {
+      let mut stdin = io::stdin();
+      let ctx = RenderContext::from_json(&amp;mut stdin).unwrap();
++     let cfg: WordcountConfig = ctx.config
++         .get_deserialized(&quot;output.wordcount&quot;)
++         .unwrap_or_default();
+  
+      for item in ctx.book.iter() {
+          if let BookItem::Chapter(ref ch) = *item {
++             if cfg.ignores.contains(&amp;ch.name) {
++                 continue;
++             }
++ 
+              let num_words = count_words(ch);
+              println!(&quot;{}: {}&quot;, ch.name, num_words);
+          }
+      }
+  }
+</code></pre>
+<a class="header" href="#output-and-signalling-failure" id="output-and-signalling-failure"><h2>Output and Signalling Failure</h2></a>
+<p>虽然在构建书籍时，将字数计数打印到终端是很好的，但将它们输出到某个文件也可能是个好主意。<code>mdbook</code>能告诉后端，它应该根据<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的<code>destination</code>字段，放置输出的位置，.</p>
+<pre><code class="language-diff">+ use std::fs::{self, File};
++ use std::io::{self, Write};
+- use std::io;
+  use mdbook::renderer::RenderContext;
+  use mdbook::book::{BookItem, Chapter};
+  
+  fn main() {
+    ...
+  
++     let _ = fs::create_dir_all(&amp;ctx.destination);
++     let mut f = File::create(ctx.destination.join(&quot;wordcounts.txt&quot;)).unwrap();
++ 
+      for item in ctx.book.iter() {
+          if let BookItem::Chapter(ref ch) = *item {
+              ...
+  
+              let num_words = count_words(ch);
+              println!(&quot;{}: {}&quot;, ch.name, num_words);
++             writeln!(f, &quot;{}: {}&quot;, ch.name, num_words).unwrap();
+          }
+      }
+  }
+</code></pre>
+<blockquote>
+<p><strong>注意:</strong> 无法保证目标目录存在或为空(<code>mdbook</code>可能会留下以前的内容让后端进行缓存)，因此创建它<code>fs::create_dir_all()</code>总不会错。</p>
+</blockquote>
+<p>处理书籍时，总会出现错误(只需查看全部我们已经写过了的<code>unwrap()</code>),所以<code>mdbook</code>会渲染失败后，非零退出代码。</p>
+<p>例如,如果我们想确保所有章节的单词，都有<em>偶数</em>数量, 而如果遇到奇数,则输出错误,那么你可以这样做:</p>
+<pre><code class="language-diff">+ use std::process;
+  ...
+
+  fn main() {
+      ...
+  
+      for item in ctx.book.iter() {
+          if let BookItem::Chapter(ref ch) = *item {
+              ...
+  
+              let num_words = count_words(ch);
+              println!(&quot;{}: {}&quot;, ch.name, num_words);
+              writeln!(f, &quot;{}: {}&quot;, ch.name, num_words).unwrap();
+
++             if cfg.deny_odds &amp;&amp; num_words % 2 == 1 {
++               eprintln!(&quot;{} has an odd number of words!&quot;, ch.name);
++               process::exit(1);
+              }
+          }
+      }
+  }
+
+  #[derive(Debug, Default, Serialize, Deserialize)]
+  #[serde(default, rename_all = &quot;kebab-case&quot;)]
+  pub struct WordcountConfig {
+      pub ignores: Vec&lt;String&gt;,
++     pub deny_odds: bool,
+  }
+</code></pre>
+<p>现在,如果我们重新安装后端，并构建一本书,</p>
+<pre><code>$ cargo install --force
+$ mdbook build /path/to/book
+...
+2018-01-16 21:21:39 [INFO] (mdbook::renderer): Invoking the &quot;wordcount&quot; renderer
+mdBook: 126
+Command Line Tool: 224
+init: 283
+init has an odd number of words!
+2018-01-16 21:21:39 [ERROR] (mdbook::renderer): Renderer exited with non-zero return code.
+2018-01-16 21:21:39 [ERROR] (mdbook::utils): Error: Rendering failed
+2018-01-16 21:21:39 [ERROR] (mdbook::utils):    Caused By: The &quot;mdbook-wordcount&quot; renderer failed
+</code></pre>
+<p>您可能已经注意到,插件的子进程的输出会立即传递给用户。鼓励插件遵循”安静规则”，且仅在必要时生成输出(例如,生成错误或警告).</p>
+<p>所有环境变量都传递到后端,允许您使用常用的<code>RUST_LOG</code>，控制日志记录详细程度.</p>
+<a class="header" href="#a包涵包涵" id="a包涵包涵"><h2>包涵包涵</h2></a>
+<p>虽然有点做作,但希望这个例子足以说明，如何创建一个<code>mdbook</code>备用后端。如果你觉得它遗漏了什么,请不要犹豫,创造一个问题的<a href="https://github.com/rust-lang-nursery/mdBook/issues">issue tracker</a>，让我们可以一起改进用户指南。</p>
+<p>在本章开头提到的现有后端，应该是现实生活中如何完成后端的很好例子,所以请随意浏览源代码，或提出问题.</p>
+<a class="header" href="#contributors" id="contributors"><h1>Contributors</h1></a>
+<p>以下列出了帮助改进mdBook的贡献者。为他们欢呼!</p>
+<ul>
+<li><a href="https://github.com/mdinger">mdinger</a></li>
+<li>Kevin (<a href="https://github.com/kbknapp">kbknapp</a>)</li>
+<li>Steve Klabnik (<a href="https://github.com/steveklabnik">steveklabnik</a>)</li>
+<li>Adam Solove (<a href="https://github.com/asolove">asolove</a>)</li>
+<li>Wayne Nilsen (<a href="https://github.com/waynenilsen">waynenilsen</a>)</li>
+<li><a href="https://github.com/funkill">funnkill</a></li>
+<li>Fu Gangqiang (<a href="https://github.com/FuGangqiang">FuGangqiang</a>)</li>
+<li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a></li>
+<li>Chris Spiegel (<a href="https://github.com/cspiegel">cspiegel</a>)</li>
+<li><a href="https://github.com/projektir">projektir</a></li>
+<li><a href="https://github.com/Phaiax">Phaiax</a></li>
+<li>Matt Ickstadt (<a href="https://github.com/mattico">mattico</a>)</li>
+<li>Weihang Lo (<a href="https://github.com/weihanglo">@weihanglo</a>)</li>
+</ul>
+<p>如果您觉得自己在此列表中遗漏了,请随意添加PR.</p>
+
+                </main>
+
+                <nav class="nav-wrapper" aria-label="Page navigation">
+                    <!-- Mobile navigation buttons -->
+                    
+
+                    
+
+                    <div style="clear: both"></div>
+                </nav>
+            </div>
+        </div>
+
+        <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            
+
+            
+        </nav>
+
+    </div>
+
+    
+
+    
+    <!-- Google Analytics Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128555056-1"></script>
+    
+    <script type="text/javascript">
+        var localAddrs = ["localhost", "127.0.0.1", ""];
+        if (localAddrs.indexOf(document.location.hostname) === -1) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-128555056-1');
+        }
+    </script>
+    
+
+    
+    <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+    <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+    <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+    <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+    
+
+    
+    <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+    
+
+    <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+    <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Custom JS scripts -->
+    
+
+    
+    
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            MathJax.Hub.Register.StartupHook('End', function () {
+                window.setTimeout(window.print, 100);
+            });
+        });
+    </script>
+    
+    
+
+</body>
+
+</html>

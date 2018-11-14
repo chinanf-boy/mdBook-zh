@@ -34,7 +34,7 @@ renderer = ["html", "epub"]
 ```rust
 // nop-preprocessors.rs
 
-{{#include ../../../examples/nop-preprocessor.rs}}
+{{#include ../../examples/nop-preprocessor.rs}}
 ```
 
 </details>
