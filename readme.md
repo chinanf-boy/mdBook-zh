@@ -1,13 +1,11 @@
-# rust-lang-nursery/mdBook [![explain]][source] [![translate-svg]][translate-list]
+# rust-lang-nursery/mdBook  [![translate-svg]][translate-list]
 
-<!-- [![size-img]][size] -->
+<!-- [![explain]][source] -->
 
 [explain]: http://llever.com/explain.svg
 [source]: https://github.com/chinanf-boy/Source-Explain
 [translate-svg]: http://llever.com/translate.svg
 [translate-list]: https://github.com/chinanf-boy/chinese-translate-list
-[size-img]: https://packagephobia.now.sh/badge?p=Name
-[size]: https://packagephobia.now.sh/result?p=Name
 
 「 一个从 Markdown 文件，创建现代在线书籍的实用程序 」
 
@@ -15,7 +13,7 @@
 
 ---
 
-## 校对 🀄️
+## 校对 ✅
 
 <!-- doc-templite START generated -->
 <!-- repo = 'rust-lang-nursery/mdBook' -->
@@ -30,6 +28,12 @@
 [commit]: https://github.com/rust-lang-nursery/mdBook/tree/42b87e0fbc6815ae2177a5fc4838dad11a33fe4f
 
 <!-- doc-templite END generated -->
+
+～*～ |
+---|
+[中文网址](https://chinanf-boy.github.io/mdbook-zh) |
+
+<details>
 
 - [x] readme
 - [x] [SUMMARY.md](./src/SUMMARY.md)
@@ -53,11 +57,14 @@
 - [x] [持续集成](./src/continuous-integration.zh.md)
 - [x] [对开发者说](./src/for_developers/README.zh.md)
   - [x] [预处理程序](./src/for_developers/preprocessors.zh.md)
-  - [ ] [备用后端](./src/for_developers/backends.zh.md)
+  - [x] [备用后端](./src/for_developers/backends.zh.md)
 
 ---
 
 - [x] [贡献者](./src/misc/contributors.zh.md)
+
+</details>
+
 
 ### 贡献
 
@@ -111,7 +118,7 @@ mdBook 是一个从 Markdown 文件创建现代在线书籍的实用程序.
 
 ## 它是什么样子的?
 
-该[user guide]对于 mdBook 已经用 Markdown 编写,并且正在使用 mdBook 生成您可以阅读的在线书籍式网站.该文档使用 GitHub 上的最新版本并展示了可用的功能.
+该[用户指南][user guide]对于 mdBook 已经用 Markdown 编写,并且正在使用 mdBook 生成您可以阅读的在线书籍式网站.该文档使用 GitHub 上的最新版本并展示了可用的功能.
 
 ## 安装
 
@@ -171,7 +178,7 @@ mdBook 是一个从 Markdown 文件创建现代在线书籍的实用程序.
 
 mdBook 将主要用作命令行工具,即使它将其所有功能公开为 Rust crate， 以便在其他项目中集成.
 
-以下是您要运行的主要命令.有关更详尽的解释,请查看[user guide].
+以下是您要运行的主要命令.有关更详尽的解释,请查看[用户指南][user guide].
 
 - `mdbook init`
 
@@ -241,13 +248,13 @@ $ mdbook build
 2018-10-20 13:57:53 [INFO] (mdbook::book): Running the linkcheck backend
 ```
 
-有关插件系统的更多信息,请参阅[user guide].
+有关插件系统的更多信息,请参阅[用户指南][user guide].
 
 ### 作为一个 crate 库
 
 除了命令行界面,此包也可以用作库。这意味着您可以将其集成到现有项目中,例如 Web 应用程序.由于命令行界面只是库功能的包装,因此当您使用此包作为库时,您可以使用易于使用的 API ，以及更多来完全访问命令行界面的所有功能!
 
-见[user guide]和[API docs]欲获得更多信息.
+见[用户指南][user guide]和[API docs]欲获得更多信息.
 
 ## 捐款
 

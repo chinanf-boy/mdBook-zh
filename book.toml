@@ -1,6 +1,6 @@
 [book]
 title = "mdBook 文档"
-description = "markdown生成记. 就像Gitbook, 但专为Rust设计"
+description = "mdbook :) markdown生成记. 就像Gitbook, 但专为Rust设计"
 authors = ["Mathieu David", "Michael-F-Bryan", "译:yobrave"]
 language = "zh-CN"
 
@@ -15,7 +15,7 @@ theme = "src/theme"
 curly-quotes = true
 google-analytics = "UA-128555056-1"
 additional-css = ["src/theme/custom.css"]
-git_repository_url = "https://github.com/chinanf-boy/mdbook-nice-example"
+git_repository_url = "https://github.com/chinanf-boy/mdbook-zh"
 git_repository_icon = "fa-github"
 
 [output.html.playpen]
