@@ -134,12 +134,16 @@ HTML 渲染器也有几个选项,在 TOML 下指定渲染器的所有选项.
 **git_repository_url** | 这本书的 git 存储库的 URL。如果提供,将在书的菜单栏中，输出图标链接.
 **git_repository_icon** | 用于 git 存储库链接的 FontAwesome 图标类。默认为`fa-github`.
 
+---
+
 `[output.html.playpen]`可用的配置选项表: | 描述
 ---|---
 **editable** | 允许编辑源代码。默认为`false`.
 **copy-js** | 将编辑器的 JavaScript 文件，复制到输出目录。默认为`true`.
 
 [ace]: https://ace.c9.io/
+
+---
 
 `[output.html.search]`可用的配置选项表: | 描述
 ---|---

@@ -29,8 +29,6 @@
 
     <!-- Custom theme stylesheets -->
     
-    <link rel="stylesheet" href="../src/theme/custom.css">
-    
 
     
     <!-- MathJax -->
@@ -269,10 +267,12 @@ command = &quot;python random.py&quot;
 <tr><td><strong>git_repository_url</strong> </td><td> 这本书的 git 存储库的 URL。如果提供,将在书的菜单栏中，输出图标链接.</td></tr>
 <tr><td><strong>git_repository_icon</strong> </td><td> 用于 git 存储库链接的 FontAwesome 图标类。默认为<code>fa-github</code>.</td></tr>
 </tbody></table>
+<hr />
 <table><thead><tr><th><code>[output.html.playpen]</code>可用的配置选项表: </th><th> 描述</th></tr></thead><tbody>
 <tr><td><strong>editable</strong> </td><td> 允许编辑源代码。默认为<code>false</code>.</td></tr>
 <tr><td><strong>copy-js</strong> </td><td> 将编辑器的 JavaScript 文件，复制到输出目录。默认为<code>true</code>.</td></tr>
 </tbody></table>
+<hr />
 <table><thead><tr><th><code>[output.html.search]</code>可用的配置选项表: </th><th> 描述</th></tr></thead><tbody>
 <tr><td><strong>enable</strong> </td><td> 启用搜索功能.默认为<code>true</code>.</td></tr>
 <tr><td><strong>limit-results</strong> </td><td> 搜索结果的最大数量.默认为<code>30</code>.</td></tr>
@@ -389,21 +389,6 @@ $ mdbook build
 
     </div>
 
-    
-    <!-- Livereload script (if served using the cli tool) -->
-    <script type="text/javascript">
-        var socket = new WebSocket("ws://localhost:3001");
-        socket.onmessage = function (event) {
-            if (event.data === "reload") {
-                socket.close();
-                location.reload(true); // force reload from server (not from cache)
-            }
-        };
-
-        window.onbeforeunload = function () {
-            socket.close();
-        }
-    </script>
     
 
     
