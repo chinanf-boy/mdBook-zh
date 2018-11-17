@@ -12,19 +12,19 @@
 {{name_of_property}}
 ```
 
-以下是公开的属性列表: | 描述
----|---
-**language** | 书的语言`en`。例如`<code class="language-html">\\<html lang="{{ language }}"></code>`。目前它是硬编码的.
-**title** | 该书的标题,如`book.toml`中所述
-**chapter_title** | 本章的标题,如`SUMMARY.md`下所列
-**path** | 源目录中原始markdown文件的相对路径
-**content** | 这是渲染的markdown.
-**path_to_root** | 这是一条完全包含`../`的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.
-**chapters** | 是一个字典数组
-    ```json
-    {"section": "1.2.1", "name": "name of this chapter", "path": "dir/markdown.md"}
-    ```
-    包含本书的所有章节.它用于例如构建目录(侧边栏).
+以下是公开的属性列表: 
+- **language** | 书的语言`en`。例如`<code class="language-html">\\<html lang="{{ language }}"></code>`。目前它是硬编码的.
+- **title** | 该书的标题,如`book.toml`中所述
+- **chapter_title** | 本章的标题,如`SUMMARY.md`下所列
+- **path** | 源目录中原始markdown文件的相对路径
+- **content** | 这是渲染的markdown.
+- **path_to_root** | 这是一条完全包含`../`的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.
+- **chapters** | 是一个字典数组
+
+```json
+{"section": "1.2.1", "name": "name of this chapter", "path": "dir/markdown.md"}
+```
+包含本书的所有章节.它用于例如构建目录(侧边栏).
 
 ## Handlebars 帮手
 
