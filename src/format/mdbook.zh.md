@@ -69,3 +69,11 @@ Rust文件的路径必须是当前源文件的相对路径.
 > 试试 点击 播放箭头
 
 [rust playpen]: https://play.rust-lang.org/
+
+### 要可编辑，请添加
+
+```hbs
+\{{#playpen example.rs editable}}
+```
+
+{{#playpen example.rs editable}}

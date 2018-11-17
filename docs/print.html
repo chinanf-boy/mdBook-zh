@@ -764,6 +764,17 @@ mathjax-support = true
 <blockquote>
 <p>试试 点击 播放箭头</p>
 </blockquote>
+<a class="header" href="#a要可编辑请添加" id="a要可编辑请添加"><h3>要可编辑，请添加</h3></a>
+<pre><code class="language-hbs">{{#playpen example.rs editable}}
+</code></pre>
+<pre><pre class="playpen"><code class="language-rust editable">fn main() {
+    println!(&quot;Hello World!&quot;);
+#
+#    // You can even hide lines! :D
+#   println!(&quot;I am hidden! Expand the code snippet to see me&quot;);
+}
+
+</code></pre></pre>
 <a class="header" href="#a在持续集成中运行-mdbook" id="a在持续集成中运行-mdbook"><h1>在持续集成中运行 <code>mdbook</code></h1></a>
 <p>虽然以下示例中使用在Travis CI,但原则上应该，也可以直接转移到其他持续集成提供商.</p>
 <a class="header" href="#a确保mdbook的构建与测试成功" id="a确保mdbook的构建与测试成功"><h2>确保mdbook的构建与测试成功</h2></a>
