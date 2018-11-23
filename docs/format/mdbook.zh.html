@@ -180,14 +180,14 @@
 </code></pre></pre>
 <a class="header" href="#include包含文件内容" id="include包含文件内容"><h2>include，包含文件内容</h2></a>
 <p>使用以下语法,您可以将文件包含到您的书中:</p>
-<pre><code class="language-hbs">{{#include file.rs}}
+<pre><code class="language-hbs">\{{#include file.rs}}
 </code></pre>
 <p>文件的路径必须是 <strong>当前</strong> 源文件的 <strong>相对</strong> 路径.</p>
 <p>通常,此命令用于包含代码段和示例。在这种情况下, 可指定文件的包含部分,例如其中只包含示例的相关行.</p>
-<pre><code class="language-hbs">{{#include file.rs:2}}
-{{#include file.rs::10}}
-{{#include file.rs:2:}}
-{{#include file.rs:2:10}}
+<pre><code class="language-hbs">\{{#include file.rs:2}}
+\{{#include file.rs::10}}
+\{{#include file.rs:2:}}
+\{{#include file.rs:2:10}}
 </code></pre>
 <p>我们支持四种不同的决定<code>file.rs</code>部分模式:</p>
 <ul>
@@ -198,33 +198,19 @@
 </ul>
 <a class="header" href="#a插入可运行的rust文件" id="a插入可运行的rust文件"><h2>插入可运行的Rust文件</h2></a>
 <p>使用以下语法,您可以将可运行的Rust文件插入到您的书中:</p>
-<pre><code class="language-hbs">{{#playpen file.rs}}
+<pre><code class="language-hbs">\{{#playpen file.rs}}
 </code></pre>
 <p>Rust文件的路径必须是当前源文件的相对路径.</p>
 <p>点击播放后,代码段将被发送到<a href="https://play.rust-lang.org/">rust的游乐场</a>编译和运行。结果被返回，并直接显示在代码下方.</p>
 <p>以下是代码段的渲染的样子:</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
-    println!(&quot;Hello World!&quot;);
-#
-#    // You can even hide lines! :D
-#   println!(&quot;I am hidden! Expand the code snippet to see me&quot;);
-}
-
-</code></pre></pre>
+<p>{{#playpen example.rs}}</p>
 <blockquote>
 <p>试试 点击 播放箭头</p>
 </blockquote>
 <a class="header" href="#a要可编辑请添加" id="a要可编辑请添加"><h3>要可编辑，请添加</h3></a>
-<pre><code class="language-hbs">{{#playpen example.rs editable}}
+<pre><code class="language-hbs">\{{#playpen example.rs editable}}
 </code></pre>
-<pre><pre class="playpen"><code class="language-rust editable">fn main() {
-    println!(&quot;Hello World!&quot;);
-#
-#    // You can even hide lines! :D
-#   println!(&quot;I am hidden! Expand the code snippet to see me&quot;);
-}
-
-</code></pre></pre>
+<p>{{#playpen example.rs editable}}</p>
 
                 </main>
 
