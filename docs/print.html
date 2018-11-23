@@ -563,13 +563,13 @@ $ mdbook build
 </code></pre>
 <p>以下是公开的属性列表:</p>
 <ul>
-<li><strong>language</strong> | 书的语言<code>en</code>。例如<code>&lt;code class=&quot;language-html&quot;&gt;\\&lt;html lang=&quot;{{ language }}&quot;&gt;&lt;/code&gt;</code>。目前它是硬编码的.</li>
-<li><strong>title</strong> | 该书的标题,如<code>book.toml</code>中所述</li>
-<li><strong>chapter_title</strong> | 本章的标题,如<code>SUMMARY.md</code>下所列</li>
-<li><strong>path</strong> | 源目录中原始markdown文件的相对路径</li>
-<li><strong>content</strong> | 这是渲染的markdown.</li>
-<li><strong>path_to_root</strong> | 这是一条完全包含<code>../</code>的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.</li>
-<li><strong>chapters</strong> | 是一个字典数组</li>
+<li><strong>language</strong> |&gt; 书的语言<code>en</code>。例如<code>&lt;code class=&quot;language-html&quot;&gt;\\&lt;html lang=&quot;{{ language }}&quot;&gt;&lt;/code&gt;</code>。目前它是硬编码的.</li>
+<li><strong>title</strong> |&gt; 该书的标题,如<code>book.toml</code>中所述</li>
+<li><strong>chapter_title</strong> |&gt; 本章的标题,如<code>SUMMARY.md</code>下所列</li>
+<li><strong>path</strong> |&gt; 源目录中原始markdown文件的相对路径</li>
+<li><strong>content</strong> |&gt; 这是渲染的markdown.</li>
+<li><strong>path_to_root</strong> |&gt; 这是一条完全包含<code>../</code>的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.</li>
+<li><strong>chapters</strong> |&gt; 是一个字典数组</li>
 </ul>
 <pre><code class="language-json">{&quot;section&quot;: &quot;1.2.1&quot;, &quot;name&quot;: &quot;name of this chapter&quot;, &quot;path&quot;: &quot;dir/markdown.md&quot;}
 </code></pre>
