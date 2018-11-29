@@ -14,9 +14,9 @@ description = "The example book covers examples."
 build-dir = "my-example-book"
 create-missing = false
 
-[preprocess.index]
+[preprocessor.index]
 
-[preprocess.links]
+[preprocessor.links]
 
 [output.html]
 additional-css = ["custom.css"]
@@ -78,9 +78,9 @@ src = "my-src"  # 源文件夹，用 `root/my-src` 替代 `root/src`
 build-dir = "build"
 create-missing = false
 
-[preprocess.links]
+[preprocessor.links]
 
-[preprocess.index]
+[preprocessor.index]
 ```
 
 ### 自定义预处理器配置
@@ -90,7 +90,7 @@ create-missing = false
 例如
 
 ```
-[preprocess.links]
+[preprocessor.links]
 # 设置此预处理器将运行的渲染器
 renderers = ["html"]
 some_extra_feature = true

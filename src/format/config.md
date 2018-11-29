@@ -14,9 +14,9 @@ description = "The example book covers examples."
 build-dir = "my-example-book"
 create-missing = false
 
-[preprocess.index]
+[preprocessor.index]
 
-[preprocess.links]
+[preprocessor.links]
 
 [output.html]
 additional-css = ["custom.css"]
@@ -92,9 +92,9 @@ The following preprocessors are available and included by default:
 build-dir = "build"
 create-missing = false
 
-[preprocess.links]
+[preprocessor.links]
 
-[preprocess.index]
+[preprocessor.index]
 ```
 
 ### Custom Preprocessor Configuration
@@ -106,7 +106,7 @@ configuration to the preprocessor by adding key-value pairs to the table.
 For example
 
 ```
-[preprocess.links]
+[preprocessor.links]
 # set the renderers this preprocessor will run for
 renderers = ["html"]
 some_extra_feature = true

@@ -172,9 +172,9 @@ description = &quot;The example book covers examples.&quot;
 build-dir = &quot;my-example-book&quot;
 create-missing = false
 
-[preprocess.index]
+[preprocessor.index]
 
-[preprocess.links]
+[preprocessor.links]
 
 [output.html]
 additional-css = [&quot;custom.css&quot;]
@@ -229,14 +229,14 @@ src = &quot;my-src&quot;  # 源文件夹，用 `root/my-src` 替代 `root/src`
 build-dir = &quot;build&quot;
 create-missing = false
 
-[preprocess.links]
+[preprocessor.links]
 
-[preprocess.index]
+[preprocessor.index]
 </code></pre>
 <a class="header" href="#a自定义预处理器配置" id="a自定义预处理器配置"><h3>自定义预处理器配置</h3></a>
 <p>与渲染器一样,预处理器需要有自己的表格(例如<code>[preprocessor.mathjax]</code>)。在该部分中,您可以通过向特有表中，添加键值对来将额外配置传递给预处理器.</p>
 <p>例如</p>
-<pre><code>[preprocess.links]
+<pre><code>[preprocessor.links]
 # 设置此预处理器将运行的渲染器
 renderers = [&quot;html&quot;]
 some_extra_feature = true

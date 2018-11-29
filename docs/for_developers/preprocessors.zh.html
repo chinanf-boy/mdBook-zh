@@ -163,7 +163,7 @@
                     <a class="header" href="#preprocessors" id="preprocessors"><h1>Preprocessors</h1></a>
 <p>一个<em>预处理器</em>只是一些代码，运行在加载书之后,和渲染之前,允许您更新和改变本书。可能的用例是:</p>
 <ul>
-<li>创建自定义帮助程序<code>\{{#include /path/to/file.md}}</code></li>
+<li>创建自定义帮助程序<code>{{#include /path/to/file.md}}</code></li>
 <li>更新链接<code>[some chapter](some_chapter.md)</code>自动更改为<code>[some chapter](some_chapter.html)</code>，这是 HTML 渲染器功能</li>
 <li>用 latex 样式(<code>$$ \frac{1}{3} $$</code>)的表达式代替为 mathjax 的等价物</li>
 </ul>
@@ -184,13 +184,122 @@ renderer = [&quot;html&quot;, &quot;epub&quot;]
 <p>最简单的入门方法是创建自己的实现<code>Preprocessor</code> trait(例如在<code>lib.rs</code>)，然后创建一个 shell 二进制文件,将输入转换为正确的<code>Preprocessor</code>方法。为方便起见,有个<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs">无操作预处理器:示例</a>在<code>examples/</code>目录,可以很容易地适应其他预处理器.</p>
 <p><details>
 <summary>Example 无操作预处理器</summary></p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-// nop-preprocessors.rs
+<pre><pre class="playpen"><code class="language-rust">// nop-preprocessors.rs
 
-{{#include ../../examples/nop-preprocessor.rs}}
-#}</code></pre></pre>
+extern crate clap;
+extern crate mdbook;
+extern crate serde_json;
+
+use clap::{App, Arg, ArgMatches, SubCommand};
+use mdbook::book::Book;
+use mdbook::errors::Error;
+use mdbook::preprocess::{CmdPreprocessor, Preprocessor, PreprocessorContext};
+use std::io;
+use std::process;
+use nop_lib::Nop;
+
+pub fn make_app() -&gt; App&lt;'static, 'static&gt; {
+    App::new(&quot;nop-preprocessor&quot;)
+        .about(&quot;A mdbook preprocessor which does precisely nothing&quot;)
+        .subcommand(
+            SubCommand::with_name(&quot;supports&quot;)
+                .arg(Arg::with_name(&quot;renderer&quot;).required(true))
+                .about(&quot;Check whether a renderer is supported by this preprocessor&quot;))
+}
+
+fn main() {
+    let matches = make_app().get_matches();
+
+    // Users will want to construct their own preprocessor here
+    let preprocessor = Nop::new();
+
+    if let Some(sub_args) = matches.subcommand_matches(&quot;supports&quot;) {
+        handle_supports(&amp;preprocessor, sub_args);
+    } else {
+        if let Err(e) = handle_preprocessing(&amp;preprocessor) {
+            eprintln!(&quot;{}&quot;, e);
+            process::exit(1);
+        }
+    }
+}
+
+fn handle_preprocessing(pre: &amp;dyn Preprocessor) -&gt; Result&lt;(), Error&gt; {
+    let (ctx, book) = CmdPreprocessor::parse_input(io::stdin())?;
+
+    if ctx.mdbook_version != mdbook::MDBOOK_VERSION {
+        // We should probably use the `semver` crate to check compatibility
+        // here...
+        eprintln!(
+            &quot;Warning: The {} plugin was built against version {} of mdbook, \
+             but we're being called from version {}&quot;,
+            pre.name(),
+            mdbook::MDBOOK_VERSION,
+            ctx.mdbook_version
+        );
+    }
+
+    let processed_book = pre.run(&amp;ctx, book)?;
+    serde_json::to_writer(io::stdout(), &amp;processed_book)?;
+
+    Ok(())
+}
+
+fn handle_supports(pre: &amp;dyn Preprocessor, sub_args: &amp;ArgMatches) -&gt; ! {
+    let renderer = sub_args.value_of(&quot;renderer&quot;).expect(&quot;Required argument&quot;);
+    let supported = pre.supports_renderer(&amp;renderer);
+
+    // Signal whether the renderer is supported by exiting with 1 or 0.
+    if supported {
+        process::exit(0);
+    } else {
+        process::exit(1);
+    }
+}
+
+/// The actual implementation of the `Nop` preprocessor. This would usually go
+/// in your main `lib.rs` file.
+mod nop_lib {
+    use super::*;
+
+    /// A no-op preprocessor.
+    pub struct Nop;
+
+    impl Nop {
+        pub fn new() -&gt; Nop {
+            Nop
+        }
+    }
+
+    impl Preprocessor for Nop {
+        fn name(&amp;self) -&gt; &amp;str {
+            &quot;nop-preprocessor&quot;
+        }
+
+        fn run(
+            &amp;self,
+            ctx: &amp;PreprocessorContext,
+            book: Book,
+        ) -&gt; Result&lt;Book, Error&gt; {
+            // In testing we want to tell the preprocessor to blow up by setting a
+            // particular config value
+            if let Some(nop_cfg) = ctx.config.get_preprocessor(self.name()) {
+                if nop_cfg.contains_key(&quot;blow-up&quot;) {
+                    return Err(&quot;Boom!!1!&quot;.into());
+                }
+            }
+
+            // we *are* a no-op preprocessor after all
+            Ok(book)
+        }
+
+        fn supports_renderer(&amp;self, renderer: &amp;str) -&gt; bool {
+            renderer != &quot;not-supported&quot;
+        }
+    }
+}
+
+
+</code></pre></pre>
 <p></details></p>
 <a class="header" href="#a实现一个预处理器的提示" id="a实现一个预处理器的提示"><h2>实现一个预处理器的提示</h2></a>
 <p>通过拉取<code>mdbook</code>，作为一个库,预处理器可以访问现有的基础架构来处理书籍.</p>
