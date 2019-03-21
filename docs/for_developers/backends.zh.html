@@ -161,24 +161,33 @@
             <div id="content" class="content">
                 <main>
                     <a class="header" href="#a备用后端" id="a备用后端"><h1>备用后端</h1></a>
-<p>“后端”只是一个，<code>mdbook</code>在书籍渲染过程中调用的程序。该程序会拿到传递到<code>stdin</code>的书籍和配置信息的JSON表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.</p>
-<p>GitHub上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.</p>
+<p>“后端”只是一个，<code>mdbook</code>在书籍渲染过程中调用的程序。该程序会拿到传递到<code>stdin</code>的书籍和配置信息的 JSON 表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.</p>
+<p>GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.</p>
 <ul>
 <li><a href="https://github.com/Michael-F-Bryan/mdbook-linkcheck">mdbook-linkcheck</a>- 用于验证书籍的简单程序，不包含任何损坏的链接</li>
-<li><a href="https://github.com/Michael-F-Bryan/mdbook-epub">mdbook-epub</a>-  EPUB渲染器</li>
-<li>[mdboob-test]- 一个使用<a href="https://github.com/budziq/rust-skeptic">rust-skeptic</a>运用书籍内容的程序，会验证一切编译且正确(类似于<code>rustdoc --test</code>)</li>
+<li><a href="https://github.com/Michael-F-Bryan/mdbook-epub">mdbook-epub</a>- EPUB 渲染器</li>
+<li><a href="https://github.com/Michael-F-Bryan/mdbook-test">mdbook-test</a>- 一个使用<a href="https://github.com/budziq/rust-skeptic">rust-skeptic</a>运用书籍内容的程序，会验证一切编译且正确(类似于<code>rustdoc --test</code>)</li>
 </ul>
-<p>此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用Rust编写,但没有理由不能用Python或Ruby之类，来完成它.</p>
+<p>此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用 Rust 编写,但没有理由不能用 Python 或 Ruby 之类，来完成它.</p>
 <a class="header" href="#a目录" id="a目录"><h2>目录</h2></a>
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%A5%BD">设置好</a></li>
+<li><a href="#%E6%A3%80%E6%9F%A5-book">检查 Book</a></li>
+<li><a href="#%E5%90%AF%E7%94%A8%E5%90%A7%E6%88%91%E7%9A%84-backend">启用吧，我的 Backend</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%92%8C%E4%BF%A1%E5%8F%B7%E6%95%85%E9%9A%9C">输出和信号故障</a></li>
+<li><a href="#%E5%8C%85%E6%B6%B5%E5%8C%85%E6%B6%B5">包涵包涵</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <a class="header" href="#a设置好" id="a设置好"><h2>设置好</h2></a>
 <p>首先,您需要创建一个新的二进制程序，并添加<code>mdbook</code>作为依赖.</p>
 <pre><code>$ cargo new --bin mdbook-wordcount
-$ cd mdbook-wordcount 
+$ cd mdbook-wordcount
 $ cargo add mdbook
 </code></pre>
-<p>捋一捋，当我们的<code>mdbook-wordcount</code>插件被调用,<code>mdbook</code>将通过我们的插件的<code>stdin</code>，发送它<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的JSON版本。为方便起见,有一个<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html#method.from_json"><code>RenderContext::from_json()</code></a>构造函数，加载一个<code>RenderContext</code>.</p>
+<p>捋一捋，当我们的<code>mdbook-wordcount</code>插件被调用,<code>mdbook</code>将通过我们的插件的<code>stdin</code>，发送它<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的 JSON 版本。为方便起见,有一个<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html#method.from_json"><code>RenderContext::from_json()</code></a>构造函数，加载一个<code>RenderContext</code>.</p>
 <p>这是我们后端加载本书，所需的所有样板.</p>
 <pre><pre class="playpen"><code class="language-rust">// src/main.rs
 extern crate mdbook;
@@ -228,8 +237,8 @@ fn count_words(ch: &amp;Chapter) -&gt; usize {
 
 + [output.wordcount]
 </code></pre>
-<p>当<code>mdbook</code>将一本书加载到内存中时，它会尝试检查你的<code>book.toml</code>，并查找所有<code>output.*</code>表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的HTML渲染器.</p>
-<p>值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加HTML后端,即使只是空表格。</p>
+<p>当<code>mdbook</code>将一本书加载到内存中时，它会尝试检查你的<code>book.toml</code>，并查找所有<code>output.*</code>表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的 HTML 渲染器.</p>
+<p>值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加 HTML 后端,即使只是空表格。</p>
 <p>现在你只需要像平常一样构建你的书,一切都应该<em>干得好</em>.</p>
 <pre><code>$ mdbook build
 ...
@@ -294,37 +303,37 @@ pub struct WordcountConfig {
 +     let cfg: WordcountConfig = ctx.config
 +         .get_deserialized(&quot;output.wordcount&quot;)
 +         .unwrap_or_default();
-  
+
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
 +             if cfg.ignores.contains(&amp;ch.name) {
 +                 continue;
 +             }
-+ 
++
               let num_words = count_words(ch);
               println!(&quot;{}: {}&quot;, ch.name, num_words);
           }
       }
   }
 </code></pre>
-<a class="header" href="#output-and-signalling-failure" id="output-and-signalling-failure"><h2>Output and Signalling Failure</h2></a>
+<a class="header" href="#a输出和信号故障" id="a输出和信号故障"><h2>输出和信号故障</h2></a>
 <p>虽然在构建书籍时，将字数计数打印到终端是很好的，但将它们输出到某个文件也可能是个好主意。<code>mdbook</code>能告诉后端，它应该根据<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的<code>destination</code>字段，放置输出的位置，.</p>
 <pre><code class="language-diff">+ use std::fs::{self, File};
 + use std::io::{self, Write};
 - use std::io;
   use mdbook::renderer::RenderContext;
   use mdbook::book::{BookItem, Chapter};
-  
+
   fn main() {
     ...
-  
+
 +     let _ = fs::create_dir_all(&amp;ctx.destination);
 +     let mut f = File::create(ctx.destination.join(&quot;wordcounts.txt&quot;)).unwrap();
-+ 
++
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
               ...
-  
+
               let num_words = count_words(ch);
               println!(&quot;{}: {}&quot;, ch.name, num_words);
 +             writeln!(f, &quot;{}: {}&quot;, ch.name, num_words).unwrap();
@@ -342,11 +351,11 @@ pub struct WordcountConfig {
 
   fn main() {
       ...
-  
+
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
               ...
-  
+
               let num_words = count_words(ch);
               println!(&quot;{}: {}&quot;, ch.name, num_words);
               writeln!(f, &quot;{}: {}&quot;, ch.name, num_words).unwrap();

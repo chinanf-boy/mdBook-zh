@@ -1,19 +1,28 @@
 # 备用后端
 
-"后端"只是一个，`mdbook`在书籍渲染过程中调用的程序。该程序会拿到传递到`stdin`的书籍和配置信息的JSON表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.
+"后端"只是一个，`mdbook`在书籍渲染过程中调用的程序。该程序会拿到传递到`stdin`的书籍和配置信息的 JSON 表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.
 
-GitHub上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.
+GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.
 
--   [mdbook-linkcheck]- 用于验证书籍的简单程序，不包含任何损坏的链接
--   [mdbook-epub]-  EPUB渲染器
--   [mdboob-test]- 一个使用[rust-skeptic]运用书籍内容的程序，会验证一切编译且正确(类似于`rustdoc --test`)
+- [mdbook-linkcheck]- 用于验证书籍的简单程序，不包含任何损坏的链接
+- [mdbook-epub]- EPUB 渲染器
+- [mdbook-test]- 一个使用[rust-skeptic]运用书籍内容的程序，会验证一切编译且正确(类似于`rustdoc --test`)
 
-此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用Rust编写,但没有理由不能用Python或Ruby之类，来完成它.
+此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用 Rust 编写,但没有理由不能用 Python 或 Ruby 之类，来完成它.
 
 ## 目录
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [设置好](#%E8%AE%BE%E7%BD%AE%E5%A5%BD)
+- [检查 Book](#%E6%A3%80%E6%9F%A5-book)
+- [启用吧，我的 Backend](#%E5%90%AF%E7%94%A8%E5%90%A7%E6%88%91%E7%9A%84-backend)
+- [配置](#%E9%85%8D%E7%BD%AE)
+- [输出和信号故障](#%E8%BE%93%E5%87%BA%E5%92%8C%E4%BF%A1%E5%8F%B7%E6%95%85%E9%9A%9C)
+- [包涵包涵](#%E5%8C%85%E6%B6%B5%E5%8C%85%E6%B6%B5)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 设置好
 
@@ -21,11 +30,11 @@ GitHub上已有几个备用后端,可以作为你实践，如何实现这一功�
 
 ```
 $ cargo new --bin mdbook-wordcount
-$ cd mdbook-wordcount 
+$ cd mdbook-wordcount
 $ cargo add mdbook
 ```
 
-捋一捋，当我们的`mdbook-wordcount`插件被调用,`mdbook`将通过我们的插件的`stdin`，发送它[`RenderContext`]的JSON版本。为方便起见,有一个[`RenderContext::from_json()`]构造函数，加载一个`RenderContext`.
+捋一捋，当我们的`mdbook-wordcount`插件被调用,`mdbook`将通过我们的插件的`stdin`，发送它[`RenderContext`]的 JSON 版本。为方便起见,有一个[`RenderContext::from_json()`]构造函数，加载一个`RenderContext`.
 
 这是我们后端加载本书，所需的所有样板.
 
@@ -91,9 +100,9 @@ $ cargo install
 + [output.wordcount]
 ```
 
-当`mdbook`将一本书加载到内存中时，它会尝试检查你的`book.toml`，并查找所有`output.*`表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的HTML渲染器.
+当`mdbook`将一本书加载到内存中时，它会尝试检查你的`book.toml`，并查找所有`output.*`表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的 HTML 渲染器.
 
-值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加HTML后端,即使只是空表格。
+值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加 HTML 后端,即使只是空表格。
 
 现在你只需要像平常一样构建你的书,一切都应该*干得好*.
 
@@ -174,13 +183,13 @@ pub struct WordcountConfig {
 +     let cfg: WordcountConfig = ctx.config
 +         .get_deserialized("output.wordcount")
 +         .unwrap_or_default();
-  
+
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
 +             if cfg.ignores.contains(&ch.name) {
 +                 continue;
 +             }
-+ 
++
               let num_words = count_words(ch);
               println!("{}: {}", ch.name, num_words);
           }
@@ -188,7 +197,7 @@ pub struct WordcountConfig {
   }
 ```
 
-## Output and Signalling Failure
+## 输出和信号故障
 
 虽然在构建书籍时，将字数计数打印到终端是很好的，但将它们输出到某个文件也可能是个好主意。`mdbook`能告诉后端，它应该根据[`RenderContext`]的`destination`字段，放置输出的位置，.
 
@@ -198,17 +207,17 @@ pub struct WordcountConfig {
 - use std::io;
   use mdbook::renderer::RenderContext;
   use mdbook::book::{BookItem, Chapter};
-  
+
   fn main() {
     ...
-  
+
 +     let _ = fs::create_dir_all(&ctx.destination);
 +     let mut f = File::create(ctx.destination.join("wordcounts.txt")).unwrap();
-+ 
++
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
               ...
-  
+
               let num_words = count_words(ch);
               println!("{}: {}", ch.name, num_words);
 +             writeln!(f, "{}: {}", ch.name, num_words).unwrap();
@@ -229,11 +238,11 @@ pub struct WordcountConfig {
 
   fn main() {
       ...
-  
+
       for item in ctx.book.iter() {
           if let BookItem::Chapter(ref ch) = *item {
               ...
-  
+
               let num_words = count_words(ch);
               println!("{}: {}", ch.name, num_words);
               writeln!(f, "{}: {}", ch.name, num_words).unwrap();
@@ -281,23 +290,13 @@ init has an odd number of words!
 在本章开头提到的现有后端，应该是现实生活中如何完成后端的很好例子,所以请随意浏览源代码，或提出问题.
 
 [mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
-
 [mdbook-epub]: https://github.com/Michael-F-Bryan/mdbook-epub
-
 [mdbook-test]: https://github.com/Michael-F-Bryan/mdbook-test
-
 [rust-skeptic]: https://github.com/budziq/rust-skeptic
-
 [`rendercontext`]: http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html
-
 [`rendercontext::from_json()`]: http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html#method.from_json
-
 [`semver`]: https://crates.io/crates/semver
-
 [`book`]: http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html
-
 [`book::iter()`]: http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html#method.iter
-
 [`config`]: http://rust-lang-nursery.github.io/mdBook/mdbook/config/struct.Config.html
-
 [issue tracker]: https://github.com/rust-lang-nursery/mdBook/issues
