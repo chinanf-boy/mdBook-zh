@@ -73,7 +73,7 @@ Rust文件的路径必须是当前源文件的相对路径.
 ### 要可编辑，请添加
 
 ```hbs
-\{{#playpen example.rs editable}}
+\{{#playpen example.rs editable no_run should_panic}}
 ```
 
 {{#playpen example.rs editable}}
