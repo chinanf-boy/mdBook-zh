@@ -1,11 +1,14 @@
+SKIPS=""
+
 cat './.mds-list' | while read line || [[ -n ${line} ]]
 do
     testseq="zh.md"
+    removeDirPath="/book-example"
     if [[ $line =~ $testseq || "$line" == "" ]]; then
-        echo "skip $line"
+        SKIPS="$SKIPS \n Skip $line"
     else
-        lowline=`echo "$line" | awk '{print tolower($0)}'`
-        # lowwer string
+        lowline=`echo "$line" | awk '{print tolower($0)}'` # lowwer string
+
         zh=${line//source\//}
         dir=$(dirname $zh)
         
@@ -17,7 +20,10 @@ do
         # source/other.md => ./other.md
         filename=$(basename $zh)
         fi
+        dir=${dir/$removeDirPath/}
         echo "$line >> $dir/$filename"
         mkdir -p $dir && cp $line "$_/$filename"
     fi
 done
+
+echo $SKIPS
