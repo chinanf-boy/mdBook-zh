@@ -1,4 +1,4 @@
-# rust-lang-nursery/mdBook  [![translate-svg]][translate-list]
+# rust-lang-nursery/mdBook [![translate-svg]][translate-list]
 
 <!-- [![explain]][source] -->
 
@@ -17,20 +17,20 @@
 
 <!-- doc-templite START generated -->
 <!-- repo = 'rust-lang-nursery/mdBook' -->
-<!-- commit = '42b87e0fbc6815ae2177a5fc4838dad11a33fe4f' -->
-<!-- time = '2018-10-30' -->
+<!-- commit = 'a873d468711e14fc291b69f23f50b6769f9e6dab' -->
+<!-- time = '2019-08-30' -->
 翻译的原文 | 与日期 | 最新更新 | 更多
 ---|---|---|---
-[commit] | ⏰ 2018-10-30 | ![last] | [中文翻译][translate-list]
+[commit] | ⏰ 2019-08-30 | ![last] | [中文翻译][translate-list]
 
 [last]: https://img.shields.io/github/last-commit/rust-lang-nursery/mdBook.svg
-[commit]: https://github.com/rust-lang-nursery/mdBook/tree/42b87e0fbc6815ae2177a5fc4838dad11a33fe4f
+[commit]: https://github.com/rust-lang-nursery/mdBook/tree/a873d468711e14fc291b69f23f50b6769f9e6dab
 
 <!-- doc-templite END generated -->
 
-～*～ | 模范示例
----|---
-[中文网址](https://chinanf-boy.github.io/mdBook-zh) | [github](https://github.com/chinanf-boy/mdbook-nice-example)
+| ～\*～                                              | 模范示例                                                     |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| [中文网址](https://chinanf-boy.github.io/mdBook-zh) | [github](https://github.com/chinanf-boy/mdbook-nice-example) |
 
 <details>
 
@@ -64,7 +64,6 @@
 
 </details>
 
-
 ### 贡献
 
 欢迎 👏 勘误/校对/更新贡献 😊 [具体贡献请看](https://github.com/chinanf-boy/chinese-translate-list#贡献)
@@ -81,7 +80,7 @@
     <tr>
         <td><strong>Linux / OS X</strong></td>
         <td>
-            <a href="https://travis-ci.org/rust-lang-nursery/mdBook"><img src="https://travis-ci.org/rust-lang-nursery/mdBook.svg?branch=master"></a>
+            <a href="https://travis-ci.com/rust-lang-nursery/mdBook"><img src="https://travis-ci.org/rust-lang-nursery/mdBook.svg?branch=master"></a>
         </td>
     </tr>
     <tr>
@@ -129,7 +128,7 @@ mdBook 是一个从 Markdown 文件创建现代在线书籍的实用程序.
 
 2.  **来自 Crates.io**
 
-    这至少需要[rust]1.20 和 Cargo 安装.安装 Rust 后,在终端中键入以下内容:
+    这至少需要[rust] 1.34 和 Cargo 安装.安装 Rust 后,在终端中键入以下内容:
 
     ```
     cargo install mdbook
@@ -223,6 +222,7 @@ mdBook 将主要用作命令行工具,即使它将其所有功能公开为 Rust 
 渲染器将 ​​ 获得最终的书籍,以便他们可以使用它。顾名思义,这通常用于以特定格式渲染文档，但是没有什么能阻止渲染器对书籍进行静态分析，以验证链接或运行测试。一些现有的渲染器是:
 
 - `html`- 内置渲染器,它将生成该书的 HTML 版本
+- `markdown` - 内置渲染器(默认禁用) 输出结果的 markdown。可用于调试预处理器。
 - [`linkcheck`]- 后端将检查所有链接是否有效
 - [`epub`]- 实验性 EPUB 生成
 
@@ -277,6 +277,6 @@ $ mdbook build
 [releases]: https://github.com/rust-lang-nursery/mdBook/releases
 [rust]: https://www.rust-lang.org/
 [cli docs]: http://rust-lang-nursery.github.io/mdBook/cli/init.html
-[master-docs]: http://rust-lang-nursery.github.io/mdBook/mdbook/
+[master-docs]: http://rust-lang-nursery.github.io/mdBook/
 [`linkcheck`]: https://crates.io/crates/mdbook-linkcheck
 [`epub`]: https://crates.io/crates/mdbook-epub

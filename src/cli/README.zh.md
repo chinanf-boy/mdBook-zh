@@ -13,7 +13,7 @@ mdBook也可以从源代码安装
 
 ### Pre-requisite
 
-mdBook是写的 **[Rust](https://www.rust-lang.org/)** 因此需要**Cargo**编译。如果您还没有安装Rust,请现在就[官方安装](https://www.rust-lang.org/zh-CN/install.html).
+mdBook是写的 **[Rust](https://www.rust-lang.org/)** 因此需要**Cargo**编译。如果您还没有安装Rust，请现在就[官方安装](https://www.rust-lang.org/zh-CN/tools/install)。
 
 ### 安装 Crates.io 的版本
 

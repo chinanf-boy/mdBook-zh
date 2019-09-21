@@ -26,8 +26,6 @@
 
 如何找到使用`mdbook`箱子最简单方法，答案就是[API文档][api docs]。顶级API文档解释了如何使用[`MDBook`]类型，加载和构建一本书,而[config]模块很好地解释了配置系统.
 
-[`mdbook`]: http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.MDBook.html
-
-[api docs]: https://docs.rs/mdbook/*/mdbook/
-
-[config]: file:///home/michael/Documents/forks/mdBook/target/doc/mdbook/config/index.html
+[`MDBook`]: https://docs.rs/mdbook/*/mdbook/book/struct.MDBook.html
+[API Docs]: https://docs.rs/mdbook/*/mdbook/
+[config]: https://docs.rs/mdbook/*/mdbook/config/index.html
