@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,16 +160,16 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#theme" id="theme"><h1>Theme</h1></a>
+                    <h1><a class="header" href="#theme" id="theme">Theme</a></h1>
 <p>默认渲染器使用一个<a href="http://handlebarsjs.com/">handlebars</a>模板，用于渲染markdown文件,并mdBook二进制文件包含默认主题.</p>
 <p>主题是完全可定制的,您可以通过在根目录<code>src</code>旁边，新建一个<code>theme</code>文件夹，在其中选择性地添加文件名称，覆盖主题的任意文件。</p>
-<table><thead><tr><th>以下是您可以覆盖的文件: </th><th> 描述</th></tr></thead><tbody>
-<tr><td><strong>index.hbs</strong> </td><td> hbs模板.</td></tr>
-<tr><td><strong>book.css</strong> </td><td> 是输出中使用的样式。如果要更改图书的设计,可能是您要修改的文件。有时与<code>index.hbs</code>一起，当你想从根本上改变布局.</td></tr>
-<tr><td><strong>book.js</strong> </td><td> 主要用于添加客户端功能,如隐藏/取消隐藏侧边栏,更改主题,...</td></tr>
-<tr><td><strong>highlight.js</strong> </td><td> 是用于突出显示代码片段的JavaScript,您不需要修改它.</td></tr>
-<tr><td><strong>highlight.css</strong> </td><td> 是用于代码突出显示的主题</td></tr>
-<tr><td><strong>favicon.png</strong> </td><td> 将使用的favicon</td></tr>
+<table><thead><tr><th>以下是您可以覆盖的文件:</th><th>描述</th></tr></thead><tbody>
+<tr><td><strong>index.hbs</strong></td><td>hbs模板.</td></tr>
+<tr><td><strong>book.css</strong></td><td>是输出中使用的样式。如果要更改图书的设计,可能是您要修改的文件。有时与<code>index.hbs</code>一起，当你想从根本上改变布局.</td></tr>
+<tr><td><strong>book.js</strong></td><td>主要用于添加客户端功能,如隐藏/取消隐藏侧边栏,更改主题,...</td></tr>
+<tr><td><strong>highlight.js</strong></td><td>是用于突出显示代码片段的JavaScript,您不需要修改它.</td></tr>
+<tr><td><strong>highlight.css</strong></td><td>是用于代码突出显示的主题</td></tr>
+<tr><td><strong>favicon.png</strong></td><td>将使用的favicon</td></tr>
 </tbody></table>
 <p>通常,当您想要调整主题时,您不需要覆盖所有文件。如果您只需要更改css样式表,那么覆盖所有其他文件是没有意义的。由于自定义文件优先于内置文件，那以后的新的修补程序/功能，你都更新不了。</p>
 <p><strong>注意:</strong> 覆盖文件时,可能会破坏某些功能。因此,我建议使用默认主题中的文件作为模板,只添加/修改您需要的内容。您可以使用<code>mdbook init --theme</code>命令自动将默认主题自动复制到源目录中，只需删除您不想覆盖的文件.</p>

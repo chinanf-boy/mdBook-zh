@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,16 +160,16 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#indexhbs" id="indexhbs"><h1>index.hbs</h1></a>
+                    <h1><a class="header" href="#indexhbs" id="indexhbs">index.hbs</a></h1>
 <p><code>index.hbs</code>是用于渲染书籍的hbs模板。markdown文件被处理为html,然后注入该模板.</p>
 <p>如果您想更改图书的布局或样式,您可能需要稍微修改此模板。那下面是你需要知道的。</p>
-<a class="header" href="#data" id="data"><h2>Data</h2></a>
+<h2><a class="header" href="#data" id="data">Data</a></h2>
 <p>大量数据通过”上下文”暴露给hbs模板.在hbs模板中,您可以使用以下方式访问此信息</p>
 <pre><code class="language-handlebars">{{name_of_property}}
 </code></pre>
-<p>以下是公开的属性列表:</p>
+<p>以下是公开的属性列表: </p>
 <ul>
-<li><strong>language</strong> |&gt; 书的语言<code>en</code>。例如<code>&lt;code class=&quot;language-html&quot;&gt;\\&lt;html lang=&quot;{{ language }}&quot;&gt;&lt;/code&gt;</code>。目前它是硬编码的.</li>
+<li><strong>language</strong> |&gt; 书的语言<code>en</code>。例如<code>&lt;code class=&quot;language-html&quot;&gt;\\&lt;html lang=&quot;{{ language }}&quot;&gt;&lt;/code&gt;</code>。</li>
 <li><strong>title</strong> |&gt; 该书的标题,如<code>book.toml</code>中所述</li>
 <li><strong>chapter_title</strong> |&gt; 本章的标题,如<code>SUMMARY.md</code>下所列</li>
 <li><strong>path</strong> |&gt; 源目录中原始markdown文件的相对路径</li>
@@ -180,9 +180,9 @@
 <pre><code class="language-json">{&quot;section&quot;: &quot;1.2.1&quot;, &quot;name&quot;: &quot;name of this chapter&quot;, &quot;path&quot;: &quot;dir/markdown.md&quot;}
 </code></pre>
 <p>包含本书的所有章节.它用于例如构建目录(侧边栏).</p>
-<a class="header" href="#handlebars-帮手" id="handlebars-帮手"><h2>Handlebars 帮手</h2></a>
+<h2><a class="header" href="#handlebars-帮手" id="handlebars-帮手">Handlebars 帮手</a></h2>
 <p>除了您可以访问的属性外,您还可以使用一些hbs帮手.</p>
-<a class="header" href="#a1-toc" id="a1-toc"><h3>1. toc</h3></a>
+<h3><a class="header" href="#1-toc" id="1-toc">1. toc</a></h3>
 <pre><code>toc助手就像这样使用
 
 ```handlebars
@@ -212,7 +212,7 @@ var chapters = {{chapters}};
 &lt;/script&gt;
 ```
 </code></pre>
-<a class="header" href="#a2-previous--next" id="a2-previous--next"><h3>2. previous / next</h3></a>
+<h3><a class="header" href="#2-previous--next" id="2-previous--next">2. previous / next</a></h3>
 <pre><code>上一个和下一个助手将`link`和`name`属性暴露给前一章和下一章。
 
 就像这样使用

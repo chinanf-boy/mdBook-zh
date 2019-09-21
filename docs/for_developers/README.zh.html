@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,7 +160,7 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#a致-developers" id="a致-developers"><h1>致 Developers</h1></a>
+                    <h1><a class="header" href="#致-developers" id="致-developers">致 Developers</a></h1>
 <p>虽然<code>mdbook</code>主要用作命令行工具, 但您也可以直接导入底层库，并使用它来管理书籍。它还具有相当灵活的插件机制，允许您创建自己的自定义工具和消费者(通常称为<em>后端</em>)，如果您需要对书籍进行一些分析，或以不同的格式渲染它.</p>
 <p>该<em>对于开发人员</em>章节在这里向您展示<code>mdbook</code>更高级的用法.</p>
 <p>开发人员可以通过以下两种方式，影响本书的构建过程,</p>
@@ -168,7 +168,7 @@
 <li><a href="preprocessors.html">Preprocessors-预处理器</a></li>
 <li><a href="backends.html">Alternate Backends - 备用后端</a></li>
 </ul>
-<a class="header" href="#a构建过程" id="a构建过程"><h2>构建过程</h2></a>
+<h2><a class="header" href="#构建过程" id="构建过程">构建过程</a></h2>
 <p>渲染图书项目的过程经历了几个步骤.</p>
 <ol>
 <li>加载书
@@ -181,9 +181,9 @@
 <li>运行预处理器</li>
 <li>依次运行每个后端</li>
 </ol>
-<a class="header" href="#mdbook作为库使用" id="mdbook作为库使用"><h2><code>mdbook</code>作为库使用</h2></a>
+<h2><a class="header" href="#mdbook作为库使用" id="mdbook作为库使用"><code>mdbook</code>作为库使用</a></h2>
 <p><code>mdbook</code>二进制只是一个<code>mdbook</code>箱的包装器,将其功能暴露出来，作为命令行程序。因此,很容易自制使用<code>mdbook</code>的程序,并添加自己的功能(例如自定义预处理器)或调整构建过程.</p>
-<p>如何找到使用<code>mdbook</code>箱子最简单方法，答案就是<a href="https://docs.rs/mdbook/*/mdbook/">API文档</a>。顶级API文档解释了如何使用<a href="http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.MDBook.html"><code>MDBook</code></a>类型，加载和构建一本书,而<a href="file:///home/michael/Documents/forks/mdBook/target/doc.html">config</a>模块很好地解释了配置系统.</p>
+<p>如何找到使用<code>mdbook</code>箱子最简单方法，答案就是<a href="https://docs.rs/mdbook/*/mdbook/">API文档</a>。顶级API文档解释了如何使用<a href="https://docs.rs/mdbook/*/mdbook/book/struct.MDBook.html"><code>MDBook</code></a>类型，加载和构建一本书,而<a href="https://docs.rs/mdbook/*/mdbook/config/index.html">config</a>模块很好地解释了配置系统.</p>
 
                 </main>
 

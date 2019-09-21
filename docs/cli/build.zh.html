@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,19 +160,19 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#build-命令" id="build-命令"><h1>build 命令</h1></a>
+                    <h1><a class="header" href="#build-命令" id="build-命令">build 命令</a></h1>
 <p>构建命令,用于渲染您的 md,并输出静态 html:</p>
 <pre><code class="language-bash">mdbook build
 </code></pre>
 <p>它会尝试解析你的<code>SUMMARY.md</code>文件，以了解您的图书的结构并获取相应的文件.</p>
 <p>为方便起见,渲染的输出将保持与源目录结构相同。因此,大型书籍在渲染时能保持结构化.</p>
-<a class="header" href="#a指定目录" id="a指定目录"><h4>指定目录</h4></a>
+<h4><a class="header" href="#指定目录" id="指定目录">指定目录</a></h4>
 <p><code>build</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
 <pre><code class="language-bash">mdbook build path/to/book
 </code></pre>
-<a class="header" href="#a--open" id="a--open"><h4>--open</h4></a>
+<h4><a class="header" href="#--open" id="--open">--open</a></h4>
 <p>当你使用<code>--open</code>(<code>-o</code>),mdbook 将在构建之后，在默认 Web 浏览器中打开网页书.</p>
-<a class="header" href="#a--dest-dir" id="a--dest-dir"><h4>--dest-dir</h4></a>
+<h4><a class="header" href="#--dest-dir" id="--dest-dir">--dest-dir</a></h4>
 <p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
 <hr />
 <p><strong><em>注意:</em></strong> <em>确保在根目录中运行 build 命令,而不是在源<code>src</code>目录中运行</em></p>

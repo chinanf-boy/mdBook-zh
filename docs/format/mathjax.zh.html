@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,7 +160,7 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#mathjax-支持" id="mathjax-支持"><h1>MathJax 支持</h1></a>
+                    <h1><a class="header" href="#mathjax-支持" id="mathjax-支持">MathJax 支持</a></h1>
 <p>mdBook，可选的支持数学方程式<a href="https://www.mathjax.org/">MathJax</a>.</p>
 <p>要启用MathJax,您需要在<code>book.toml</code>中的<code>output.html</code>部分添加<code>mathjax-support</code>，.</p>
 <pre><code class="language-toml">[output.html]
@@ -170,11 +170,11 @@ mathjax-support = true
 <p><strong>注意:</strong> MathJax使用的常用分隔符尚不支持.你目前无法使用<code>$$ ... $$</code>作为分隔符和<code>\[ ... \]</code>分隔符需要额外的反斜杠才能工作。希望这个限制很快就会解除.</p>
 <p><strong>注意:</strong> 在MathJax块中使用双反斜杠时(例如在诸如<code>\begin{cases} \frac 1 2 \\ \frac 3 4 \end{cases}</code>之类的命令中)你需要添加<em>另外两个</em>反斜杠(例如,<code>\begin{cases} \frac 1 2 \\\\ \frac 3 4 \end{cases}</code>).</p>
 </blockquote>
-<a class="header" href="#a内联方程" id="a内联方程"><h3>内联方程</h3></a>
+<h3><a class="header" href="#内联方程" id="内联方程">内联方程</a></h3>
 <p>内联方程由以下分隔<code>\\(</code>和<code>\\)</code>。例如,渲染以下内联方程\(\ int x dx = \ frac {x ^ 2} {2} + C.\)，你要写下面的内容:</p>
 <pre><code>\\( \int x dx = \frac{x^2}{2} + C \\)
 </code></pre>
-<a class="header" href="#a块方程" id="a块方程"><h3>块方程</h3></a>
+<h3><a class="header" href="#块方程" id="块方程">块方程</a></h3>
 <p>块方程由以下分隔<code>\\[</code>和<code>\\]</code>.要渲染以下等式</p>
 <p>\[\ mu = \ frac {1}{ }N\ _{ sum= }i _ 0\ xi]</p>
 <p>你会写:</p>

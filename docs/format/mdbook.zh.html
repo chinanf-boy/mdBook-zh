@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,9 +160,9 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#mdbook特有-markdown" id="mdbook特有-markdown"><h1>mdBook特有 markdown</h1></a>
-<a class="header" href="#a隐藏代码行数" id="a隐藏代码行数"><h2>隐藏代码行数</h2></a>
-<p>mdBook中有一个功能,可以通过在代码行前加上<code>#</code>来隐藏代码行.</p>
+                    <h1><a class="header" href="#mdbook-特有-markdown" id="mdbook-特有-markdown">mdBook 特有 markdown</a></h1>
+<h2><a class="header" href="#隐藏代码行数" id="隐藏代码行数">隐藏代码行数</a></h2>
+<p>mdBook 中有一个功能,可以通过在代码行前加上<code>#</code>来隐藏代码行.</p>
 <pre><code class="language-bash"># fn main() {
     let x = 5;
     let y = 6;
@@ -178,12 +178,19 @@
     println!(&quot;{}&quot;, x + y);
 # }
 </code></pre></pre>
-<a class="header" href="#include包含文件内容" id="include包含文件内容"><h2>include，包含文件内容</h2></a>
+<h2><a class="header" href="#include包含文件内容" id="include包含文件内容">include，包含文件内容</a></h2>
 <p>使用以下语法,您可以将文件包含到您的书中:</p>
 <pre><code class="language-hbs">{{#include file.rs}}
 </code></pre>
 <p>文件的路径必须是 <strong>当前</strong> 源文件的 <strong>相对</strong> 路径.</p>
 <p>通常,此命令用于包含代码段和示例。在这种情况下, 可指定文件的包含部分,例如其中只包含示例的相关行.</p>
+<p>mdBook 会将 include 文件 解释成 markdown。 自从 include 命令常用来插入代码片段和示例，你会习惯使用 <code>```</code> 包裹这些命令，显示（include）文件的内容，而不是去解释它们。</p>
+<pre><code class="language-hbs">```
+{{#include file.rs}}
+```
+</code></pre>
+<h2><a class="header" href="#只-include-一个文件的部分内容" id="只-include-一个文件的部分内容">只 Include 一个文件的部分内容</a></h2>
+<p>常见要求是你只要文件的部分内容 e.g. 以行编号作为例子。我们对部分内容插入，支持了几种模式:</p>
 <pre><code class="language-hbs">{{#include file.rs:2}}
 {{#include file.rs::10}}
 {{#include file.rs:2:}}
@@ -192,16 +199,51 @@
 <p>我们支持四种不同的决定<code>file.rs</code>部分模式:</p>
 <ul>
 <li>第一个命令仅包含文件中的第二行.</li>
-<li>第二个命令包含直到第10行的所有行。即,从11到文件末尾的行被省略.</li>
-<li>第三个命令包含第2行的所有行,即省略第一行.</li>
-<li>最后一个命令包含摘录<code>file.rs</code>由2到10行组成.</li>
+<li>第二个命令包含直到第 10 行的所有行。即,从 11 到文件末尾的行被省略.</li>
+<li>第三个命令包含第 2 行的所有行,即省略第一行.</li>
+<li>最后一个命令包含摘录<code>file.rs</code>由 2 到 10 行组成.</li>
 </ul>
-<a class="header" href="#a插入可运行的rust文件" id="a插入可运行的rust文件"><h2>插入可运行的Rust文件</h2></a>
-<p>使用以下语法,您可以将可运行的Rust文件插入到您的书中:</p>
+<p>为了防止文件的修改（行数的变化），导致图书呈现内容的变化, 你还可以使用锚点(anchor)，选择一个特定的部分，
+行数就不再相关。
+一个 anchor 是一对匹配的行。 匹配的内容正是正则式，如开头的行anchor必须匹配”ANCHOR:\s*[\w_-]+” and similarly 结尾行则是 “ANCHOR_END:\s*[\w_-]+”。只要内容匹配了，注释的写法格式倒是没有限制。</p>
+<p>考虑下面 要 include 的文件:</p>
+<pre><code class="language-rs">/* ANCHOR: all */
+
+// ANCHOR: component
+struct Paddle {
+    hello: f32,
+}
+// ANCHOR_END: component
+
+////////// ANCHOR: system
+impl System for MySystem { ... }
+////////// ANCHOR_END: system
+
+/* ANCHOR_END: all */
+</code></pre>
+<p>给个示例，你要做的:</p>
+<pre><code class="language-hbs">Here is a component:
+```rust,no_run,noplaypen
+{{#include file.rs:component}}
+```
+
+Here is a system:
+```rust,no_run,noplaypen
+{{#include file.rs:system}}
+```
+
+This is the full file.
+```rust,no_run,noplaypen
+{{#include file.rs:all}}
+```
+</code></pre>
+<p>在已 include anchor 内的，若还包含 anchor 匹配模式，则会被忽略。</p>
+<h2><a class="header" href="#插入可运行的-rust-文件" id="插入可运行的-rust-文件">插入可运行的 Rust 文件</a></h2>
+<p>使用以下语法,您可以将可运行的 Rust 文件插入到您的书中:</p>
 <pre><code class="language-hbs">{{#playpen file.rs}}
 </code></pre>
-<p>Rust文件的路径必须是当前源文件的相对路径.</p>
-<p>点击播放后,代码段将被发送到<a href="https://play.rust-lang.org/">rust的游乐场</a>编译和运行。结果被返回，并直接显示在代码下方.</p>
+<p>Rust 文件的路径必须是当前源文件的相对路径.</p>
+<p>点击播放后,代码段将被发送到<a href="https://play.rust-lang.org/">rust 的游乐场</a>编译和运行。结果被返回，并直接显示在代码下方.</p>
 <p>以下是代码段的渲染的样子:</p>
 <pre><pre class="playpen"><code class="language-rust">fn main() {
     println!(&quot;Hello World!&quot;);
@@ -214,7 +256,7 @@
 <blockquote>
 <p>试试 点击 播放箭头</p>
 </blockquote>
-<a class="header" href="#a要可编辑请添加" id="a要可编辑请添加"><h3>要可编辑，请添加</h3></a>
+<h3><a class="header" href="#要可编辑请添加" id="要可编辑请添加">要可编辑，请添加</a></h3>
 <pre><code class="language-hbs">{{#playpen example.rs editable no_run should_panic}}
 </code></pre>
 <pre><pre class="playpen"><code class="language-rust editable">fn main() {

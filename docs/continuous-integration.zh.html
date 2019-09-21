@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,9 +160,9 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#a在持续集成中运行-mdbook" id="a在持续集成中运行-mdbook"><h1>在持续集成中运行 <code>mdbook</code></h1></a>
+                    <h1><a class="header" href="#在持续集成中运行-mdbook" id="在持续集成中运行-mdbook">在持续集成中运行 <code>mdbook</code></a></h1>
 <p>虽然以下示例中使用在Travis CI,但原则上应该，也可以直接转移到其他持续集成提供商.</p>
-<a class="header" href="#a确保mdbook的构建与测试成功" id="a确保mdbook的构建与测试成功"><h2>确保mdbook的构建与测试成功</h2></a>
+<h2><a class="header" href="#确保mdbook的构建与测试成功" id="确保mdbook的构建与测试成功">确保mdbook的构建与测试成功</a></h2>
 <p>以下是Travis CI的<code>.travis.yml</code>示例，确保配置了<code>mdbook build</code>和<code>mdbook test</code>运行成功。加快CI运转时间的关键是缓存<code>mdbook</code>的安装,以便您可以不用每次CI运行就编译一次<code>mdbook</code>。</p>
 <pre><code class="language-yaml">language: rust
 sudo: false
@@ -175,13 +175,13 @@ rust:
 
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
-  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers &quot;^0.1&quot; mdbook)
+  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers &quot;^0.3&quot; mdbook)
   - cargo install-update -a
 
 script:
   - mdbook build path/to/mybook &amp;&amp; mdbook test path/to/mybook
 </code></pre>
-<a class="header" href="#a发布你的图书到-github-pages" id="a发布你的图书到-github-pages"><h2>发布你的图书到 GitHub Pages</h2></a>
+<h2><a class="header" href="#发布你的图书到-github-pages" id="发布你的图书到-github-pages">发布你的图书到 GitHub Pages</a></h2>
 <p>遵循这些命令的结果是，在您的存储库运行CI成功后,您的图书将发布到GitHub页面的<code>master</code>分支.</p>
 <p>首先,创建一个新的GitHub的”Personal Access Token”，保证”public_repo”权限(或私有存储库的”repo”)。转到Travis CI网站的该库设置页面，并添加一个名为<code>GITHUB_TOKEN</code>的环境变量，该变量能保证安全和<em>不</em>显示在日志中.</p>
 <p>然后,将此代码段附加到您的<code>.travis.yml</code>，并更新为<code>book</code>目录路径:</p>
@@ -198,6 +198,31 @@ script:
     branch: master
 </code></pre>
 <p>就这样!</p>
+<h3><a class="header" href="#手动发布你的图书到-github-pages" id="手动发布你的图书到-github-pages">手动发布你的图书到 Github Pages</a></h3>
+<p>如果你的 CI 并不支持 GitHub pages, 或是与其他平台进行整合:
+<em>注意: 不要求一定是 tmp 目录</em>:</p>
+<pre><code class="language-console">$&gt; git worktree add /tmp/book gh-pages
+$&gt; mdbook build
+$&gt; rm -rf /tmp/book/* # this won't delete the .git directory
+$&gt; cp -rp book/* /tmp/book/
+$&gt; cd /tmp/book
+$&gt; git add -A
+$&gt; git commit 'new book message'
+$&gt; git push origin gh-pages
+$&gt; cd -
+</code></pre>
+<p>或是放入 Makefile 文件:</p>
+<pre><code class="language-makefile">.PHONY: deploy
+deploy: book
+	@echo &quot;====&gt; deploying to github&quot;
+	git worktree add /tmp/book gh-pages
+	rm -rf /tmp/book/*
+	cp -rp book/* /tmp/book/
+	cd /tmp/book &amp;&amp; \
+		git add -A &amp;&amp; \
+		git commit -m &quot;deployed on $(shell date) by ${USER}&quot; &amp;&amp; \
+		git push origin gh-pages
+</code></pre>
 
                 </main>
 

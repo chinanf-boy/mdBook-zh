@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,10 +160,10 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#test-命令" id="test-命令"><h1>test 命令</h1></a>
+                    <h1><a class="header" href="#test-命令" id="test-命令">test 命令</a></h1>
 <p>写书时,有时需要一些自动化测试.例如,<a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Book</a>使用了许多可能过时的代码示例。因此,能够自动测试这些代码示例对他们来说非常重要.</p>
 <p>mdBook 支持<code>test</code>将运行，书中所有可用测试的命令。目前,只支持 rustdoc 测试,但未来可能会扩展.</p>
-<a class="header" href="#a在一个代码块禁用测试" id="a在一个代码块禁用测试"><h4>在一个代码块，禁用测试</h4></a>
+<h4><a class="header" href="#在一个代码块禁用测试" id="在一个代码块禁用测试">在一个代码块，禁用测试</a></h4>
 <p>rustdoc 不会测试，包含<code>ignore</code>属性的代码块:</p>
 <pre><code>```rust,ignore
 fn main() {}
@@ -179,13 +179,13 @@ fn main() {}
 This is going to cause an error!
 ```
 </code></pre>
-<a class="header" href="#a指定目录" id="a指定目录"><h4>指定目录</h4></a>
+<h4><a class="header" href="#指定目录" id="指定目录">指定目录</a></h4>
 <p><code>test</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
 <pre><code class="language-bash">mdbook test path/to/book
 </code></pre>
-<a class="header" href="#a--library-path" id="a--library-path"><h4>--library-path</h4></a>
+<h4><a class="header" href="#--library-path" id="--library-path">--library-path</a></h4>
 <p><code>--library-path</code>(<code>-L</code>)选项允许您，当<code>rustdoc</code>构建和测试示例时，将目录添加到搜索路径。可以指定多个目录(<code>-L foo -L bar</code>)，或用逗号分隔的列表(<code>-L foo,bar</code>).</p>
-<a class="header" href="#a--dest-dir" id="a--dest-dir"><h4>--dest-dir</h4></a>
+<h4><a class="header" href="#--dest-dir" id="--dest-dir">--dest-dir</a></h4>
 <p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
 
                 </main>

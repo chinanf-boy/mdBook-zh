@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,23 +160,23 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#command-line-tool" id="command-line-tool"><h1>Command Line Tool</h1></a>
+                    <h1><a class="header" href="#command-line-tool" id="command-line-tool">Command Line Tool</a></h1>
 <p>mdBook既可以用作命令行工具,也可以用作<a href="https://crates.io/crates/mdbook">Rust
 crate</a>。让我们首先关注命令行工具功能.</p>
-<a class="header" href="#a二进制" id="a二进制"><h2>二进制</h2></a>
+<h2><a class="header" href="#二进制" id="二进制">二进制</a></h2>
 <p>在尽力而为的基础上,预先编译主要平台的二进制文件。访问<a href="https://github.com/rust-lang-nursery/mdBook/releases"> releases 页面</a>下载适合您平台的版本.</p>
-<a class="header" href="#a源码安装" id="a源码安装"><h2>源码安装</h2></a>
+<h2><a class="header" href="#源码安装" id="源码安装">源码安装</a></h2>
 <p>mdBook也可以从源代码安装</p>
-<a class="header" href="#pre-requisite" id="pre-requisite"><h3>Pre-requisite</h3></a>
-<p>mdBook是写的 <strong><a href="https://www.rust-lang.org/">Rust</a></strong> 因此需要<strong>Cargo</strong>编译。如果您还没有安装Rust,请现在就<a href="https://www.rust-lang.org/zh-CN/install.html">官方安装</a>.</p>
-<a class="header" href="#a安装-cratesio-的版本" id="a安装-cratesio-的版本"><h3>安装 Crates.io 的版本</h3></a>
+<h3><a class="header" href="#pre-requisite" id="pre-requisite">Pre-requisite</a></h3>
+<p>mdBook是写的 <strong><a href="https://www.rust-lang.org/">Rust</a></strong> 因此需要<strong>Cargo</strong>编译。如果您还没有安装Rust，请现在就<a href="https://www.rust-lang.org/zh-CN/tools/install">官方安装</a>。</p>
+<h3><a class="header" href="#安装-cratesio-的版本" id="安装-cratesio-的版本">安装 Crates.io 的版本</a></h3>
 <p>如果您已安装Rust和Cargo,则安装mdBook相当容易。您只需在终端中键入以下代码段:</p>
 <pre><code class="language-bash">cargo install mdbook
 </code></pre>
 <p>这将在<a href="https://crates.io/">Crates.io</a>获取最新版本的源代码，并编译它。你需要添加Cargo的<code>bin</code>目录，到你的环境变量<code>PATH</code>.</p>
 <p>在您的终端，运行<code>mdbook help</code>验证它是否有效。</p>
 <p>恭喜你,你已经安装了mdBook!</p>
-<a class="header" href="#a安装-git-版本" id="a安装-git-版本"><h3>安装 Git 版本</h3></a>
+<h3><a class="header" href="#安装-git-版本" id="安装-git-版本">安装 Git 版本</a></h3>
 <p>该 <strong><a href="https://github.com/rust-lang-nursery/mdBook">git 版本</a></strong> 包含所有最新的错误修复和功能, 且是在下一个版本中才发布<strong>Crates.io</strong>, 如果你不能等到下一个版本。你可以自己构建git版本。打开终端，并导航到您选择的目录。我们需要克隆git存储库,然后使用Cargo构建它.</p>
 <pre><code class="language-bash">git clone --depth=1 https://github.com/rust-lang-nursery/mdBook.git
 cd mdBook

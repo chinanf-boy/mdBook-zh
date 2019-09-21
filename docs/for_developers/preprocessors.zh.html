@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,14 +160,14 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#preprocessors" id="preprocessors"><h1>Preprocessors</h1></a>
+                    <h1><a class="header" href="#preprocessors" id="preprocessors">Preprocessors</a></h1>
 <p>一个<em>预处理器</em>只是一些代码，运行在加载书之后,和渲染之前,允许您更新和改变本书。可能的用例是:</p>
 <ul>
 <li>创建自定义帮助程序<code>{{#include /path/to/file.md}}</code></li>
 <li>更新链接<code>[some chapter](some_chapter.md)</code>自动更改为<code>[some chapter](some_chapter.html)</code>，这是 HTML 渲染器功能</li>
 <li>用 latex 样式(<code>$$ \frac{1}{3} $$</code>)的表达式代替为 mathjax 的等价物</li>
 </ul>
-<a class="header" href="#a勾住-mdbook" id="a勾住-mdbook"><h2>勾住 MDBook</h2></a>
+<h2><a class="header" href="#勾住-mdbook" id="勾住-mdbook">勾住 MDBook</a></h2>
 <p>MDBook 使用一种相当简单的机制来发现第三方插件。<code>book.toml</code>添加了一个新表格(例如<code>preprocessor.foo</code>，给<code>foo</code>预处理器)，然后<code>mdbook</code>将尝试调用<code>mdbook-foo</code>程序，作为构建过程的一部分.</p>
 <p>虽然预处理器可以进行硬编码,以指定应该运行哪个后端，来处理如<code>preprocessor.foo.renderer</code>的字段(但奇奇怪怪的是，像 MathJax 用于非 HTML 渲染器没有意义).</p>
 <pre><code class="language-toml">[book]
@@ -182,8 +182,8 @@ renderer = [&quot;html&quot;, &quot;epub&quot;]
 </code></pre>
 <p>在典型的 unix 样式中,插件的所有输入都被写入<code>stdin</code>作为 JSON，和<code>mdbook</code>将从<code>stdout</code>中读取，如果它是期待的输出.</p>
 <p>最简单的入门方法是创建自己的实现<code>Preprocessor</code> trait(例如在<code>lib.rs</code>)，然后创建一个 shell 二进制文件,将输入转换为正确的<code>Preprocessor</code>方法。为方便起见,有个<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs">无操作预处理器:示例</a>在<code>examples/</code>目录,可以很容易地适应其他预处理器.</p>
-<p><details>
-<summary>Example 无操作预处理器</summary></p>
+<details>
+<summary>Example 无操作预处理器</summary>
 <pre><pre class="playpen"><code class="language-rust">// nop-preprocessors.rs
 
 extern crate clap;
@@ -300,8 +300,8 @@ mod nop_lib {
 
 
 </code></pre></pre>
-<p></details></p>
-<a class="header" href="#a实现一个预处理器的提示" id="a实现一个预处理器的提示"><h2>实现一个预处理器的提示</h2></a>
+</details>
+<h2><a class="header" href="#实现一个预处理器的提示" id="实现一个预处理器的提示">实现一个预处理器的提示</a></h2>
 <p>通过拉取<code>mdbook</code>，作为一个库,预处理器可以访问现有的基础架构来处理书籍.</p>
 <p>例如,自定义预处理器可以使用<a href="https://docs.rs/mdbook/latest/mdbook/preprocess/trait.Preprocessor.html#method.parse_input"><code>CmdPreprocessor::parse_input()</code></a>函数， 用于反序列化写入<code>stdin</code>的 JSON。然后是<code>Book</code>的每一章可以通过<a href="https://docs.rs/mdbook/latest/mdbook/book/struct.Book.html#method.for_each_mut"><code>Book::for_each_mut()</code></a>成为可变权限，然后随着<code>serde_json</code>箱写到<code>stdout</code>.</p>
 <p>章节可以直接访问(通过递归迭代章节)或通过便利方法<code>Book::for_each_mut()</code>.</p>
@@ -335,7 +335,7 @@ fn remove_emphasis(
     })
 }
 #}</code></pre></pre>
-<p>对于其他的一切,看<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/de-emphasize.rs">完整的例子</a>.</p>
+<p>对于其他的一切,看<a href="https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs">完整的例子</a>.</p>
 
                 </main>
 

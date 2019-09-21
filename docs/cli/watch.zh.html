@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,15 +160,15 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#watch-命令" id="watch-命令"><h1>watch 命令</h1></a>
+                    <h1><a class="header" href="#watch-命令" id="watch-命令">watch 命令</a></h1>
 <p>当您希望在每次更改文件，都生成图书时, <code>watch</code>命令会很有用。你当然可以在每次更改文件反复发出<code>mdbook build</code>。但，聪明的是使用<code>mdbook watch</code>，这样就能观察您的文件,并会在您修改文件时，自动触发构建.</p>
-<a class="header" href="#a指定目录" id="a指定目录"><h4>指定目录</h4></a>
+<h4><a class="header" href="#指定目录" id="指定目录">指定目录</a></h4>
 <p><code>watch</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
 <pre><code class="language-bash">mdbook watch path/to/book
 </code></pre>
-<a class="header" href="#a--open" id="a--open"><h4>--open</h4></a>
+<h4><a class="header" href="#--open" id="--open">--open</a></h4>
 <p>当你使用<code>--open</code>(<code>-o</code>)选项,mdbook 将在您的默认 Web 浏览器中打开网页书.</p>
-<a class="header" href="#a--dest-dir" id="a--dest-dir"><h4>--dest-dir</h4></a>
+<h4><a class="header" href="#--dest-dir" id="--dest-dir">--dest-dir</a></h4>
 <p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
 
                 </main>

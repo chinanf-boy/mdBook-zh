@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,17 +160,17 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#the-serve-command" id="the-serve-command"><h1>The serve command</h1></a>
+                    <h1><a class="header" href="#the-serve-command" id="the-serve-command">The serve command</a></h1>
 <p>serve 命令用于通过 HTTP 服务来预览书籍，默认情况下<code>localhost:3000</code>。此外,它还会观察图书的目录的更改,自动重建图书，以及为每次更改刷新客户端。</p>
 <blockquote>
 <p>websocket 连接用于触发客户端刷新.</p>
 </blockquote>
 <p><strong><em>注意:</em></strong> <em><code>serve</code>命令用于测试书籍的 HTML 输出,并不打算成为网站的完整 HTTP 服务器.</em></p>
-<a class="header" href="#a指定目录" id="a指定目录"><h4>指定目录</h4></a>
+<h4><a class="header" href="#指定目录" id="指定目录">指定目录</a></h4>
 <p><code>serve</code>命令可以将目录作为参数，用作本书的根目录，而不是当前工作目录.</p>
 <pre><code class="language-bash">mdbook serve path/to/book
 </code></pre>
-<a class="header" href="#server-选项" id="server-选项"><h4>Server 选项</h4></a>
+<h4><a class="header" href="#server-选项" id="server-选项">Server 选项</a></h4>
 <p><code>serve</code>有四个选项:</p>
 <ul>
 <li>HTTP 端口,</li>
@@ -183,9 +183,9 @@
 </code></pre>
 <p>如果你想要实时重新加载,你需要通过 nginx 来代理 websocket 调用<code>192.168.1.100:&lt;WS_PORT&gt;</code>到<code>127.0.0.1:&lt;WS_PORT&gt;</code>。</p>
 <p><code>-w</code>选项会允许配置 websocket 端口.</p>
-<a class="header" href="#a--open" id="a--open"><h4>--open</h4></a>
+<h4><a class="header" href="#--open" id="--open">--open</a></h4>
 <p>当你使用<code>--open</code>(<code>-o</code>)标志,mdbook 将在启动服务器后,在您的默认 Web 浏览器中打开该书.</p>
-<a class="header" href="#a--dest-dir" id="a--dest-dir"><h4>--dest-dir</h4></a>
+<h4><a class="header" href="#--dest-dir" id="--dest-dir">--dest-dir</a></h4>
 <p><code>--dest-dir</code>(<code>-d</code>)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为<code>book.toml</code>配置的<code>build.build-dir</code>字段, 或者<code>./book</code>目录.</p>
 
                 </main>

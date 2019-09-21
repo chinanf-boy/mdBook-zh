@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js">
 
 <head>
     <!-- Book generated using mdBook -->
@@ -160,28 +160,28 @@
 
             <div id="content" class="content">
                 <main>
-                    <a class="header" href="#summarymd" id="summarymd"><h1>SUMMARY.md</h1></a>
+                    <h1><a class="header" href="#summarymd" id="summarymd">SUMMARY.md</a></h1>
 <p>mdBook使用Summary文件，来了解要书的章节,应显示的顺序,层次结构以及源文件的位置。<strong>没有这个文件,就没有书.</strong></p>
 <p>即使<code>SUMMARY.md</code>是一个markdown文件, 但格式是非常严格,以便于给mdbook解析。我们来看看你应该如何格式化你的<code>SUMMARY.md</code>文件.</p>
-<a class="header" href="#a允许的-elements" id="a允许的-elements"><h4>允许的 elements</h4></a>
+<h4><a class="header" href="#允许的-elements" id="允许的-elements">允许的 elements</a></h4>
 <ol>
 <li>
-<p><strong><em>Title</em></strong>一般来说,通常以<code
-class="language-markdown"># Summary</code>.标题开头是常见的做法，但它不是强制性的,解析器只是忽略它.如果你也是这样想,也忽略它。</p>
+<p><em><strong>Title</strong></em>一般来说,通常以<code
+    class="language-markdown"># Summary</code>.标题开头是常见的做法，但它不是强制性的,解析器只是忽略它.如果你也是这样想,也忽略它。</p>
 </li>
 <li>
-<p><strong><em>开头章节</em></strong>位于主编号章节前,您可以添加一些不编号的元素。这对<code>前言,介绍</code>等很有用.但是有一些限制。你不能嵌套开头章节,它们都应该在根级别.一旦添加了编号章节,就无法添加开头章节.</p>
+<p><em><strong>开头章节</strong></em>位于主编号章节前,您可以添加一些不编号的元素。这对<code>前言,介绍</code>等很有用.但是有一些限制。你不能嵌套开头章节,它们都应该在根级别.一旦添加了编号章节,就无法添加开头章节.</p>
 <pre><code class="language-markdown">[开头章节的标题](relative/path/to/markdown.md)
 </code></pre>
 </li>
 <li>
-<p><strong><em>编号章节</em></strong>是本书的主要内容,它们将被编号，并可以嵌套,从而产生一个很好的层次结构(章节,子章节等)</p>
+<p><em><strong>编号章节</strong></em>是本书的主要内容,它们将被编号，并可以嵌套,从而产生一个很好的层次结构(章节,子章节等)</p>
 <pre><code class="language-markdown">- [编号章节的标题](relative/path/to/markdown.md)
 </code></pre>
 <p>你可以使用<code>-</code>或<code>*</code>表示编号的章节.</p>
 </li>
 <li>
-<p><strong><em>结尾章节</em></strong>位于在编号章节后,您可以添加几个未编号的章节.它们与开头章节相同,但是在编号章节之后，而不是之前.</p>
+<p><em><strong>结尾章节</strong></em>位于在编号章节后,您可以添加几个未编号的章节.它们与开头章节相同,但是在编号章节之后，而不是之前.</p>
 </li>
 </ol>
 <p>所有其他元素都不受支持,最多将被忽略或导致错误.</p>
