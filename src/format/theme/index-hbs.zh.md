@@ -13,7 +13,7 @@
 ```
 
 以下是公开的属性列表: 
-- **language** |> 书的语言`en`。例如`<code class="language-html">\\<html lang="{{ language }}"></code>`。目前它是硬编码的.
+- **language** |> 书的语言`en`。例如`<code class="language-html">\\<html lang="{{ language }}"></code>`。
 - **title** |> 该书的标题,如`book.toml`中所述
 - **chapter_title** |> 本章的标题,如`SUMMARY.md`下所列
 - **path** |> 源目录中原始markdown文件的相对路径

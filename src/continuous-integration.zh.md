@@ -19,7 +19,7 @@ rust:
 
 before_script:
   - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
-  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.1" mdbook)
+  - (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.3" mdbook)
   - cargo install-update -a
 
 script:
@@ -48,3 +48,36 @@ deploy:
 ```
 
 就这样!
+
+
+### 手动发布你的图书到 Github Pages
+
+如果你的 CI 并不支持 GitHub pages, 或是与其他平台进行整合:
+ *注意: 不要求一定是 tmp 目录*:
+
+```console
+$> git worktree add /tmp/book gh-pages
+$> mdbook build
+$> rm -rf /tmp/book/* # this won't delete the .git directory
+$> cp -rp book/* /tmp/book/
+$> cd /tmp/book
+$> git add -A
+$> git commit 'new book message'
+$> git push origin gh-pages
+$> cd -
+```
+
+或是放入 Makefile 文件:
+
+```makefile
+.PHONY: deploy
+deploy: book
+	@echo "====> deploying to github"
+	git worktree add /tmp/book gh-pages
+	rm -rf /tmp/book/*
+	cp -rp book/* /tmp/book/
+	cd /tmp/book && \
+		git add -A && \
+		git commit -m "deployed on $(shell date) by ${USER}" && \
+		git push origin gh-pages
+```

@@ -28,7 +28,7 @@ GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功
 
 首先,您需要创建一个新的二进制程序，并添加`mdbook`作为依赖.
 
-```
+```shell
 $ cargo new --bin mdbook-wordcount
 $ cd mdbook-wordcount
 $ cargo add mdbook
@@ -84,7 +84,7 @@ fn count_words(ch: &Chapter) -> usize {
 现在我们的基本部分已经运行了，我们希望实际使用它。那首先,当然是安装程序.
 
 ```
-$ cargo install
+$ cargo install --path .
 ```
 
 然后`cd`在特定的书目录中，若你想要数字计数，那更新它的`book.toml`文件.
@@ -106,7 +106,7 @@ $ cargo install
 
 现在你只需要像平常一样构建你的书,一切都应该*干得好*.
 
-```
+```shell
 $ mdbook build
 ...
 2018-01-16 07:31:15 [INFO] (mdbook::renderer): Invoking the "mdbook-wordcount" renderer
@@ -126,7 +126,7 @@ Syntax highlighting: 314
 MathJax Support: 153
 Rust code specific features: 148
 For Developers: 788
-备用后端: 710
+Alternative Backends: 710
 Contributors: 85
 ```
 
@@ -227,6 +227,10 @@ pub struct WordcountConfig {
 ```
 
 > **注意:** 无法保证目标目录存在或为空(`mdbook`可能会留下以前的内容让后端进行缓存)，因此创建它`fs::create_dir_all()`总不会错。
+>
+> 如果目的地目录已存在, 不要假设它就一定是空的。
+> 要知道，后端是有上一结果缓存的, `mdbook` 或许会留下
+> 旧的内容在里面。
 
 处理书籍时，总会出现错误(只需查看全部我们已经写过了的`unwrap()`),所以`mdbook`会渲染失败后，非零退出代码。
 
@@ -265,8 +269,8 @@ pub struct WordcountConfig {
 
 现在,如果我们重新安装后端，并构建一本书,
 
-```
-$ cargo install --force
+```shell
+$ cargo install --path . --force
 $ mdbook build /path/to/book
 ...
 2018-01-16 21:21:39 [INFO] (mdbook::renderer): Invoking the "wordcount" renderer
@@ -293,10 +297,10 @@ init has an odd number of words!
 [mdbook-epub]: https://github.com/Michael-F-Bryan/mdbook-epub
 [mdbook-test]: https://github.com/Michael-F-Bryan/mdbook-test
 [rust-skeptic]: https://github.com/budziq/rust-skeptic
-[`rendercontext`]: http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html
-[`rendercontext::from_json()`]: http://rust-lang-nursery.github.io/mdBook/mdbook/renderer/struct.RenderContext.html#method.from_json
+[`RenderContext`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html
+[`RenderContext::from_json()`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html#method.from_json
 [`semver`]: https://crates.io/crates/semver
-[`book`]: http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html
-[`book::iter()`]: http://rust-lang-nursery.github.io/mdBook/mdbook/book/struct.Book.html#method.iter
-[`config`]: http://rust-lang-nursery.github.io/mdBook/mdbook/config/struct.Config.html
+[`Book`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html
+[`Book::iter()`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter
+[`Config`]: https://docs.rs/mdbook/*/mdbook/config/struct.Config.html
 [issue tracker]: https://github.com/rust-lang-nursery/mdBook/issues
