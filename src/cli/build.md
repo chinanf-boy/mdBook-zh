@@ -7,12 +7,13 @@ mdbook build
 ```
 
 It will try to parse your `SUMMARY.md` file to understand the structure of your
-book and fetch the corresponding files.
+book and fetch the corresponding files. Note that files mentioned in `SUMMARY.md`
+but not present will be created.
 
 The rendered output will maintain the same directory structure as the source for
 convenience. Large books will therefore remain structured when rendered.
 
-#### 指定目录
+#### Specify a directory
 
 The `build` command can take a directory as an argument to use as the book's
 root instead of the current working directory.
@@ -33,7 +34,7 @@ book. Relative paths are interpreted relative to the book's root directory. If
 not specified it will default to the value of the `build.build-dir` key in
 `book.toml`, or to `./book`.
 
----
+-------------------
 
-**_Note:_** _Make sure to run the build command in the root directory and not in
-the source directory_
+***Note:*** *The build command copies all files (excluding files with `.md` extension) from the source directory
+into the build directory.*

@@ -5,21 +5,16 @@ rendering process. This program is passed a JSON representation of the book and
 configuration information via `stdin`. Once the backend receives this
 information it is free to do whatever it wants.
 
-There are already several alternative backends on GitHub which can be used as a
-rough example of how this is accomplished in practice.
+See [Configuring Renderers](../format/configuration/renderers.md) for more information about using backends.
 
-- [mdbook-linkcheck] - a simple program for verifying the book doesn't contain
-  any broken links
-- [mdbook-epub] - an EPUB renderer
-- [mdbook-test] - a program to run the book's contents through [rust-skeptic] to
-  verify everything compiles and runs correctly (similar to `rustdoc --test`)
+The community has developed several backends.
+See the [Third Party Plugins] wiki page for a list of available backends.
+
+## Setting Up
 
 This page will step you through creating your own alternative backend in the form
 of a simple word counting program. Although it will be written in Rust, there's
 no reason why it couldn't be accomplished using something like Python or Ruby.
-
-
-## Setting Up
 
 First you'll want to create a new binary program and add `mdbook` as a
 dependency.
@@ -329,7 +324,6 @@ generation or a warning).
 All environment variables are passed through to the backend, allowing you to use
 the usual `RUST_LOG` to control logging verbosity.
 
-
 ## Wrapping Up
 
 Although contrived, hopefully this example was enough to show how you'd create
@@ -342,14 +336,11 @@ as a good example of how it's done in real life, so feel free to skim through
 the source code or ask questions.
 
 
-[mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
-[mdbook-epub]: https://github.com/Michael-F-Bryan/mdbook-epub
-[mdbook-test]: https://github.com/Michael-F-Bryan/mdbook-test
-[rust-skeptic]: https://github.com/budziq/rust-skeptic
+[Third Party Plugins]: https://github.com/rust-lang/mdBook/wiki/Third-party-plugins
 [`RenderContext`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html
 [`RenderContext::from_json()`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html#method.from_json
 [`semver`]: https://crates.io/crates/semver
 [`Book`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html
 [`Book::iter()`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter
 [`Config`]: https://docs.rs/mdbook/*/mdbook/config/struct.Config.html
-[issue tracker]: https://github.com/rust-lang-nursery/mdBook/issues
+[issue tracker]: https://github.com/rust-lang/mdBook/issues

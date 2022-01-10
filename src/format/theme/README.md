@@ -11,16 +11,21 @@ and now that file will be used instead of the default file.
 
 Here are the files you can override:
 
-- ***index.hbs*** is the handlebars template.
-- ***book.css*** is the style used in the output. If you want to change the
-  design of your book, this is probably the file you want to modify. Sometimes
-  in conjunction with `index.hbs` when you want to radically change the layout.
-- ***book.js*** is mostly used to add client side functionality, like hiding /
+- **_index.hbs_** is the handlebars template.
+- **_head.hbs_** is appended to the HTML `<head>` section.
+- **_header.hbs_** content is appended on top of every book page.
+- **_css/_** contains the CSS files for styling the book.
+    - **_css/chrome.css_** is for UI elements.
+    - **_css/general.css_** is the base styles.
+    - **_css/print.css_** is the style for printer output.
+    - **_css/variables.css_** contains variables used in other CSS files.
+- **_book.js_** is mostly used to add client side functionality, like hiding /
   un-hiding the sidebar, changing the theme, ...
-- ***highlight.js*** is the JavaScript that is used to highlight code snippets,
-  you should not need to modify this.  
-- ***highlight.css*** is the theme used for the code highlighting
-- ***favicon.png*** the favicon that will be used
+- **_highlight.js_** is the JavaScript that is used to highlight code snippets,
+  you should not need to modify this.
+- **_highlight.css_** is the theme used for the code highlighting.
+- **_favicon.svg_** and **_favicon.png_** the favicon that will be used. The SVG
+  version is used by [newer browsers].
 
 Generally, when you want to tweak the theme, you don't need to override all the
 files. If you only need changes in the stylesheet, there is no point in
@@ -30,5 +35,16 @@ built-in ones, they will not get updated with new fixes / features.
 **Note:** When you override a file, it is possible that you break some
 functionality. Therefore I recommend to use the file from the default theme as
 template and only add / modify what you need. You can copy the default theme
-into your source directory automatically by using `mdbook init --theme` just
+into your source directory automatically by using `mdbook init --theme` and just
 remove the files you don't want to override.
+
+`mdbook init --theme` will not create every file listed above.
+Some files, such as `head.hbs`, do not have built-in equivalents.
+Just create the file if you need it.
+
+If you completely replace all built-in themes, be sure to also set
+[`output.html.preferred-dark-theme`] in the config, which defaults to the
+built-in `navy` theme.
+
+[`output.html.preferred-dark-theme`]: ../configuration/renderers.md#html-renderer-options
+[newer browsers]: https://caniuse.com/#feat=link-icon-svg

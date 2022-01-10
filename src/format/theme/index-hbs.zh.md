@@ -1,34 +1,40 @@
 # index.hbs
 
-`index.hbs`是用于渲染书籍的hbs模板。markdown文件被处理为html,然后注入该模板.
+`index.hbs`是用于渲染书籍的 hbs 模板。markdown 文件被处理为 html,然后注入该模板.
 
 如果您想更改图书的布局或样式,您可能需要稍微修改此模板。那下面是你需要知道的。
 
 ## Data
 
-大量数据通过"上下文"暴露给hbs模板.在hbs模板中,您可以使用以下方式访问此信息
+大量数据通过"上下文"暴露给 hbs 模板.在 hbs 模板中,您可以使用以下方式访问此信息
 
 ```handlebars
 {{name_of_property}}
 ```
 
-以下是公开的属性列表: 
+以下是公开的属性列表:
+
 - **language** |> 书的语言`en`。例如`<code class="language-html">\\<html lang="{{ language }}"></code>`。
-- **title** |> 该书的标题,如`book.toml`中所述
-- **chapter_title** |> 本章的标题,如`SUMMARY.md`下所列
-- **path** |> 源目录中原始markdown文件的相对路径
-- **content** |> 这是渲染的markdown.
-- **path_to_root** |> 这是一条完全包含`../`的路径，这会是从当前文件指向书的根。由于维护了原始目录结构,因此使用此前缀相对链接很有用.
+- **title** |> 该书的标题，如`book.toml`中所述
+- **chapter_title** |> 当前章节的标题，格式是 `{{ chapter_title }} - {{ book_title }}`，除非 unless `book_title` 没有设置，这种情况下，默认为 `chapter_title`。
+- **path** |> 源目录中原始 markdown 文件的相对路径
+- **content** |> 这是渲染的 markdown.
+- **path_to_root** |> 这是一条完全包含`../`的路径，这会是从当前文件指向书的根。由于维护了原始目录结构，因此使用此前缀相对链接很有用.
 - **chapters** |> 是一个字典数组
 
 ```json
-{"section": "1.2.1", "name": "name of this chapter", "path": "dir/markdown.md"}
+{
+  "section": "1.2.1",
+  "name": "name of this chapter",
+  "path": "dir/markdown.md"
+}
 ```
+
 包含本书的所有章节.它用于例如构建目录(侧边栏).
 
 ## Handlebars 帮手
 
-除了您可以访问的属性外,您还可以使用一些hbs帮手.
+除了您可以访问的属性外,您还可以使用一些 hbs 帮手.
 
 ### 1. toc
 
@@ -82,7 +88,7 @@ var chapters = {{chapters}};
 当然内部html可以根据自己的喜好进行更改。
 ````
 
-* * *
+---
 
-*如果您希望其他属性或帮手,请[create a new
-issue](https://github.com/rust-lang-nursery/mdBook/issues)*
+_如果您希望其他属性或帮手,请[create a new
+issue](https://github.com/rust-lang/mdBook/issues)_

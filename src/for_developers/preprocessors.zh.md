@@ -83,7 +83,7 @@ fn remove_emphasis(
 [preprocessor-docs]: https://docs.rs/mdbook/latest/mdbook/preprocess/trait.Preprocessor.html
 [pc]: https://crates.io/crates/pulldown-cmark
 [pctc]: https://crates.io/crates/pulldown-cmark-to-cmark
-[example]: https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs
-[an example no-op preprocessor]: https://github.com/rust-lang-nursery/mdBook/blob/master/examples/nop-preprocessor.rs
+[example]: https://github.com/rust-lang/mdBook/blob/master/examples/nop-preprocessor.rs
+[an example no-op preprocessor]: https://github.com/rust-lang/mdBook/blob/master/examples/nop-preprocessor.rs
 [`cmdpreprocessor::parse_input()`]: https://docs.rs/mdbook/latest/mdbook/preprocess/trait.Preprocessor.html#method.parse_input
 [`book::for_each_mut()`]: https://docs.rs/mdbook/latest/mdbook/book/struct.Book.html#method.for_each_mut

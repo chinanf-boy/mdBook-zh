@@ -1,8 +1,13 @@
 # The serve command
 
-serve 命令用于通过 HTTP 服务来预览书籍，默认情况下`localhost:3000`。此外,它还会观察图书的目录的更改,自动重建图书，以及为每次更改刷新客户端。
+serve 命令用于通过 HTTP 服务来预览书籍，默认情况下`localhost:3000`。
 
-> websocket 连接用于触发客户端刷新.
+```bash
+mdbook serve
+```
+
+`serve` 观察 `src` 目录的变化，对每次变化，都会执行重建与刷新客户端;
+还包括重新创建已删除，但仍在 `SUMMARY.md`里的文件! 一个 websocket 连接用于触发客户端刷新.
 
 **_注意:_** _`serve`命令用于测试书籍的 HTML 输出,并不打算成为网站的完整 HTTP 服务器._
 
@@ -16,27 +21,24 @@ mdbook serve path/to/book
 
 #### Server 选项
 
-`serve`有四个选项:
-- HTTP 端口,
-- WebSocket 端口,
-- 要侦听的 HTTP 主机名,以及
-- 要连接到 WebSockets 的浏览器的主机名.
-
-例如:假设您有一个公共地址为 192.168.1.100，可用 SSL 终止符 的 nginx 服务器,其端口 80 , 在127.0.0.1的 8000端口 上代理。要运行使用 nginx 代理,请执行以下操作:
+`serve` 默认端口：`localhost:3000`；或是通过下面命令改变：
 
 ```bash
-mdbook serve path/to/book -p 8000 -n 127.0.0.1 --websocket-hostname 192.168.1.100
+mdbook serve path/to/book -p 8000 -n 127.0.0.1 
 ```
-
-如果你想要实时重新加载,你需要通过 nginx 来代理 websocket 调用`192.168.1.100:<WS_PORT>`到`127.0.0.1:<WS_PORT>`。
-
-`-w`选项会允许配置 websocket 端口.
 
 #### --open
 
 当你使用`--open`(`-o`)标志,mdbook 将在启动服务器后,在您的默认 Web 浏览器中打开该书.
 
-
 #### --dest-dir
 
 `--dest-dir`(`-d`)选项允许您更改书籍的输出目录。为相对路径，（相对于书籍的根目录）。如果未指定,则默认为`book.toml`配置的`build.build-dir`字段, 或者`./book`目录.
+
+#### 指定排除的模式
+
+`watch` 对 `.gitignore` 里的文件，不会触发构建命令。`.gitignore` 是有匹配模式的文件 [gitignore
+documentation](https://git-scm.com/docs/gitignore)。忽略那些缓存文件就挺有用的。
+
+_注意: 只有项目的顶层`.gitignore`是工作的。 全局的
+`$HOME/.gitignore` or 上级文件夹的`.gitignore` 都不起作用_

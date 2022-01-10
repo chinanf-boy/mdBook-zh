@@ -1,8 +1,11 @@
 [book]
 title = "mdBook 中文文档"
-description = "mdbook :) markdown生成记. 就像Gitbook, 但专为Rust设计"
+description = "mdbook :) markdown生成记. 就像 Gitbook, 但专为 Rust 设计"
 authors = ["Mathieu David", "Michael-F-Bryan", "译:yobrave"]
 language = "zh-CN"
+
+[rust]
+edition = "2018"
 
 [build]
 build-dir = "docs"
@@ -13,12 +16,10 @@ use-default-preprocessors = false
 
 [output.html]
 mathjax-support = true
-theme = "src/theme"
+site-url = "/mdBook-zh/"
 curly-quotes = true
-google-analytics = "UA-128555056-1"
-# additional-css = ["src/theme/custom.css"]
-git_repository_url = "https://github.com/chinanf-boy/mdbook-zh"
-git_repository_icon = "fa-github"
+git-repository-url = "https://github.com/chinanf-boy/mdBook-zh"
+edit-url-template = "https://github.com/chinanf-boy/mdBook-zh/edit/master/{path}"
 
 [output.html.playpen]
 editable = true
@@ -31,3 +32,6 @@ boost-hierarchy = 2
 boost-paragraph = 1
 expand = true
 heading-split-level = 2
+
+[output.html.redirect]
+"/format/config.html" = "configuration/index.html"

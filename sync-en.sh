@@ -9,7 +9,7 @@ do
     else
         lowline=`echo "$line" | awk '{print tolower($0)}'` # lowwer string
 
-        zh=${line//source\//}
+        zh=${line//source\//src\/}
         dir=$(dirname $zh)
         
         source_readme="./source/readme.md"

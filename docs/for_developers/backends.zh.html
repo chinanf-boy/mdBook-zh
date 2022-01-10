@@ -1,167 +1,157 @@
 <!DOCTYPE HTML>
-<html lang="zh-CN" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Alternative Backends - mdBook 中文文档</title>
 
-<head>
-    <!-- Book generated using mdBook -->
-    <meta charset="UTF-8">
-    <title>备用后端 - mdBook 中文文档</title>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <meta name="description" content="mdbook :) markdown生成记. 就像Gitbook, 但专为Rust设计">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#ffffff" />
 
-    <link rel="shortcut icon" href="../favicon.png">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/chrome.css">
-    <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="mdbook :) markdown生成记. 就像 Gitbook, 但专为 Rust 设计">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
-        rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
-    <!-- Highlight.js Stylesheets -->
-    <link rel="stylesheet" href="../highlight.css">
-    <link rel="stylesheet" href="../tomorrow-night.css">
-    <link rel="stylesheet" href="../ayu-highlight.css">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
-    <!-- Custom theme stylesheets -->
-    
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
-    
-    <!-- MathJax -->
-    <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-</head>
+        <!-- Custom theme stylesheets -->
 
-<body class="light">
-    <!-- Provide site root to javascript -->
-    <script type="text/javascript">var path_to_root = "../";</script>
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
-    <!-- Work around some values being stored in localStorage wrapped in quotes -->
-    <script type="text/javascript">
-        try {
-            var theme = localStorage.getItem('mdbook-theme');
-            var sidebar = localStorage.getItem('mdbook-sidebar');
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
 
-            if (theme.startsWith('"') && theme.endsWith('"')) {
-                localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
             }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
 
-            if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-            }
-        } catch (e) { }
-    </script>
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../README.zh.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="../guide/installation.zh.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../guide/reading.zh.html"><strong aria-hidden="true">2.</strong> Reading Books</a></li><li class="chapter-item expanded "><a href="../guide/creating.zh.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="../cli/README.zh.html"><strong aria-hidden="true">4.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/init.zh.html"><strong aria-hidden="true">4.1.</strong> init</a></li><li class="chapter-item expanded "><a href="../cli/build.zh.html"><strong aria-hidden="true">4.2.</strong> build</a></li><li class="chapter-item expanded "><a href="../cli/watch.zh.html"><strong aria-hidden="true">4.3.</strong> watch</a></li><li class="chapter-item expanded "><a href="../cli/serve.zh.html"><strong aria-hidden="true">4.4.</strong> serve</a></li><li class="chapter-item expanded "><a href="../cli/test.zh.html"><strong aria-hidden="true">4.5.</strong> test</a></li><li class="chapter-item expanded "><a href="../cli/clean.zh.html"><strong aria-hidden="true">4.6.</strong> clean</a></li><li class="chapter-item expanded "><a href="../cli/completions.zh.html"><strong aria-hidden="true">4.7.</strong> completions</a></li></ol></li><li class="chapter-item expanded "><a href="../format/README.zh.html"><strong aria-hidden="true">5.</strong> Format</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../format/summary.zh.html"><strong aria-hidden="true">5.1.</strong> SUMMARY.md</a></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">5.1.1.</strong> Draft chapter</div></li></ol></li><li class="chapter-item expanded "><a href="../format/configuration/README.zh.html"><strong aria-hidden="true">5.2.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../format/configuration/general.zh.html"><strong aria-hidden="true">5.2.1.</strong> General</a></li><li class="chapter-item expanded "><a href="../format/configuration/preprocessors.zh.html"><strong aria-hidden="true">5.2.2.</strong> Preprocessors</a></li><li class="chapter-item expanded "><a href="../format/configuration/renderers.zh.html"><strong aria-hidden="true">5.2.3.</strong> Renderers</a></li><li class="chapter-item expanded "><a href="../format/configuration/environment-variables.zh.html"><strong aria-hidden="true">5.2.4.</strong> Environment Variables</a></li></ol></li><li class="chapter-item expanded "><a href="../format/theme/README.zh.html"><strong aria-hidden="true">5.3.</strong> Theme</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../format/theme/index-hbs.zh.html"><strong aria-hidden="true">5.3.1.</strong> index.hbs</a></li><li class="chapter-item expanded "><a href="../format/theme/syntax-highlighting.zh.html"><strong aria-hidden="true">5.3.2.</strong> Syntax highlighting</a></li><li class="chapter-item expanded "><a href="../format/theme/editor.zh.html"><strong aria-hidden="true">5.3.3.</strong> Editor</a></li></ol></li><li class="chapter-item expanded "><a href="../format/mathjax.zh.html"><strong aria-hidden="true">5.4.</strong> MathJax Support</a></li><li class="chapter-item expanded "><a href="../format/mdbook.zh.html"><strong aria-hidden="true">5.5.</strong> mdBook-specific features</a></li><li class="chapter-item expanded "><a href="../format/markdown.zh.html"><strong aria-hidden="true">5.6.</strong> Markdown</a></li></ol></li><li class="chapter-item expanded "><a href="../continuous-integration.zh.html"><strong aria-hidden="true">6.</strong> Continuous Integration</a></li><li class="chapter-item expanded "><a href="../for_developers/README.zh.html"><strong aria-hidden="true">7.</strong> For Developers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../for_developers/preprocessors.zh.html"><strong aria-hidden="true">7.1.</strong> Preprocessors</a></li><li class="chapter-item expanded "><a href="../for_developers/backends.zh.html" class="active"><strong aria-hidden="true">7.2.</strong> Alternative Backends</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../misc/contributors.zh.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
 
-    <!-- Set the theme before any content is loaded, prevents flash -->
-    <script type="text/javascript">
-        var theme;
-        try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
-        if (theme === null || theme === undefined) { theme = 'light'; }
-        document.body.className = theme;
-        document.querySelector('html').className = theme + ' js';
-    </script>
+        <div id="page-wrapper" class="page-wrapper">
 
-    <!-- Hide / unhide sidebar before it is displayed -->
-    <script type="text/javascript">
-        var html = document.querySelector('html');
-        var sidebar = 'hidden';
-        if (document.body.clientWidth >= 1080) {
-            try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
-            sidebar = sidebar || 'visible';
-        }
-        html.classList.remove('sidebar-visible');
-        html.classList.add("sidebar-" + sidebar);
-    </script>
-
-    <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-        <ol class="chapter"><li><a href="../README.zh.html"><strong aria-hidden="true">1.</strong> mdbook</a></li><li><a href="../cli/README.zh.html"><strong aria-hidden="true">2.</strong> 命令行工具</a></li><li><ol class="section"><li><a href="../cli/init.zh.html"><strong aria-hidden="true">2.1.</strong> init</a></li><li><a href="../cli/build.zh.html"><strong aria-hidden="true">2.2.</strong> build</a></li><li><a href="../cli/watch.zh.html"><strong aria-hidden="true">2.3.</strong> watch</a></li><li><a href="../cli/serve.zh.html"><strong aria-hidden="true">2.4.</strong> serve</a></li><li><a href="../cli/test.zh.html"><strong aria-hidden="true">2.5.</strong> test</a></li><li><a href="../cli/clean.zh.html"><strong aria-hidden="true">2.6.</strong> clean</a></li></ol></li><li><a href="../format/README.zh.html"><strong aria-hidden="true">3.</strong> 格式</a></li><li><ol class="section"><li><a href="../format/summary.zh.html"><strong aria-hidden="true">3.1.</strong> SUMMARY.md</a></li><li><a href="../format/config.zh.html"><strong aria-hidden="true">3.2.</strong> 配置</a></li><li><a href="../format/theme/README.zh.html"><strong aria-hidden="true">3.3.</strong> Theme-主题</a></li><li><ol class="section"><li><a href="../format/theme/index-hbs.zh.html"><strong aria-hidden="true">3.3.1.</strong> index.hbs</a></li><li><a href="../format/theme/syntax-highlighting.zh.html"><strong aria-hidden="true">3.3.2.</strong> 语法高亮显示</a></li><li><a href="../format/theme/editor.zh.html"><strong aria-hidden="true">3.3.3.</strong> 编辑器</a></li></ol></li><li><a href="../format/mathjax.zh.html"><strong aria-hidden="true">3.4.</strong> MathJax 支持</a></li><li><a href="../format/mdbook.zh.html"><strong aria-hidden="true">3.5.</strong> mdBook 特殊功能</a></li></ol></li><li><a href="../continuous-integration.zh.html"><strong aria-hidden="true">4.</strong> 持续集成</a></li><li><a href="../for_developers/README.zh.html"><strong aria-hidden="true">5.</strong> 对开发者说</a></li><li><ol class="section"><li><a href="../for_developers/preprocessors.zh.html"><strong aria-hidden="true">5.1.</strong> 预处理程序</a></li><li><a href="../for_developers/backends.zh.html" class="active"><strong aria-hidden="true">5.2.</strong> 备用后端</a></li><li class="spacer"></li></ol></li><li><a href="../misc/contributors.zh.html">贡献者</a></li></ol>
-    </nav>
-
-    <div id="page-wrapper" class="page-wrapper">
-
-        <div class="page">
-            
-            <div id="menu-bar" class="menu-bar">
-                <div id="menu-bar-sticky-container">
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents"
-                            aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <!-- START - Rust Cookbook customization -->
-                        <button id="edit-button" class="icon-button" type="button" title="Fork and edit" aria-label="Fork and edit"
-                            aria-haspopup="true" aria-expanded="false" aria-controls="edit">
-                            <i class="fa fa-edit">Edit</i>
-                        </button>
-                        <!-- END - Rust Cookbook customization -->
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme"
-                            aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)"
-                            aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">mdBook 中文文档</h1>
-                    
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/chinanf-boy/mdBook-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/chinanf-boy/mdBook-zh/edit/master/src/for_developers/backends.zh.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
                     </div>
                 </div>
 
-            
-            <div id="search-wrapper" class="hidden">
-                <form id="searchbar-outer" class="searchbar-outer">
-                    <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..."
-                        aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                </form>
-                <div id="searchresults-outer" class="searchresults-outer hidden">
-                    <div id="searchresults-header" class="searchresults-header"></div>
-                    <ul id="searchresults">
-                    </ul>
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            
 
-            <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-            <script type="text/javascript">
-                document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
-                    link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                });
-            </script>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
 
-            <!-- // START - Rust Cookbook customization -->
-            <script>
-                document.getElementById("edit-button").addEventListener("click", function () {
-                    var editWindow = window.open("https://github.com/chinanf-boy/mdbook-zh/edit/master/src/for_developers/backends.zh.md");
-                });</script>
-            <!-- // END - Rust Cookbook customization -->
-
-            <div id="content" class="content">
-                <main>
-                    <h1><a class="header" href="#备用后端" id="备用后端">备用后端</a></h1>
-<p>“后端”只是一个，<code>mdbook</code>在书籍渲染过程中调用的程序。该程序会拿到传递到<code>stdin</code>的书籍和配置信息的 JSON 表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.</p>
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="备用后端"><a class="header" href="#备用后端">备用后端</a></h1>
+<p>“后端“只是一个，<code>mdbook</code>在书籍渲染过程中调用的程序。该程序会拿到传递到<code>stdin</code>的书籍和配置信息的 JSON 表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.</p>
 <p>GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.</p>
 <ul>
 <li><a href="https://github.com/Michael-F-Bryan/mdbook-linkcheck">mdbook-linkcheck</a>- 用于验证书籍的简单程序，不包含任何损坏的链接</li>
@@ -169,7 +159,7 @@
 <li><a href="https://github.com/Michael-F-Bryan/mdbook-test">mdbook-test</a>- 一个使用<a href="https://github.com/budziq/rust-skeptic">rust-skeptic</a>运用书籍内容的程序，会验证一切编译且正确(类似于<code>rustdoc --test</code>)</li>
 </ul>
 <p>此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用 Rust 编写,但没有理由不能用 Python 或 Ruby 之类，来完成它.</p>
-<h2><a class="header" href="#目录" id="目录">目录</a></h2>
+<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <ul>
@@ -181,7 +171,7 @@
 <li><a href="#%E5%8C%85%E6%B6%B5%E5%8C%85%E6%B6%B5">包涵包涵</a></li>
 </ul>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-<h2><a class="header" href="#设置好" id="设置好">设置好</a></h2>
+<h2 id="设置好"><a class="header" href="#设置好">设置好</a></h2>
 <p>首先,您需要创建一个新的二进制程序，并添加<code>mdbook</code>作为依赖.</p>
 <pre><code class="language-shell">$ cargo new --bin mdbook-wordcount
 $ cd mdbook-wordcount
@@ -189,7 +179,7 @@ $ cargo add mdbook
 </code></pre>
 <p>捋一捋，当我们的<code>mdbook-wordcount</code>插件被调用,<code>mdbook</code>将通过我们的插件的<code>stdin</code>，发送它<a href="https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的 JSON 版本。为方便起见,有一个<a href="https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html#method.from_json"><code>RenderContext::from_json()</code></a>构造函数，加载一个<code>RenderContext</code>.</p>
 <p>这是我们后端加载本书，所需的所有样板.</p>
-<pre><pre class="playpen"><code class="language-rust">// src/main.rs
+<pre><pre class="playground"><code class="language-rust edition2018">// src/main.rs
 extern crate mdbook;
 
 use std::io;
@@ -204,10 +194,10 @@ fn main() {
 <p><strong>注意:</strong> <code>RenderContext</code>包含一个<code>version</code>字段。这使得后端在被调用时确定它们是否与<code>mdbook</code>版本兼容。这个<code>version</code>直接来自<code>mdbook</code>的<code>Cargo.toml</code>中的相应字段.</p>
 </blockquote>
 <p>建议后端使用<a href="https://crates.io/crates/semver"><code>semver</code></a>，如果可能存在兼容性问题,请检查此字段，并发出警告.</p>
-<h2><a class="header" href="#检查-book" id="检查-book">检查 Book</a></h2>
+<h2 id="检查-book"><a class="header" href="#检查-book">检查 Book</a></h2>
 <p>现在我们的后端有一本书的副本,让我们计算每章中有多少单词!</p>
 <p>因为<code>RenderContext</code>包含一个<a href="https://docs.rs/mdbook/*/mdbook/book/struct.Book.html"><code>Book</code></a>字段(<code>book</code>),和一个<code>Book</code>有<a href="https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter"><code>Book::iter()</code></a>，用于迭代其<code>Book</code>中所有项的方法，这一步就和第一步一样简单.</p>
-<pre><pre class="playpen"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2018">fn main() {
     let mut stdin = io::stdin();
     let ctx = RenderContext::from_json(&amp;mut stdin).unwrap();
 
@@ -223,7 +213,7 @@ fn count_words(ch: &amp;Chapter) -&gt; usize {
     ch.content.split_whitespace().count()
 }
 </code></pre></pre>
-<h2><a class="header" href="#启用吧我的-backend" id="启用吧我的-backend">启用吧，我的 Backend</a></h2>
+<h2 id="启用吧我的-backend"><a class="header" href="#启用吧我的-backend">启用吧，我的 Backend</a></h2>
 <p>现在我们的基本部分已经运行了，我们希望实际使用它。那首先,当然是安装程序.</p>
 <pre><code>$ cargo install --path .
 </code></pre>
@@ -273,7 +263,7 @@ Contributors: 85
   [output.wordcount]
 + command = &quot;python /path/to/wordcount.py&quot;
 </code></pre>
-<h2><a class="header" href="#配置" id="配置">配置</a></h2>
+<h2 id="配置"><a class="header" href="#配置">配置</a></h2>
 <p>现在假设您不想计算特定章节上的单词数(可能是生成的文本/代码等)。要做到这样的规范方法，是通过常规<code>book.toml</code>配置文件，添加个别项到您的<code>[output.foo]</code>表格。</p>
 <p><code>Config</code>可以粗略地视为嵌套的<code>hashmap</code>，它允许您调用类似的方法<code>get()</code>使用访问配置的内容，也带<code>get_deserialized()</code>这一方便方法,用于检索值，并自动反序列化为某种任意类型<code>T</code>.</p>
 <p>为实现这一点,我们将创建自己的可序列化<code>WordcountConfig</code>结构将封装此后端的所有配置.</p>
@@ -281,10 +271,10 @@ Contributors: 85
 <pre><code>$ cargo add serde serde_derive
 </code></pre>
 <p>然后你可以创建配置结构,</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate serde;
+<pre><pre class="playground"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate serde;
 #[macro_use]
 extern crate serde_derive;
 
@@ -295,7 +285,8 @@ extern crate serde_derive;
 pub struct WordcountConfig {
   pub ignores: Vec&lt;String&gt;,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在我们只需要我们的<code>RenderContext</code>，反序列化成<code>WordcountConfig</code>，然后添加一个检查，以确保我们跳过忽略的章节.</p>
 <pre><code class="language-diff">  fn main() {
       let mut stdin = io::stdin();
@@ -316,7 +307,7 @@ pub struct WordcountConfig {
       }
   }
 </code></pre>
-<h2><a class="header" href="#输出和信号故障" id="输出和信号故障">输出和信号故障</a></h2>
+<h2 id="输出和信号故障"><a class="header" href="#输出和信号故障">输出和信号故障</a></h2>
 <p>虽然在构建书籍时，将字数计数打印到终端是很好的，但将它们输出到某个文件也可能是个好主意。<code>mdbook</code>能告诉后端，它应该根据<a href="https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html"><code>RenderContext</code></a>的<code>destination</code>字段，放置输出的位置，.</p>
 <pre><code class="language-diff">+ use std::fs::{self, File};
 + use std::io::{self, Write};
@@ -391,94 +382,78 @@ init has an odd number of words!
 2018-01-16 21:21:39 [ERROR] (mdbook::utils): Error: Rendering failed
 2018-01-16 21:21:39 [ERROR] (mdbook::utils):    Caused By: The &quot;mdbook-wordcount&quot; renderer failed
 </code></pre>
-<p>您可能已经注意到,插件的子进程的输出会立即传递给用户。鼓励插件遵循”安静规则”，且仅在必要时生成输出(例如,生成错误或警告).</p>
+<p>您可能已经注意到,插件的子进程的输出会立即传递给用户。鼓励插件遵循“安静规则“，且仅在必要时生成输出(例如,生成错误或警告).</p>
 <p>所有环境变量都传递到后端,允许您使用常用的<code>RUST_LOG</code>，控制日志记录详细程度.</p>
-<h2><a class="header" href="#包涵包涵" id="包涵包涵">包涵包涵</a></h2>
+<h2 id="包涵包涵"><a class="header" href="#包涵包涵">包涵包涵</a></h2>
 <p>虽然有点做作,但希望这个例子足以说明，如何创建一个<code>mdbook</code>备用后端。如果你觉得它遗漏了什么,请不要犹豫,创造一个问题的<a href="https://github.com/rust-lang-nursery/mdBook/issues">issue tracker</a>，让我们可以一起改进用户指南。</p>
 <p>在本章开头提到的现有后端，应该是现实生活中如何完成后端的很好例子,所以请随意浏览源代码，或提出问题.</p>
 
-                </main>
+                    </main>
 
-                <nav class="nav-wrapper" aria-label="Page navigation">
-                    <!-- Mobile navigation buttons -->
-                    
-                    <a rel="prev" href="../for_developers/preprocessors.zh.html" class="mobile-nav-chapters previous" title="Previous chapter"
-                        aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../for_developers/preprocessors.zh.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../misc/contributors.zh.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../for_developers/preprocessors.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    
 
-                    
-                    <a rel="next" href="../misc/contributors.zh.html" class="mobile-nav-chapters next" title="Next chapter"
-                        aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../misc/contributors.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                    
+            </nav>
 
-                    <div style="clear: both"></div>
-                </nav>
-            </div>
         </div>
 
-        <nav class="nav-wide-wrapper" aria-label="Page navigation">
-            
-            <a href="../for_developers/preprocessors.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter"
-                aria-keyshortcuts="Left">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
 
-            
-            <a href="../misc/contributors.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter"
-                aria-keyshortcuts="Right">
-                <i class="fa fa-angle-right"></i>
-            </a>
-            
-        </nav>
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
-    </div>
 
-    
 
-    
-    <!-- Google Analytics Tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128555056-1"></script>
-    
-    <script type="text/javascript">
-        var localAddrs = ["localhost", "127.0.0.1", ""];
-        if (localAddrs.indexOf(document.location.hostname) === -1) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
 
-            gtag('config', 'UA-128555056-1');
-        }
-    </script>
-    
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
 
-    
-    <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
-    
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
 
-    
-    <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-    
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
-    <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Custom JS scripts -->
 
-    <!-- Custom JS scripts -->
-    
 
-    
-
-</body>
-
+    </body>
 </html>

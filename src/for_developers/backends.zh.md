@@ -303,4 +303,4 @@ init has an odd number of words!
 [`Book`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html
 [`Book::iter()`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter
 [`Config`]: https://docs.rs/mdbook/*/mdbook/config/struct.Config.html
-[issue tracker]: https://github.com/rust-lang-nursery/mdBook/issues
+[issue tracker]: https://github.com/rust-lang/mdBook/issues

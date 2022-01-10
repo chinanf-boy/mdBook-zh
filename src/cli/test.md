@@ -23,13 +23,13 @@ rustdoc also doesn't test code blocks which specify a language other than Rust:
     **Foo**: _bar_
     ```
 
-rustdoc _does_ test code blocks which have no language specified:
+rustdoc *does* test code blocks which have no language specified:
 
     ```
     This is going to cause an error!
     ```
 
-#### 指定目录
+#### Specify a directory
 
 The `test` command can take a directory as an argument to use as the book's root
 instead of the current working directory.
@@ -43,7 +43,17 @@ mdbook test path/to/book
 The `--library-path` (`-L`) option allows you to add directories to the library
 search path used by `rustdoc` when it builds and tests the examples. Multiple
 directories can be specified with multiple options (`-L foo -L bar`) or with a
-comma-delimited list (`-L foo,bar`).
+comma-delimited list (`-L foo,bar`). The path should point to the Cargo 
+[build cache](https://doc.rust-lang.org/cargo/guide/build-cache.html) `deps` directory that
+contains the build output of your project. For example, if your Rust project's book is in a directory
+named `my-book`, the following command would include the crate's dependencies when running `test`:
+
+```shell
+mdbook test my-book -L target/debug/deps/
+```
+
+See the `rustdoc` command-line [documentation](https://doc.rust-lang.org/rustdoc/command-line-arguments.html#-l--library-path-where-to-look-for-dependencies)
+for more information.
 
 #### --dest-dir
 

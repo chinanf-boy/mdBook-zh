@@ -70,7 +70,7 @@ language = "zh-CN"
 
 默认情况下,以下预处理器运行，并包含:
 
-- `links`:扩展章节中`{{ #playpen }}`和`{{ #include }}`控制条，能帮助引入文件的内容.
+- `links`:扩展章节中`{{ #playground }}`和`{{ #include }}`控制条，能帮助引入文件的内容.
 - `index`:将所有名为`README.md`的章节文件转换`index.md`。也就是说,所有`README.md`将被渲染成`index.html`，在渲染的书中.
 
 **book.toml**
@@ -180,7 +180,7 @@ google-analytics = "123456"
 additional-css = ["custom.css", "custom2.css"]
 additional-js = ["custom.js"]
 no-section-label = false
-git-repository-url = "https://github.com/rust-lang-nursery/mdBook"
+git-repository-url = "https://github.com/rust-lang/mdBook"
 git-repository-icon = "fa-github"
 
 [output.html.playpen]
