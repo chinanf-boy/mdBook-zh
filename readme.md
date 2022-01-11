@@ -13,7 +13,7 @@
 
 ---
 
-## 更新 🀄 2022-1-8
+## 上传 🀄 2022-1-8
 
 <!-- doc-templite START generated -->
 <!-- repo = 'rust-lang/mdBook' -->
@@ -29,7 +29,7 @@
 
 <!-- doc-templite END generated -->
 
-- [x] readme
+- readme
 # Summary
 
 [Introduction](src/README.zh.md)
@@ -65,10 +65,10 @@
   - [MathJax Support](src/format/mathjax.zh.md)
   - [mdBook-specific features](src/format/mdbook.zh.md)
   - [Markdown](src/format/markdown.zh.md)
-- [ ] [Continuous Integration](src/continuous-integration.zh.md)
-- [ ] [For Developers](src/for_developers/README.zh.md)
-  - [ ] [Preprocessors](src/for_developers/preprocessors.zh.md)
-  - [ ] [Alternative Backends](src/for_developers/backends.zh.md)
+- [Continuous Integration](src/continuous-integration.zh.md)
+- [For Developers](src/for_developers/README.zh.md)
+  - [Preprocessors](src/for_developers/preprocessors.zh.md)
+  - [Alternative Backends](src/for_developers/backends.zh.md)
 
 ### 贡献
 

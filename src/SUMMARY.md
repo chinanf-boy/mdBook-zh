@@ -1,16 +1,16 @@
 # Summary
 
-[Introduction](README.zh.md)
+[介绍](README.zh.md)
 
 # User Guide
 
-- [Installation](guide/installation.zh.md)
-- [Reading Books](guide/reading.zh.md)
-- [Creating a Book](guide/creating.zh.md)
+- [安装](guide/installation.zh.md)
+- [读读读](guide/reading.zh.md)
+- [书的制作](guide/creating.zh.md)
 
 # Reference Guide
 
-- [Command Line Tool](cli/README.zh.md)
+- [命令行](cli/README.zh.md)
   - [init](cli/init.zh.md)
   - [build](cli/build.zh.md)
   - [watch](cli/watch.zh.md)
@@ -18,25 +18,25 @@
   - [test](cli/test.zh.md)
   - [clean](cli/clean.zh.md)
   - [completions](cli/completions.zh.md)
-- [Format](format/README.zh.md)
+- [规范化](format/README.zh.md)
   - [SUMMARY.md](format/summary.zh.md)
     - [Draft chapter]()
-  - [Configuration](format/configuration/README.zh.md)
-    - [General](format/configuration/general.zh.md)
-    - [Preprocessors](format/configuration/preprocessors.zh.md)
-    - [Renderers](format/configuration/renderers.zh.md)
-    - [Environment Variables](format/configuration/environment-variables.zh.md)
-  - [Theme](format/theme/README.zh.md)
+  - [配置](format/configuration/README.zh.md)
+    - [通用](format/configuration/general.zh.md)
+    - [预处理器](format/configuration/preprocessors.zh.md)
+    - [渲染器](format/configuration/renderers.zh.md)
+    - [环境变量](format/configuration/environment-variables.zh.md)
+  - [主题](format/theme/README.zh.md)
     - [index.hbs](format/theme/index-hbs.zh.md)
     - [Syntax highlighting](format/theme/syntax-highlighting.zh.md)
     - [Editor](format/theme/editor.zh.md)
-  - [MathJax Support](format/mathjax.zh.md)
-  - [mdBook-specific features](format/mdbook.zh.md)
+  - [MathJax 支持](format/mathjax.zh.md)
+  - [mdBook 特殊功能](format/mdbook.zh.md)
   - [Markdown](format/markdown.zh.md)
-- [Continuous Integration](continuous-integration.zh.md)
+- [集成服务器](continuous-integration.zh.md)
 - [For Developers](for_developers/README.zh.md)
-  - [Preprocessors](for_developers/preprocessors.zh.md)
-  - [Alternative Backends](for_developers/backends.zh.md)
+  - [预处理器的大小事](for_developers/preprocessors.zh.md)
+  - [备用的后端](for_developers/backends.zh.md)
 
 ---
 

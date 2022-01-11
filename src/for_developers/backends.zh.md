@@ -2,13 +2,9 @@
 
 "后端"只是一个，`mdbook`在书籍渲染过程中调用的程序。该程序会拿到传递到`stdin`的书籍和配置信息的 JSON 表达式。一旦后端收到这些信息,就可以自由地做任何想做的事情.
 
-GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功能的粗略示例.
+[Configuring Renderers](../format/configuration/renderers.zh.md) 有更多信息。
 
-- [mdbook-linkcheck]- 用于验证书籍的简单程序，不包含任何损坏的链接
-- [mdbook-epub]- EPUB 渲染器
-- [mdbook-test]- 一个使用[rust-skeptic]运用书籍内容的程序，会验证一切编译且正确(类似于`rustdoc --test`)
-
-此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用 Rust 编写,但没有理由不能用 Python 或 Ruby 之类，来完成它.
+社区也开发了几个后端 [Third Party Plugins]
 
 ## 目录
 
@@ -26,7 +22,9 @@ GitHub 上已有几个备用后端,可以作为你实践，如何实现这一功
 
 ## 设置好
 
-首先,您需要创建一个新的二进制程序，并添加`mdbook`作为依赖.
+此页面将引导您，创建自己的单词计数程序的简单形式的备用后端。虽然它将用 Rust 编写，但没有理由不能用 Python 或 Ruby 之类，来完成它。
+
+首先，您需要创建一个新的二进制程序，并添加`mdbook`作为依赖.
 
 ```shell
 $ cargo new --bin mdbook-wordcount
@@ -34,7 +32,7 @@ $ cd mdbook-wordcount
 $ cargo add mdbook
 ```
 
-捋一捋，当我们的`mdbook-wordcount`插件被调用,`mdbook`将通过我们的插件的`stdin`，发送它[`RenderContext`]的 JSON 版本。为方便起见,有一个[`RenderContext::from_json()`]构造函数，加载一个`RenderContext`.
+捋一捋，当我们的`mdbook-wordcount`插件被调用，`mdbook`将通过我们的插件的`stdin`，发送它[`RenderContext`]的 JSON 版本。为方便起见，有一个[`RenderContext::from_json()`]构造函数，加载一个`RenderContext`。
 
 这是我们后端加载本书，所需的所有样板.
 
@@ -100,11 +98,11 @@ $ cargo install --path .
 + [output.wordcount]
 ```
 
-当`mdbook`将一本书加载到内存中时，它会尝试检查你的`book.toml`，并查找所有`output.*`表格来尝试找出要使用的后端。如果没有提供,它将回退到，使用默认的 HTML 渲染器.
+当`mdbook`将一本书加载到内存中时，它会尝试检查你的`book.toml`，并查找所有`output.*`表格来尝试找出要使用的后端。如果没有提供，它将回退到，使用默认的 HTML 渲染器.
 
-值得注意的是，这表示如果你想添加自己的自定义后端,你还需要确保添加 HTML 后端,即使只是空表格。
+值得注意的是，这表示如果你想添加自己的自定义后端，你还需要确保添加 HTML 后端，即使只是空表格。
 
-现在你只需要像平常一样构建你的书,一切都应该*干得好*.
+现在你只需要像平常一样构建你的书，一切都应该 *可以工作*。
 
 ```shell
 $ mdbook build
@@ -130,7 +128,7 @@ Alternative Backends: 710
 Contributors: 85
 ```
 
-我们之所以不需要指定我们`wordcount`后端的全名/路径，是因为`mdbook`会尽力的*推断*程序的名称，这些都是因为规范化，如下: 可执行文件`foo`后端通常被称为`mdbook-foo`,还有相关联的`[output.foo]`会进入`book.toml`。而要明确告诉`mdbook`要调用什么命令(可能需要命令行参数或是解释的脚本), 你可以使用`command`字段。
+我们之所以不需要指定我们`wordcount`后端的全名/路径，是因为`mdbook`会尽力的*推断*程序的名称，这些都是因为规范化，如下: 可执行文件`foo`后端通常被称为`mdbook-foo`，还有相关联的`[output.foo]`会进入`book.toml`。而要明确告诉`mdbook`要调用什么命令(可能需要命令行参数或是解释的脚本)， 你可以使用`command`字段。
 
 ```diff
   [book]
@@ -174,7 +172,7 @@ pub struct WordcountConfig {
 }
 ```
 
-现在我们只需要我们的`RenderContext`，反序列化成`WordcountConfig`，然后添加一个检查，以确保我们跳过忽略的章节.
+现在我们只需要我们的`RenderContext`，反序列化成`WordcountConfig`，然后添加一个检查，以确保我们跳过忽略的章节。
 
 ```diff
   fn main() {
@@ -232,9 +230,9 @@ pub struct WordcountConfig {
 > 要知道，后端是有上一结果缓存的, `mdbook` 或许会留下
 > 旧的内容在里面。
 
-处理书籍时，总会出现错误(只需查看全部我们已经写过了的`unwrap()`),所以`mdbook`会渲染失败后，非零退出代码。
+处理书籍时，总会出现错误(只需查看全部我们已经写过了的`unwrap()`)吗，所以`mdbook`会渲染失败后，非零退出代码。
 
-例如,如果我们想确保所有章节的单词，都有*偶数*数量, 而如果遇到奇数,则输出错误,那么你可以这样做:
+例如，如果我们想确保所有章节的单词，都有*偶数*数量， 而如果遇到奇数，则输出错误，那么你可以这样做:
 
 ```diff
 + use std::process;
@@ -267,7 +265,7 @@ pub struct WordcountConfig {
   }
 ```
 
-现在,如果我们重新安装后端，并构建一本书,
+现在，如果我们重新安装后端，并构建一本书,
 
 ```shell
 $ cargo install --path . --force
@@ -283,24 +281,24 @@ init has an odd number of words!
 2018-01-16 21:21:39 [ERROR] (mdbook::utils):    Caused By: The "mdbook-wordcount" renderer failed
 ```
 
-您可能已经注意到,插件的子进程的输出会立即传递给用户。鼓励插件遵循"安静规则"，且仅在必要时生成输出(例如,生成错误或警告).
+您可能已经注意到，插件的子进程的输出会立即传递给用户。鼓励插件遵循"安静规则"，且仅在必要时生成输出(例如，生成错误或警告)。
 
-所有环境变量都传递到后端,允许您使用常用的`RUST_LOG`，控制日志记录详细程度.
+所有环境变量都传递到后端，允许您使用常用的`RUST_LOG`，控制日志记录详细程度.
 
 ## 包涵包涵
 
-虽然有点做作,但希望这个例子足以说明，如何创建一个`mdbook`备用后端。如果你觉得它遗漏了什么,请不要犹豫,创造一个问题的[issue tracker]，让我们可以一起改进用户指南。
+虽然有点做作，但希望这个例子足以说明，如何创建一个`mdbook`备用后端。如果你觉得它遗漏了什么，请不要犹豫，创造一个问题的[issue tracker]，让我们可以一起改进用户指南。
 
-在本章开头提到的现有后端，应该是现实生活中如何完成后端的很好例子,所以请随意浏览源代码，或提出问题.
+在本章开头提到的现有后端，应该是现实生活中如何完成后端的很好例子，所以请随意浏览源代码，或提出问题.
 
 [mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
 [mdbook-epub]: https://github.com/Michael-F-Bryan/mdbook-epub
 [mdbook-test]: https://github.com/Michael-F-Bryan/mdbook-test
 [rust-skeptic]: https://github.com/budziq/rust-skeptic
-[`RenderContext`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html
-[`RenderContext::from_json()`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html#method.from_json
+[`rendercontext`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html
+[`rendercontext::from_json()`]: https://docs.rs/mdbook/*/mdbook/renderer/struct.RenderContext.html#method.from_json
 [`semver`]: https://crates.io/crates/semver
-[`Book`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html
-[`Book::iter()`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter
-[`Config`]: https://docs.rs/mdbook/*/mdbook/config/struct.Config.html
+[`book`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html
+[`book::iter()`]: https://docs.rs/mdbook/*/mdbook/book/struct.Book.html#method.iter
+[`config`]: https://docs.rs/mdbook/*/mdbook/config/struct.Config.html
 [issue tracker]: https://github.com/rust-lang/mdBook/issues
