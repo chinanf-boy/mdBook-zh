@@ -1,6 +1,7 @@
 # Contributors
 
-以下列出了帮助改进mdBook的贡献者。为他们欢呼!
+Here is a list of the contributors who have helped improving mdBook. Big
+shout-out to them!
 
 - [mdinger](https://github.com/mdinger)
 - Kevin ([kbknapp](https://github.com/kbknapp))
@@ -14,6 +15,10 @@
 - [projektir](https://github.com/projektir)
 - [Phaiax](https://github.com/Phaiax)
 - Matt Ickstadt ([mattico](https://github.com/mattico))
-- Weihang Lo ([@weihanglo](https://github.com/weihanglo))
+- Weihang Lo ([weihanglo](https://github.com/weihanglo))
+- Avision Ho ([avisionh](https://github.com/avisionh))
+- Vivek Akupatni ([apatniv](https://github.com/apatniv))
+- Eric Huss ([ehuss](https://github.com/ehuss))
+- Josh Rotenberg ([joshrotenberg](https://github.com/joshrotenberg))
 
-如果您觉得自己在此列表中遗漏了,请随意添加PR.
+If you feel you're missing from this list, feel free to add yourself in a PR.
