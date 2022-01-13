@@ -13,7 +13,7 @@
 
 ---
 
-## 更新 √ ，暂未上传
+## 更新 √ 
 
 <!-- doc-templite START generated -->
 <!-- repo = 'rust-lang/mdBook' -->
