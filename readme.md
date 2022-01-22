@@ -29,6 +29,8 @@
 
 <!-- doc-templite END generated -->
 
+<details>
+
 - readme
 # Summary
 
@@ -69,6 +71,8 @@
 - [For Developers](src/for_developers/README.zh.md)
   - [Preprocessors](src/for_developers/preprocessors.zh.md)
   - [Alternative Backends](src/for_developers/backends.zh.md)
+  
+</details>
 
 ### 贡献
 
